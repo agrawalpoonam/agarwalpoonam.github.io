@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/blog/readme/Readme</loc>
+<lastmod>2016-06-08T20:55:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/blog/features/Features</loc>
+<lastmod>2016-06-07T15:40:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/blog/features/YAML-Features</loc>
+<lastmod>2016-04-06T03:10:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/blog/features/Content</loc>
+<lastmod>2016-03-05T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/404</loc>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/about/</loc>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/</loc>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/offline-warning/</loc>
+</url>
+<url>
+<loc>http://jwillmer.github.io/jekyllDecent/offline</loc>
+</url>
+</urlset>
