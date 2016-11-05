@@ -1,10 +1,10 @@
 default:                                                      # Fallback if nothing is specified
   initial:      jwillmer                                      # used for author lookup in posts and for first two characters in the about page back button
-  name:         "Jens Willmer"                                # used to display author name
+  name:         "Poonam Agrawal"                                # used to display author name
   cover:        /assets/mountain-alternative-cover.jpg        # OPTIONAL: defines location of cover image in about page
   picture:      /assets/jwillmer.jpg                          # OPTIONAL: author picture
   bio:          All about technology                          # OPTIONAL: text below author name in posts
-  location:     Germany                                       # OPTIONAL: used to display location of the author
+  location:     India                                       # OPTIONAL: used to display location of the author
   website:      "http://jwillmer.de/about"                    # OPTIONAL: link to the author of a post
   email:                                                      # OPTIONAL: used in the about page
   twitter:      jenswillmer                                   # OPTIONAL: used in the about page
@@ -20,12 +20,12 @@ default:                                                      # Fallback if noth
   dribble:                                                    # OPTIONAL: used in the about page
   behance:                                                    # OPTIONAL: used in the about page
 jwillmer:
-  initial:      jwillmer
-  name:         "Jens Willmer"        
-  cover:        /assets/mountain-alternative-cover.jpg  
-  picture:      /assets/jwillmer.jpg  
+  initial:      poonam
+  name:         "Poonam Agrawal"        
+  cover:        /assets/mountain-cover.jpg  
+  picture:      /assets/poonam.jpg  
   bio:          All about technology 
-  location:     Germany 
-  website:      "http://jwillmer.de/about" 
-  twitter:      jenswillmer
-  github:       jwillmer
+  location:     India
+  website:      "http://poonamagrawal.com/about/" 
+  twitter:      _agrawal_poonam
+  github:       agrawalpoonam

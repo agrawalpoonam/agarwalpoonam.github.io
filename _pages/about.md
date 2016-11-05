@@ -1,7 +1,7 @@
 ---
 layout:    about
 permalink: "/about/"
-author:    Poonam Agrawal
+author:    jwillmer
 keywords:  about person demo example
 title:     About Poonam Agrawal
 menutitle: About
@@ -17,8 +17,8 @@ Learning comes with pace and in the process we come across with inner self takin
 
 ## Skills
 
-- Python, Java 
-- COnfiguration Management
+- Python, Java
+- Configuration Management
 - Continuous Integration and Deployment
 - REST Framework
 - Version management
