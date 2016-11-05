@@ -1,9 +1,9 @@
 ---
 layout:    about
 permalink: "/about/"
-author:    jwillmer
+author:    Poonam Agrawal
 keywords:  about person demo example
-title:     About Jens Willmer
+title:     About Poonam Agrawal
 menutitle: About
 weight:    90
 excerpt:   This page contains the curriculum vitae (CV) of the author.
@@ -11,21 +11,23 @@ excerpt:   This page contains the curriculum vitae (CV) of the author.
 
 ## Profile
 
-Integer sit amet libero non sapien sagittis dapibus. Phasellus gravida quam ac nisl finibus dictum. Pellentesque vel orci et nisi pretium tincidunt nec a diam. Vivamus et leo eu lorem congue pellentesque id sed tortor. Nulla et nibh neque. Sed ut fermentum lectus, id rhoncus erat.
+Learning comes with pace and in the process we come across with inner self taking care of every one we meet on the road and return back from where we started...
 
 ---
 
 ## Skills
 
-- Praesent ac augue imperdiet, interdum purus id, sollicitudin sem.
-- Sed pellentesque urna a magna suscipit volutpat.
-- Donec ultricies lectus non augue dictum hendrerit ac ac lorem.
-- Integer eget dui eu purus luctus posuere in non metus.
-- Nam ac felis eget tortor blandit gravida non et diam.
+- Python, Java 
+- COnfiguration Management
+- Continuous Integration and Deployment
+- REST Framework
+- Version management
+- JavaScript, Html, CSS
+- SQl/NoSql Databases
 
 ---
 
 ## Education
 
-2009 - 2012
-: Mauris vitae velit vel leo suscipit tempus vel vel elit.
+2011-2012
+: Masters Of Engineering. IET DAVV, Indore, India.
