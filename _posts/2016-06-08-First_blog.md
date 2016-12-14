@@ -1,8 +1,8 @@
 ---
 layout:            post
-title:             "Simple SMTP Server"
+title:             "Simple SMTP Server with Python"
 date:              2016-11-01 15:28:00 +0300
-tags:              Simple SMTP Server 
+tags:              Simple SMTP Server+Python
 category:          Readme
 author:            Poonam Agrawal
 ---
