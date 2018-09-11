@@ -15,7 +15,10 @@ author:            Poonam Agrawal
 <figure>
 <img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
 <figcaption>Architecture Docker</figcaption>
-
+</b>
+</b>
+<img src="{{ site.github.url }}/media/img/Architecture_VM.png" />
+<figcaption>Architecture VM</figcaption>
 </figure>
 
 </div>
