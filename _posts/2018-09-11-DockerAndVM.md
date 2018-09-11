@@ -18,8 +18,8 @@ This post gives the idea, architecture and implementation of a simple SMTP serve
 
 <figure>
 <img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
-<img src="{{ site.github.url }}/media/img/Architecture_VM.png" />
-<figcaption>Architecture</figcaption>
+<!--<img src="{{ site.github.url }}/media/img/Architecture_VM.png" />
+--><figcaption>Architecture</figcaption>
 </figure>
 
 </div>
