@@ -7,23 +7,32 @@ category:          Tutorial
 author:            Poonam Agrawal
 ---
 
-|Comparision Basis | Docker | Virtual machine |
-| :---         |     :---     |          :--- |
+<div>
 
-||<div>
-<figure>
-<img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
-<figcaption>Architecture Docker</figcaption>
-</figure>
 <br>
 </div>|
 <div>
 <br>
+<form>
+	<label>
+	<figure>
+<img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
+<figcaption>Architecture Docker</figcaption>
+</figure>
+</label>
+<label>
 <figure>
 <img src="{{ site.github.url }}/media/img/Architecture_VM.png" />
 <figcaption>Architecture VM</figcaption>
 </figure>
-</div>|
+</label>
+</form>
+</div>
+
+|Comparision Basis | Docker | Virtual machine |
+| :---         |     :---     |          :--- |
+
+|||
 
 |Architechture | Architecture Docker | Architecture Virtual machine |
 | Build   | Only Binaries and libraries of OS over which services run | Iamge of the entire OS    |
