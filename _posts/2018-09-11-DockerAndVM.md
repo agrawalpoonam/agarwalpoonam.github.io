@@ -14,11 +14,8 @@ author:            Poonam Agrawal
 <div>
 <br>
 <form>
-	<label>
-	<figure>
-<img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
+	<label img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
 <figcaption>Architecture Docker</figcaption>
-</figure>
 </label>
 <label>
 <figure>
