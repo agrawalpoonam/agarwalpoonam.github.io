@@ -29,5 +29,5 @@ author:            Poonam Agrawal
 - A virtual Machine is an image of operating system running on Hypervoisor over host operating system.
 
 
-You can find the code in the github location.
+
 
