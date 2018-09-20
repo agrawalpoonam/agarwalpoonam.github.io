@@ -7,33 +7,34 @@ category:          Tutorial
 author:            Poonam Agrawal
 ---
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+|Comparision Basis | Docker | Virtual machine |
+| :---         |     :---     |          :--- |
 
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
-
-
-## Explaination Of the Architecture
-
-<div>
-
+||<div>
 <figure>
 <img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
 <figcaption>Architecture Docker</figcaption>
 </figure>
 <br>
+</div>|
+<div>
 <br>
 <figure>
 <img src="{{ site.github.url }}/media/img/Architecture_VM.png" />
 <figcaption>Architecture VM</figcaption>
 </figure>
+</div>|
 
-</div>
+|Architechture | Architecture Docker | Architecture Virtual machine |
+| Build   | Only Binaries and libraries of OS over which services run | Iamge of the entire OS    |
+|  Virtualization  |  OS level virtualization by abstracting user space       | Hardware Virtualization    |
+| Processing boundaries   | Container have private space for processing, can execute commands as root   |  Virtual Box have confined space for processing and can execue command as user   |
+| kernel boundaries   | Container share host sytstem kernel   |  Virtual Box share host system kernel with Hypervisor   |
+
+
+## Explaination Of the Architecture
+
+
 
 
 
