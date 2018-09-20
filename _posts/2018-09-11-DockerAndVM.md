@@ -16,7 +16,7 @@ author:            Poonam Agrawal
 - A container is a runtime instance of an image--what the image becomes in memory when executed (that is, an image with state, or a user process).
 
 #### Virtual Machine
-- A virtual Machine is an image of operating system running on Hypervoisor over host operating system.
+- A virtual Machine is an image of operating system running on Hypervisor over host operating system.
 
 
 |Comparision Basis | Docker | Virtual machine |
