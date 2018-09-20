@@ -26,7 +26,9 @@ author:            Poonam Agrawal
 </div>
 
 
-## | First Header  | Second Header |
+## 
+<div>
+| First Header  | Second Header |
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
@@ -35,7 +37,7 @@ author:            Poonam Agrawal
 - Uses Flask Apis to perform the requests.
 - Send email to the server.
 
-
+</div>
 
 
 You can find the code in the github location: <a href="https://github.com/agrawalpoonam/smtpapp">
