@@ -7,48 +7,27 @@ category:          Tutorial
 author:            Poonam Agrawal
 ---
 
-<!-- <div>
-
-<br>
-</div>|
-<div>
-<br>
-<form>
-	<label img src="{{ site.github.url }}/media/img/Architecture_Docker.png" />
-<figcaption>Architecture Docker</figcaption>
-</label>
-<label>
-<figure>
-<img src="{{ site.github.url }}/media/img/Architecture_VM.png" />
-<figcaption>Architecture VM</figcaption>
-</figure>
-</label>
-</form>
-</div> -->
 
 |Comparision Basis | Docker | Virtual machine |
 |Architecture|![Docker]({{ site.github.url }}/media/img/Architecture_VM.png)|![Virtual Machine]({{ site.github.url }}/media/img/Architecture_VM.png)|
 | Build   | Only Binaries and libraries of OS over which services run | Iamge of the entire OS    |
 |  Virtualization  |  OS level virtualization by abstracting user space       | Hardware Virtualization    |
 | Processing boundaries   | Container have private space for processing, can execute commands as root   |  Virtual Box have confined space for processing and can execue command as user   |
-| kernel boundaries   | Container share host sytstem kernel   |  Virtual Box share host system kernel with Hypervisor   |
+| kernel boundaries   | Container share host sytstem kernel   |  Virtual Box share host system kernel with Guest Operating System with Hypervisor   |
 
 
 ## Explaination Of the Architecture
 
+#### Docker
+- Image is a box with set of all containers with small layered images. An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files. 
+
+- A container is launched by running an image. 
+
+- A container is a runtime instance of an image--what the image becomes in memory when executed (that is, an image with state, or a user process).
+
+#### Virtual Machine
+- A virtual Machine is an image of operating system running on Hypervoisor over host operating system.
 
 
-
-
-
-#### Client:
-
-- Uses Flask Apis to perform the requests.
-- Send email to the server.
-
-
-
-You can find the code in the github location: <a href="https://github.com/agrawalpoonam/smtpapp">
-https://github.com/agrawalpoonam/smtpapp
-</a>
+You can find the code in the github location.
 
