@@ -7,7 +7,7 @@ category:          Tutorial
 author:            Poonam Agrawal
 ---
 
-<div>
+<!-- <div>
 
 <br>
 </div>|
@@ -24,12 +24,12 @@ author:            Poonam Agrawal
 </figure>
 </label>
 </form>
-</div>
+</div> -->
 
 |Comparision Basis | Docker | Virtual machine |
 | :---         |     :---     |          :--- |
 
-|||
+||![Docker]({{ site.github.url }}/media/img/Architecture_VM.png)|![Virtual Machine]({{ site.github.url }}/media/img/Architecture_VM.png)|
 
 |Architechture | Architecture Docker | Architecture Virtual machine |
 | Build   | Only Binaries and libraries of OS over which services run | Iamge of the entire OS    |
