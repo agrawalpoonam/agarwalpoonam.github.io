@@ -7,7 +7,10 @@ category:          Tutorial
 author:            Poonam Agrawal
 ---
 
-
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 ## Explaination Of the Architecture
 
 <div>
@@ -26,18 +29,13 @@ author:            Poonam Agrawal
 </div>
 
 
-## 
-<div>
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+
+
 #### Client:
 
 - Uses Flask Apis to perform the requests.
 - Send email to the server.
 
-</div>
 
 
 You can find the code in the github location: <a href="https://github.com/agrawalpoonam/smtpapp">
