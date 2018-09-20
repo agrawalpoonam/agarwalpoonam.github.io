@@ -20,7 +20,7 @@ author:            Poonam Agrawal
 
 
 |Comparision Basis | Docker | Virtual machine |
-|Architecture| ![Docker]({{ site.github.url }}/media/img/Architecture_VM.png ){:height="70%" width="90%"} |![Virtual Machine]({{ site.github.url }}/media/img/Architecture_VM.png ){:height="70%" width="90%"}|
+|Architecture| ![Docker]({{ site.github.url }}/media/img/Architecture_VM.png ){:height="70%" width="110%"} |![Virtual Machine]({{ site.github.url }}/media/img/Architecture_VM.png ){:height="70%" width="110%"}|
 | Build   | Only Binaries and libraries of OS over which services run | Image of the entire OS    |
 |  Virtualization  |  OS level virtualization by abstracting user space       | Hardware Virtualization    |
 | Processing boundaries   | Container have private space for processing, can execute commands as root   |  Virtual Box have confined space for processing and can execue command as user   |
