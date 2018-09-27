@@ -22,7 +22,6 @@ OR
 lscpu
 
 $ grep 'model name' /proc/cpuinfo | wc -l
-
 4
 
 #### CPU load average 
