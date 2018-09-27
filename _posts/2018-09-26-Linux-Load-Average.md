@@ -7,9 +7,9 @@ category:          Tutorial
 author:            Poonam Agarwal
 ---
 ## Understanding CPU load Average On the basis of following variables:
-#### CPU cores.
-#### CPU load average.
-#### CPU load average on the basis of number of CPU.
+#### - CPU cores.
+#### - CPU load average.
+#### - CPU load average on the basis of number of CPU.
 
 ### CPU Cores
 - We can check the number of cpu cores by one of the following commands:
@@ -23,7 +23,7 @@ $ grep 'model name' /proc/cpuinfo | wc -l
 
 4
 
-### CPU load 
+### CPU load average 
 - We can check load on the cpu with the following commands:
 $ cat /proc/loadavg
 
@@ -52,7 +52,7 @@ $ uptime
 $ cat /proc/loadavg
 0.96 0.82 0.79 1/1269 10197
 
-### CPU load Average
+### CPU load average on the basis of number of CPU
 Let’s say we have load averages below:
 
 23:16:49 up  10:49,  5 user,  load average: 1.00, 0.40, 3.35
