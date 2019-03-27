@@ -2,7 +2,7 @@
 layout:            post
 title:             "Transactional System Administration Vs Service Centric Model in SRE"
 date:              2019-01-06 20:10:00 +0300
-tags:              Transactional Administration System + ServiceCentricModel
+tags:              Transactional Administration System + Service + Centric + Model
 category:          Tutorial
 author:            Poonam Agarwal
 ---
