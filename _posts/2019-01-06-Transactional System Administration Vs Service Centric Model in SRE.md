@@ -6,8 +6,8 @@ tags:              Transactional Administration System + ServiceCentricModel
 category:          Tutorial
 author:            Poonam Agarwal
 ---
-## What is transactional System Administration?
-#### Think of it as a scenario between customer and SysAdmin:
+## What is Transactional System Administration?
+#### Think of it as a scenario between Customer and SysAdmin:
 	- Customer says : Would you do xyz task?
 	- SysAdmin says: Yes, Done!
 	- Customer verifies.
@@ -54,3 +54,9 @@ Here we try to automate as much as possible for users to get the task done by au
 
 - Assign 3 task per person in action per week. You pull 3 tasks through system per week.
 This way everyone could prioritize their tasks. It's upto the product management to decide on high loads whether prioritize or hire more people.
+
+
+Some References:
+<a href="https://www.usenix.org/conference/lisa15/conference-program/presentation/limoncelli">
+Reference
+</a>
