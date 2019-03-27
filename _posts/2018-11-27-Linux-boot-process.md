@@ -12,7 +12,7 @@ Not wasting time and getting into deeper level.
 
 On this initial stage we donot have privilege even of the file system. What we have is the BIOS - a collection of software routines that are initially loaded from chip into the memory and initialised when we switch on the computer. BIOS makes some hardware checks to ensure all hardaware componenets are at stable switched on state.
 
-So, now we know tat we have something called BIOS that could be of some help.
+So, now we know that we have something called BIOS that could be of some help.
 BIOS cannot load the operating system as a 'file' as we mentioned above that it doesn't know about file system.
 
 BIOS must read specific sectors of data from specific physical location of the disk devices.
