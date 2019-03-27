@@ -50,7 +50,7 @@ Here we try to automate as much as possible for users to get the task done by au
 	- Trello board
 	- Learnkit.com
 
-<div><figure><img src="{{ site.github.url }}/media/img/kanban-board.png" /><figcaption>Kanban Board</figcaption></figure></div>
+<div><figure><img src="{{ site.github.url }}/media/img/" /><figcaption>Kanban Board</figcaption></figure></div>
 
 	- Assign 3 task per person in action per week. You pull 3 tasks through system per week.
 	This way everyone could prioritize their tasks. It's upto the product management to decide on high loads whether prioritize or hire more people.
