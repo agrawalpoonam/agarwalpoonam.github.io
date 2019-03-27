@@ -7,7 +7,7 @@ category:          Tutorial
 author:            Poonam Agarwal
 ---
 ## What is transactional System Administration?
-Think of it as a scenario between customer and SysAdmin.
+Think of it as a scenario between customer and SysAdmin:
 	- Customer says : Would you do xyz task?
 	- SysAdmin says: Yes, Done!
 	- Customer verifies.
@@ -29,7 +29,7 @@ But then you need a way to track your work, right!
 ## Some different ways that different organizations has adopted.
 ### 1) Baseline- Convert "Push" -> "Collaboration"
 #### How? There are 2 ways: 
-	- Put one SRe in different development teams Agile meetings.
+	- Put one SRE member in different development teams Agile meetings.
 	- Put each team lead of different development teams in SRE Agile meetings.
 		> Another version could be SRE communicating with all stakeholders ogf the product not just developers.
 Both of the above gives a single solution by solving Administartion related problems in Dev teams. Isn't it? SRE memebers become aware of their problems in the meetings and can solve them. Dev teams can also use SRE chat rooms for their issues.
