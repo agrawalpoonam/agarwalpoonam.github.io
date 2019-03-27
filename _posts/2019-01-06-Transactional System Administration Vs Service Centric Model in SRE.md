@@ -6,14 +6,14 @@ tags:              TransactionalAdministrationSystem + ServiceCentricModel
 category:          Tutorial
 author:            Poonam Agarwal
 ---
-## What is Transactional System Administration?
-#### Think of it as a scenario between Customer and SysAdmin:
-	- Customer says : Would you do xyz task?
-	- SysAdmin says: Yes, Done!
-	- Customer verifies.
-This is a typical transaction system. The best example is ticketing system.
+### What is Transactional System Administration?
+##### Think of it as a scenario between Customer and SysAdmin:
+	- Customer : Would you do xyz task?
+	- SysAdmin : Yes, Done!
+	- Customer verifies. 
+	This is a typical transaction system. The best example is ticketing system.
 
-## Why is it Bad?
+### Why is it Bad?
 	- It is a reactive process as the sysAdmin has to do job in a limited time frame which creates pressure over them.
 	- It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
 	- No automation for optimization and prioritization of the requests.
@@ -22,20 +22,20 @@ This is a typical transaction system. The best example is ticketing system.
 	- Users hate to open tickets for every task and hang on it.
 	The whole ticket system is creating a pressured environment for SREs , lets call it as "Push" mechanism is working here.
 
-## How did we reach here?
+### How did we reach here?
 	Have we really ever gave a thought do we really need Ticket System? Actually No! It's not required.
 	But then you need a way to track your work, right!
 
-## Some different ways that different organizations has adopted.
-### 1) Baseline- Convert "Push" -> "Collaboration"
-#### How? There are 2 ways: 
+### Some different ways that different organizations has adopted.
+#### 1) Baseline- Convert "Push" -> "Collaboration"
+##### How? There are 2 ways: 
 	- Put one SRE member in different development teams Agile meetings.
 	- Put each team lead of different development teams in SRE Agile meetings.
 		> Another version could be SRE communicating with all stakeholders ogf the product not just developers.
-Both of the above gives a single solution by solving Administartion related problems in Dev teams. Isn't it? SRE memebers become aware of their problems in the meetings and can solve them. Dev teams can also use SRE chat rooms for their issues.
+	Both of the above gives a single solution by solving Administartion related problems in Dev teams. Isn't it? SRE memebers become aware of their problems in the meetings and can solve them. Dev teams can also use SRE chat rooms for their issues.
 
-### 2) Baseline- Convert "Push" -> "Automations"
-#### Some eg:
+#### 2) Baseline- Convert "Push" -> "Automations"
+##### Some eg:
 	- Automating compile and build in CI/CD for developers to do on their own. Click or give some APIs and it's done.
 	- Auotmate load balance to point at service replicas.
 	- Automate VM creation.
@@ -43,10 +43,10 @@ Both of the above gives a single solution by solving Administartion related prob
 			> SRE tracks HR DB for new employee, Emails when eligible and creates a portal for ordering machines.
 			> Automates OS installation for use by laptop delivery crew.
 			> Does capacity planning generates purchase orders etc for purchasing and finance group.
-Here we try to automate as much as possible for users to get the task done by automations instead of killing SRE time. This also keeps motivation of SRE high.
+	Here we try to automate as much as possible for users to get the task done by automations instead of killing SRE time. This also keeps motivation of SRE high.
 
-### 3) Baseline- Convert "Push" -> "Pull"
-#### Use Kanban boards, some good eg are:
+#### 3) Baseline- Convert "Push" -> "Pull"
+##### Use Kanban boards, some good eg are:
 	- Trello board
 	- Learnkit.com
 
