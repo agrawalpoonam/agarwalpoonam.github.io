@@ -27,7 +27,7 @@ Have we really ever gave a thought do we really need Ticket System? Actually No!
 But then you need a way to track your work, right!
 
 ## Some different ways that different organizations has adopted.
-1) Baseline- Convert "Push" -> "Collaboration"
+### 1) Baseline- Convert "Push" -> "Collaboration"
 #### How?
 There are 2 ways: 
 	- Put one SRe in different development teams Agile meetings.
@@ -35,7 +35,7 @@ There are 2 ways:
 		> Another version could be SRE communicating with all stakeholders ogf the product not just developers.
 Both of the above gives a single solution by solving Administartion related problems in Dev teams. Isn't it? SRE memebers become aware of their problems in the meetings and can solve them. Dev teams can also use SRE chat rooms for their issues.
 
-###2) Baseline- Convert "Push" -> "Automations"
+### 2) Baseline- Convert "Push" -> "Automations"
 #### Some eg:
 	- Automating compile and build in CI/CD for developers to do on their own. Click or give some APIs and it's done.
 	- Auotmate load balance to point at service replicas.
