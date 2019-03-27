@@ -2,18 +2,18 @@
 layout:            post
 title:             "Transactional System Administration Vs Service Centric Model in SRE"
 date:              2019-01-06 20:10:00 +0300
-tags:              Transactional Administration System + Service Centric Model
+tags:              Transactional Administration System + ServiceCentricModel
 category:          Tutorial
 author:            Poonam Agarwal
 ---
 ## What is transactional System Administration?
-Think of it as a scenario between customer and SysAdmin:
+#### Think of it as a scenario between customer and SysAdmin:
 	- Customer says : Would you do xyz task?
 	- SysAdmin says: Yes, Done!
 	- Customer verifies.
 This is a typical transaction system. The best example is ticketing system.
 
-## Why It is Bad?
+## Why is it Bad?
 - It is a reactive process as the sysAdmin has to do job in a limited time frame which creates pressure over them.
 - It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
 - No automation for optimization and prioritization of the requests.
