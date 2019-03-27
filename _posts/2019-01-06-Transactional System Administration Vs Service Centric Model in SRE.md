@@ -28,8 +28,7 @@ But then you need a way to track your work, right!
 
 ## Some different ways that different organizations has adopted.
 ### 1) Baseline- Convert "Push" -> "Collaboration"
-#### How?
-There are 2 ways: 
+#### How? There are 2 ways: 
 	- Put one SRe in different development teams Agile meetings.
 	- Put each team lead of different development teams in SRE Agile meetings.
 		> Another version could be SRE communicating with all stakeholders ogf the product not just developers.
