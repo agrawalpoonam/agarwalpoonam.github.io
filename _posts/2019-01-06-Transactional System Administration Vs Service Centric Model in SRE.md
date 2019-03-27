@@ -2,7 +2,7 @@
 layout:            post
 title:             "Transactional System Administration Vs Service Centric Model in SRE"
 date:              2019-01-06 20:10:00 +0300
-tags:              Transactional Administration System + Service + Centric + Model
+tags:              TransactionalAdministrationSystem + ServiceCentricModel
 category:          Tutorial
 author:            Poonam Agarwal
 ---
@@ -14,17 +14,17 @@ author:            Poonam Agarwal
 This is a typical transaction system. The best example is ticketing system.
 
 ## Why is it Bad?
-- It is a reactive process as the sysAdmin has to do job in a limited time frame which creates pressure over them.
-- It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
-- No automation for optimization and prioritization of the requests.
-- Customer considers SRE as "servant" and SRE thinks customer as "ever demanding child". Both of these is bad.
-- There is only one way to scale i.e. hire more people!
-- Users hate to open tickets for every task and hang on it.
-The whole ticket system is creating a pressured environment for SREs , lets call it as "Push" mechanism is working here.
+	- It is a reactive process as the sysAdmin has to do job in a limited time frame which creates pressure over them.
+	- It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
+	- No automation for optimization and prioritization of the requests.
+	- Customer considers SRE as "servant" and SRE thinks customer as "ever demanding child". Both of these is bad.
+	- There is only one way to scale i.e. hire more people!
+	- Users hate to open tickets for every task and hang on it.
+	The whole ticket system is creating a pressured environment for SREs , lets call it as "Push" mechanism is working here.
 
 ## How did we reach here?
-Have we really ever gave a thought do we really need Ticket System? Actually No! It's not required.
-But then you need a way to track your work, right!
+	Have we really ever gave a thought do we really need Ticket System? Actually No! It's not required.
+	But then you need a way to track your work, right!
 
 ## Some different ways that different organizations has adopted.
 ### 1) Baseline- Convert "Push" -> "Collaboration"
