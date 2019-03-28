@@ -1,7 +1,7 @@
 ---
 layout:            post
 title:             "Transactional System Administration Vs Service Centric Model in SRE"
-date:              2019-01-06 20:10:00 +0300
+date:              2019-03-27 20:10:00 +0300
 tags:              TransactionalAdministrationSystem + ServiceCentricModel
 category:          Tutorial
 author:            Poonam Agarwal
@@ -45,7 +45,7 @@ author:            Poonam Agarwal
 	- Laptop distribution: For new employees we should maintain laptop distribution system as-
 			> SRE tracks HR DB for new employee, Emails when eligible and creates a portal for ordering machines.
 			> Automates OS installation for use by laptop delivery crew.
-			> Does capacity planning generates purchase orders etc for purchasing and finance group.
+			> Does capacity planning generates purchase orders etc for purchasing  and finance group.
 	Here we try to automate as much as possible for users to get the task done by automations instead of killing SRE's time. This also keeps motivation of SRE high.
 
 #### 3) Baseline- Convert "Push" -> "Pull"

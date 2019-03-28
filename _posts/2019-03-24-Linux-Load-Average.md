@@ -1,7 +1,7 @@
 ---
 layout:            post
 title:             "Load average in cpu"
-date:              2018-09-26 00:19:00 +0300
+date:              2019-03-24 00:19:00 +0300
 tags:              Load Average+ CPU
 category:          Tutorial
 author:            Poonam Agarwal
