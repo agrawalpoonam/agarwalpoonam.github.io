@@ -39,7 +39,7 @@ author:            Poonam Agarwal
 
 #### 2) Baseline- Convert "Push" -> "Automations"
 	Some eg:
-	- Automating compile and build in CI/CD for developers to do on their own. Click or give some APIs and it's done.
+	- Automating compilation and build process in CI/CD for developers to do on their own. Click or give some APIs and it's done.
 	- Auotmate load balance to point at service replicas.
 	- Automate VM creation.
 	- Laptop distribution: For new employees we should maintain laptop distribution system as-
