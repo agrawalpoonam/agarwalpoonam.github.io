@@ -30,6 +30,8 @@ May 5th 2018 with some break now...
 ![Drawing8]({{ site.github.url }}/media/img/drawing8.jpg ){:height="70%" width="100%"}
 October 07 2018 and busy again with some goals....
 
+![Drawing9]({{ site.github.url }}/media/img/drawing9.jpg ){:height="70%" width="100%"}
+August 05 2019 and I am back!
 
 
 
