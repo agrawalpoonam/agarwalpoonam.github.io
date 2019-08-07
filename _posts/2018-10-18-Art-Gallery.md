@@ -33,6 +33,7 @@ October 07 2018 and busy again with some goals....
 ![Drawing9]({{ site.github.url }}/media/img/drawing9.jpg ){:height="70%" width="100%"}
 August 05 2019 and I am back!
 
-
+![dream.jpeg]({{ site.github.url }}/media/img/dream.jpeg ){:height="70%" width="100%"}
+August 07 2019 and Dreaming about someone...
 
 
