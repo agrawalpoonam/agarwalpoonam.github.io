@@ -6,7 +6,7 @@ keywords:  about person demo example
 title:     About Poonam Agrawal
 menutitle: About
 weight:    90
-excerpt:   This page contains the curriculum vitae (CV) of the author.
+excerpt:   This page contains the short profile of the author.
 ---
 
 ## Profile
@@ -17,11 +17,11 @@ Learning comes with pace and in the process we come across with inner self takin
 
 ## Skills
 
-- Python, Java
+- Docker & Kubernetes Cluster to make MicroServices Highly Available and Distributed Systems Easily Scalable.  
+- Expertise in Jenkins CI/CD pipelines and Version Control Systems.
+- Python, Bash
 - Configuration Management
-- Continuous Integration and Deployment
 - REST Framework
-- Version management
 - JavaScript, Html, CSS
 - SQl/NoSql Databases
 
