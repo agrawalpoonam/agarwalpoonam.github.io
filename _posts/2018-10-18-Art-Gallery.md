@@ -39,3 +39,5 @@ August 07 2019 and Dreaming about someone...
 ![imagination.jpeg]({{ site.github.url }}/media/img/imagination.jpeg ){:height="70%" width="100%"}
 August 09 2019 Just the imagination..
 
+![perfect_together.jpeg]({{ site.github.url }}/media/img/perfect_together.jpeg ){:height="70%" width="100%"}
+August 010 2019 Imperfections around but perfect together..
