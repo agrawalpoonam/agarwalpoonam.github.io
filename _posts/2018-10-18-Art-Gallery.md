@@ -45,5 +45,5 @@ August 10 2019 Imperfections around but perfect together..
 ![grandpa.jpg]({{ site.github.url }}/media/img/grandpa.jpg ){:height="70%" width="100%"}
 August 10 2019 grandpa :-)
 
-![kashmir.jpeg]({{ site.github.url }}/media/img/kashmir.jpeg ){:height="70%" width="100%"}
+![kashmir.jpg]({{ site.github.url }}/media/img/kashmir.jpg ){:height="70%" width="100%"}
 August 12 2019 A view of Kashmir... (use of water color)
