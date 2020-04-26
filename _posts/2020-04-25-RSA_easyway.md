@@ -20,7 +20,8 @@ author: Poonam Agarwal
         4^11(mod 14) => 2 == B
 
     -   How does it work, there is no magic it is just simple mathematics:
-        Take two prime numbers (numbers can be hundreds & hundreds digit long), I choose small number (for better explanation) (2,7) where p = 2, q = 7
+        Take two prime numbers (numbers can be hundreds & hundreds digit long),
+        I choose small number (for better explanation) (2,7) where p = 2, q = 7
         -   N = p * q => N = 14
 
         -   choose φ(N) = (p-1)(q-1)
@@ -33,6 +34,9 @@ author: Poonam Agarwal
 
         -   Now for decryption we choose d such that {d.e(mod φ(N))}
             that is -> d.5(mod 6)
-            the options could be -> 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6), 9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
+            the options could be -> 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
+            4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
+            9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
             I choose 11.5(mod 6) which gives me the value 1.
-            so the decription key is (11, 14)
+
+            So the decription key is (11, 14)
