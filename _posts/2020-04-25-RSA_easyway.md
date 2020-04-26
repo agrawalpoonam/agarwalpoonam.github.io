@@ -38,10 +38,10 @@ author: Poonam Agarwal
             so our lock is (e,N) = (5,14)
 
         -   Now for decryption we choose d such that {d.e(mod φ(N))}
-            that is -> d.5(mod 6)
+            that is -> d.5(mod 6) = 1
             the options could be -> 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
             4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
             9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
-            I choose 11.5(mod 6) which gives me the value 1.
 
+            I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
             So the decription key is (11, 14)
