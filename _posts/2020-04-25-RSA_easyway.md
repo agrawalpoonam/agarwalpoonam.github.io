@@ -44,4 +44,4 @@ author: Poonam Agarwal
             9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
 
             I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
-            So the decription key is (11, 14)
+            So the key is (11, 14)
