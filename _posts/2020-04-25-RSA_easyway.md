@@ -23,8 +23,8 @@ author: Poonam Agarwal
         4^11(mod 14) => 2 == B, where (d,N) that is 4^d(mod N) => (11, 14) is
         decription key
 
-    -   How does it work, what is the algoritm? There is no magic it is just simple
-        mathematics:
+    -   How does it work, what is the algoritm? There is no magic it is just
+        simple mathematics:
         Take two prime numbers (numbers can be hundreds & hundreds digit long),
         I choose small number (for better explanation) (2,7) where p = 2, q = 7
         -   N = p * q => N = 14
