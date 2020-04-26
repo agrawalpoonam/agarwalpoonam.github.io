@@ -9,7 +9,7 @@ author: Poonam Agarwal
 
 ### What is RSA algorithm?
 
-    RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public and private key, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+    RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
 
 ### Example:
 
@@ -23,7 +23,8 @@ author: Poonam Agarwal
         4^11(mod 14) => 2 == B, where (d,N) that is 4^d(mod N) => (11, 14) is
         decription key
 
-    -   How does it work, there is no magic it is just simple mathematics:
+    -   How does it work, what is the algoritm? There is no magic it is just simple
+        mathematics:
         Take two prime numbers (numbers can be hundreds & hundreds digit long),
         I choose small number (for better explanation) (2,7) where p = 2, q = 7
         -   N = p * q => N = 14
