@@ -14,7 +14,8 @@ author: Poonam Agarwal
 ### Example:
 
     -   EncryptionKey => (5,14)
-        Suppose a text to be encrypted is letter 'B' ->  2, then  2^5(mod 14) = 32(mod 14) = 4 (cyphertext)
+        Suppose a text to be encrypted is letter 'B' ->  2, then  2^5(mod 14)
+                                                 = 32(mod 14) = 4 (cyphertext)
 
         DecriptionKey: (11, 14)
         4^11(mod 14) => 2 == B
