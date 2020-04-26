@@ -20,7 +20,8 @@ author: Poonam Agarwal
 
 
         DecriptionKey: (11, 14),
-        4^11(mod 14) => 2 == B, where d = 11, N = 14
+        4^11(mod 14) => 2 == B, where (d,N) that is 4^d(mod N) => (11, 14) is
+        decription key
 
     -   How does it work, there is no magic it is just simple mathematics:
         Take two prime numbers (numbers can be hundreds & hundreds digit long),
