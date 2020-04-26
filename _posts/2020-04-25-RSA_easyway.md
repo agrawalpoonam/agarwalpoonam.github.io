@@ -15,10 +15,12 @@ author: Poonam Agarwal
 
     -   EncryptionKey => (5,14)
         Suppose a text to be encrypted is letter 'B' ->  2, then  2^5(mod 14)
-                                                 = 32(mod 14) = 4 (cyphertext)
+        = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) => (5,14)
+        is encryption key
 
-        DecriptionKey: (11, 14)
-        4^11(mod 14) => 2 == B
+
+        DecriptionKey: (11, 14),
+        4^11(mod 14) => 2 == B, where d = 11, N = 14
 
     -   How does it work, there is no magic it is just simple mathematics:
         Take two prime numbers (numbers can be hundreds & hundreds digit long),
