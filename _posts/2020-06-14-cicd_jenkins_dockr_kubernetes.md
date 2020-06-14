@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CI/CD pipeline with docker and kubernetes"
-date: 2020-046-14 20:10:00 +0300
+date: 2020-04-14 20:10:00 +0300
 tags: Jenkins, Docker , Kubernetes
 category: Tutorial
 author: Poonam Agarwal
