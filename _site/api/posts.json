@@ -2,44 +2,99 @@
 
   
     {
-        "title": "Theme Installation and Usage",
-        "category": "Readme",
-        "url": "/blog/readme/Readme",
-        "tags": ["Jekyll","Theme","GitHub","Installation"],
-        "date": "2016-06-08 20:55:00 +0530",
+        "title": "RSA algorithm (asymmetric algorithm)",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/RSA_easyway",
+        "tags": ["Asymmetric","algorithm,","Public","key","Cryptography"],
+        "date": "2020-04-25 22:40:00 +0530",
         "language": "en"
     },
   
 
   
     {
-        "title": "Theme Features",
-        "category": "Features",
-        "url": "/blog/features/Features",
-        "tags": ["Jekyll","Theme","GitHub","Installation"],
-        "date": "2016-06-07 15:40:00 +0530",
+        "title": "CI/CD pipeline with docker and kubernetes",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/cicd_jenkins_dockr_kubernetes",
+        "tags": ["Jenkins,","Docker",",","Kubernetes"],
+        "date": "2020-04-14 22:40:00 +0530",
         "language": "en"
     },
   
 
   
     {
-        "title": "YAML Custom Features",
-        "category": "Features",
-        "url": "/blog/features/YAML-Features",
-        "tags": ["Jekyll","YAML","Features","Explained"],
-        "date": "2016-04-06 03:10:00 +0530",
+        "title": "Transactional System Administration Vs Service Centric Model in SRE",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/Transactional-System-Administration-Vs-Service-Centric-Model-in-SRE",
+        "tags": ["TransactionalAdministrationSystem","+","ServiceCentricModel"],
+        "date": "2019-03-27 22:40:00 +0530",
         "language": "en"
     },
   
 
   
     {
-        "title": "This post demonstrates post content styles",
-        "category": "Features",
-        "url": "/blog/features/Content",
-        "tags": ["Jekyll","Content","Demo"],
-        "date": "2016-03-05 00:00:00 +0530",
+        "title": "Load average in cpu",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/Linux-Load-Average",
+        "tags": ["Load","Average+","CPU"],
+        "date": "2019-03-24 02:49:00 +0530",
+        "language": "en"
+    },
+  
+
+  
+    {
+        "title": "What happens before Linux Boots up!",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/What-happens-before-Linux-Boots-up!",
+        "tags": ["BIOS","+","File","+","MagicNumber"],
+        "date": "2018-11-28 01:48:00 +0530",
+        "language": "en"
+    },
+  
+
+  
+    {
+        "title": "My Art Gallery",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/Art-Gallery",
+        "tags": ["Paintings"],
+        "date": "2018-10-18 22:10:00 +0530",
+        "language": "en"
+    },
+  
+
+  
+    {
+        "title": "How to setup Mesos, Marathon, Zookeeper and Docker",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/MMZD",
+        "tags": ["Mesos+Marathon+Zookeeper+Docker"],
+        "date": "2016-12-15 03:24:00 +0530",
+        "language": "en"
+    },
+  
+
+  
+    {
+        "title": "Docker Vs VirtualMachine",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/DockerAndVM",
+        "tags": ["Docker","+VirtualMachine"],
+        "date": "2016-11-01 17:58:00 +0530",
+        "language": "en"
+    },
+  
+
+  
+    {
+        "title": "Simple SMTP Server with Python",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/SMTP",
+        "tags": ["Simple","SMTP","Server+Python"],
+        "date": "2016-11-01 17:58:00 +0530",
         "language": "en"
     }
   

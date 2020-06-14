@@ -5,556 +5,1016 @@
     <description>This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-      <pubDate>Tue, 01 Nov 2016 15:58:26 +0530</pubDate>
-    <lastBuildDate>Tue, 01 Nov 2016 15:58:26 +0530</lastBuildDate>
-    <generator>Jekyll v3.1.6</generator>
+      <pubDate>Sun, 14 Jun 2020 23:34:51 +0530</pubDate>
+    <lastBuildDate>Sun, 14 Jun 2020 23:34:51 +0530</lastBuildDate>
+    <generator>Jekyll v3.8.7</generator>
     
       <item>
-        <title>Theme Installation and Usage</title>
-        <description>&lt;p&gt;This is a blog template for a static site generator named &lt;a href=&quot;https://jekyllrb.com/docs/home/&quot;&gt;Jekyll&lt;/a&gt; based on a &lt;a href=&quot;https://ghost.org&quot;&gt;Ghost&lt;/a&gt; template named &lt;a href=&quot;https://github.com/serenader2014/decent&quot;&gt;Decent&lt;/a&gt;. 
-If you like to see the theme in production have a look at &lt;a href=&quot;http://jwillmer.de&quot;&gt;jwillmer.de&lt;/a&gt;.&lt;/p&gt;
+        <title>RSA algorithm (asymmetric algorithm)</title>
+        <description>&lt;h3 id=&quot;what-is-rsa-algorithm&quot;&gt;What is RSA algorithm?&lt;/h3&gt;
 
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;div class=&quot;album&quot;&gt;
+&lt;h3 id=&quot;example&quot;&gt;Example:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;-   EncryptionKey =&amp;gt; (5,14)
+    Suppose a text to be encrypted is letter 'B' -&amp;gt;  2, then  2^5(mod 14)
+    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&amp;gt; (5,14)
+    is encryption key
+
+
+    DecriptionKey: (11, 14),
+    4^11(mod 14) =&amp;gt; 2 == B, where (d,N) that is 4^d(mod N) =&amp;gt; (11, 14) is
+    decription key
+
+-   How does it work, what is the algoritm? There is no magic it is just
+    simple mathematics:
+    Take two prime numbers (numbers can be hundreds &amp;amp; hundreds digit long),
+    I choose small number (for better explanation) (2,7) where p = 2, q = 7
+    -   N = p * q =&amp;gt; N = 14
+
+    -   choose φ(N) = (p-1)(q-1)
+
+    -   Now choose a number for encryption e where
+        { 1 &amp;lt; e &amp;lt; φ(N) and coprime with N and φ(N)}
+        1 &amp;lt; e &amp;lt; 6 =  2, 3, 4, 5
+        number which is coprime with 14 and 6 is 5
+        so our lock is (e,N) = (5,14)
+
+    -   Now for decryption we choose d such that {d.e(mod φ(N))}
+        that is -&amp;gt; d.5(mod 6) = 1
+        the options could be -&amp;gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
+        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
+        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
+
+        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
+        So the key is (11, 14)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 25 Apr 2020 22:40:00 +0530</pubDate>
+        <link>/blog/tutorial/RSA_easyway</link>
+        <guid isPermaLink="true">/blog/tutorial/RSA_easyway</guid>
+        
+        <category>Asymmetric</category>
+        
+        <category>algorithm,</category>
+        
+        <category>Public</category>
+        
+        <category>key</category>
+        
+        <category>Cryptography</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>CI/CD pipeline with docker and kubernetes</title>
+        <description>&lt;h3 id=&quot;setup-jenkins-server&quot;&gt;Setup Jenkins server&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mkdir jenkins
+$ cd jenkins
+$ vim Vagrantfile
+
+Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.box = &quot;bento/ubuntu-20.04&quot;
+  config.vm.network &quot;forwarded_port&quot;, guest: 8080, host: 8081, host_ip: &quot;127.0.0.1&quot;
+  config.vm.network &quot;private_network&quot;, ip: &quot;192.168.10.31&quot;
+
+  config.vm.provision &quot;shell&quot;, inline: &amp;lt;&amp;lt;-SHELL
+    sudo apt-get update
+    sudo apt-get -y upgrade
+    sudo apt install openjdk-11-jdk -y  
+    wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+    echo &quot;deb https://pkg.jenkins.io/debian-stable binary/&quot; | sudo tee -a  /etc/apt/sources.list &amp;gt; /dev/null
+    sudo apt-get update
+    sudo apt-get install -y jenkins
+  SHELL
+end
+
+$ vagrant up
+$ vagrabt ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;setup-repository-for-docker&quot;&gt;Setup Repository for docker&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update \
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+
+$ sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;install-docker-engine&quot;&gt;Install docker engine&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;updated-user-jenkins-to-run-docker&quot;&gt;updated user jenkins to run docker&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo usermod -G docker jenkins	
+$ sudo apt-get install acl
+
+$ sudo setfacl -m user:jenkins:rw /var/run/docker.sock
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;setup-kubernetes&quot;&gt;Setup Kubernetes&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+$ chmod +x ./kubectl
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+
+$ cp -r ~/.kube /var/lib/jenkins/
+$ sudo chown -R jenkins:jenkins /var/lib/jenkins/
+$ vim /var/lib/jenkins/.kube/config
+
+		apiVersion: v1
+		clusters:
+		- cluster:
+		    certificate-authority: /var/lib/jenkins/.minikube/ca.crt
+		    server: https://192.168.99.100:8443
+		  name: minikube
+		contexts:
+		- context:
+		    cluster: minikube
+		    user: minikube
+		  name: minikube
+		current-context: minikube
+		kind: Config
+		preferences: {}
+		users:
+		- name: minikube
+		  user:
+		    client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
+		    client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
+
+
+❖ make sure the permission of the following files should be as follows
+	➢ client.crt 644, 
+	➢ client.key 600, 
+	➢ ca.crt 644
+
+
+$ Adding docker hub credentials in jenkins
+Credentials → System → Global Credentials → Add Credentials
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
 
 &lt;figure&gt;
-&lt;img src=&quot;/media/img/2016-06-08-Readme-front-page-previewe.jpg&quot; /&gt;
-&lt;figcaption&gt;Frontpage&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure&gt;
-&lt;img src=&quot;/media/img/2016-06-08-Readme-post-preview.jpg&quot; /&gt;
-&lt;figcaption&gt;Post&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure&gt;
-&lt;img src=&quot;/media/img/2016-06-08-Readme-content-preview.jpg&quot; /&gt;
-&lt;figcaption&gt;Demo&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure&gt;
-&lt;img src=&quot;/media/img/2016-06-08-Readme-about-preview.jpg&quot; /&gt;
-&lt;figcaption&gt;About Page&lt;/figcaption&gt;
+&lt;img src=&quot;/media/img/credentials.png&quot; /&gt;
+&lt;figcaption&gt;Login Details&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Job → Pipeline → Poll SCM(after every push it will auto build the job)&lt;/p&gt;
 
+&lt;div&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/media/img/pollscm.png&quot; /&gt;
+&lt;figcaption&gt;Poll Scm&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;❖ Add the groovy script
+	➢ either via copy
+	➢ or via SCM
+❖ Apply → Save → Build
+❖ Test on command line
+	➢ kubectl get svc
+	➢ http://192.168.10.30:&amp;lt;&amp;lt; port &amp;gt;&amp;gt;/hello/deepak
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;the-groovy-script&quot;&gt;The groovy script:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;pipeline {
+   agent any
+   environment {
+       dockerHub = &quot;docker.io&quot;
+       docker_cred = 'dockerhub'
+   }
+   stages {
+		stage('SCM Checkout'){
+			steps{
+				checkout([$class: 'GitSCM',branches: [[name: 'origin/master']],extensions: [[$class: 'WipeWorkspace']],userRemoteConfigs: [[url: 'https://github.com/agrawalpoonam/python-app.git']]  ])
+			}
+		}
+		stage(&quot;Build Docker Image&quot;){
+			steps{
+				sh 'pwd'
+				sh &quot;docker build -t poonamag/test-app . --no-cache&quot;
+			}
+		}
+		stage('Upload Image to DockerHub'){
+			steps{ 
+	     	    withCredentials([
+     		 	[$class: 'UsernamePasswordMultiBinding', credentialsId: docker_cred, usernameVariable: 'dockeruser', passwordVariable: 'dockerpass'],
+  				]){
+					sh &quot;docker login -u ${dockeruser} -p ${dockerpass} ${dockerHub}&quot;
+  				}
+	    	  	sh 'docker push poonamag/test-app'
+	    	 }
+	  	}
+		stage(&quot;Running Docker Image&quot;){
+			steps{
+				sh &quot;kubectl get namespaces&quot;
+				sh &quot;kubectl apply -f deployment.yaml&quot;
+			}
+		}
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Tue, 14 Apr 2020 22:40:00 +0530</pubDate>
+        <link>/blog/tutorial/cicd_jenkins_dockr_kubernetes</link>
+        <guid isPermaLink="true">/blog/tutorial/cicd_jenkins_dockr_kubernetes</guid>
+        
+        <category>Jenkins,</category>
+        
+        <category>Docker</category>
+        
+        <category>,</category>
+        
+        <category>Kubernetes</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Transactional System Administration Vs Service Centric Model in SRE</title>
+        <description>&lt;h3 id=&quot;what-is-transactional-system-administration&quot;&gt;What is Transactional System Administration?&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Think of it as a scenario between Customer and SysAdmin:
+- Customer : Would you do xyz task?
+- SysAdmin : Yes, Done!
+- Customer verifies. 
+This is a typical transaction system. The best example is ticket system.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;why-is-it-bad&quot;&gt;Why is it Bad?&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;- It is a reactive process as the SysAdmin has to do job in a limited time frame which creates pressure over them.
+- It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
+- No automation for optimization and prioritization of the requests.
+- Customer considers SRE as &quot;servant&quot; and SRE thinks customer as &quot;ever demanding child&quot;. Both of these is bad.
+- There is only one way to scale i.e. hire more people!
+- Users hate to open tickets for every task and hang on it.
+The whole ticket system is creating a pressured environment for SREs , lets call it as &quot;Push&quot; mechanism is working here.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;how-did-we-reach-here&quot;&gt;How did we reach here?&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Have we really, ever gave a thought that do we really need Ticket System?  
+Actually No! It's not required.
+But then you need a way to track your work, right!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;some-of-the-ways-that-different-organizations-has-adopted&quot;&gt;Some of the ways that different organizations has adopted.&lt;/h3&gt;
+&lt;h4 id=&quot;1-baseline--convert-push---collaboration&quot;&gt;1) Baseline- Convert “Push” -&amp;gt; “Collaboration”&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;How? There are 2 ways: 
+- Put one SRE member in different development team's Agile meetings.
+- Put each team lead of different development team's in SRE Agile meetings.
+	&amp;gt; Another version could be SRE communicating with all stakeholders of the product not just developers.
+Both of the above points gives a single solution by solving Administartion related problems in Dev teams. Isn't it? 
+SRE memebers become aware of their problems in the meetings and can solve them.
+Dev teams can also use SRE chat rooms for their issues.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;2-baseline--convert-push---automations&quot;&gt;2) Baseline- Convert “Push” -&amp;gt; “Automations”&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Some eg:
+- Automating compilation and build process in CI/CD for developers to do on their own. Click or give some APIs and it's done.
+- Auotmate load balance to point at service replicas.
+- Automate VM creation.
+- Laptop distribution: For new employees we should maintain laptop distribution system as-
+		&amp;gt; SRE tracks HR DB for new employee, Emails when eligible and creates a portal for ordering machines.
+		&amp;gt; Automates OS installation for use by laptop delivery crew.
+		&amp;gt; Does capacity planning generates purchase orders etc for purchasing  and finance group.
+Here we try to automate as much as possible for users to get the task done by automations instead of killing SRE's time. This also keeps motivation of SRE high.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;3-baseline--convert-push---pull&quot;&gt;3) Baseline- Convert “Push” -&amp;gt; “Pull”&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Use Kanban boards, some good eg are:
+- Trello board
+- Learnkit.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;&lt;figure&gt;&lt;img src=&quot;/media/img/kanban-board.png&quot; /&gt;&lt;figcaption&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;- Assign 3 task per person in action per week. You pull 3 tasks through system per week.
+This way everyone could prioritize their tasks. It's upto the product management to decide in case of high loads whether prioritize the tasks or hire more people.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some References:
+&lt;a href=&quot;https://www.usenix.org/conference/lisa15/conference-program/presentation/limoncelli&quot;&gt;
+Reference
+&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Mar 2019 22:40:00 +0530</pubDate>
+        <link>/blog/tutorial/Transactional-System-Administration-Vs-Service-Centric-Model-in-SRE</link>
+        <guid isPermaLink="true">/blog/tutorial/Transactional-System-Administration-Vs-Service-Centric-Model-in-SRE</guid>
+        
+        <category>TransactionalAdministrationSystem</category>
+        
+        <category>+</category>
+        
+        <category>ServiceCentricModel</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Load average in cpu</title>
+        <description>&lt;h2 id=&quot;understanding-cpu-load-average-on-the-basis-of-following-variables&quot;&gt;Understanding CPU load Average On the basis of following variables:&lt;/h2&gt;
+&lt;h4 id=&quot;--cpu-cores&quot;&gt;- CPU cores.&lt;/h4&gt;
+&lt;h4 id=&quot;--cpu-load-average&quot;&gt;- CPU load average.&lt;/h4&gt;
+&lt;h4 id=&quot;--cpu-load-average-on-the-basis-of-number-of-cpu&quot;&gt;- CPU load average on the basis of number of CPU.&lt;/h4&gt;
+
+&lt;h4 id=&quot;cpu-cores&quot;&gt;CPU Cores&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;To generate/host the blog you need to &lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot;&gt;install Jekyll&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;For the plugins (github-pages) you need to install &lt;a href=&quot;http://bundler.io/&quot;&gt;Bundler&lt;/a&gt;: &lt;code&gt;gem install bundler&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Open a command prompt and install the plugins (github-pages): &lt;code&gt;bundle install&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;On Windows you will propably get an exception. To solve it you can read &lt;a href=&quot;http://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46&quot;&gt;How to install Jekyll and pages-gem on Windows (x64)&lt;/a&gt; or you remove the plugins by deleting the &lt;code&gt;Gemfile&lt;/code&gt; and delete all &lt;code&gt;gems:&lt;/code&gt; from the &lt;code&gt;_config.yml&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;We can check the number of cpu cores by one of the following commands:
+$ nproc
+4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;OR
+lscpu&lt;/p&gt;
+
+&lt;p&gt;$ grep ‘model name’ /proc/cpuinfo | wc -l
+4&lt;/p&gt;
+
+&lt;h4 id=&quot;cpu-load-average&quot;&gt;CPU load average&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;We can check load on the cpu with the following commands:
+$ cat /proc/loadavg&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2.48 1.69 1.42 5/889 10570&lt;/p&gt;
+
+&lt;p&gt;$ cat /proc/loadavg&lt;/p&gt;
+
+&lt;p&gt;2.48 1.69 1.42 5/889 10570
+top - 00:07:16 up  5:36,  1 user,  load average: 0.86, 0.78, 0.77
+Tasks: 312 total,   1 running, 256 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.7 us,  0.8 sy,  0.0 ni, 96.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  8033996 total,  1619612 free,  3388332 used,  3026052 buff/cache
+KiB Swap:  2097148 total,  2097148 free,        0 used.  3859444 avail Mem&lt;/p&gt;
+
+&lt;p&gt;PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                 &lt;br /&gt;
+ 3059 poonam    20   0 3839156 223956  74324 S   3.3  2.8   2:53.46 gnome-shell                                                             &lt;br /&gt;
+ 2913 poonam    20   0  399424  85528  58908 S   3.0  1.1   1:38.02 Xorg                                                                    &lt;br /&gt;
+ 9269 poonam    20   0  679612  56704  34448 S   2.0  0.7   0:01.05 terminator                                                              &lt;br /&gt;
+ 8075 poonam    20   0  407236  98308   9112 S   1.3  1.2   2:42.54 plugin_host&lt;/p&gt;
+
+&lt;p&gt;$ uptime
+ 00:08:07 up  5:36,  1 user,  load average: 0.84, 0.78, 0.78&lt;/p&gt;
+
+&lt;p&gt;$ cat /proc/loadavg
+0.96 0.82 0.79 1/1269 10197&lt;/p&gt;
+
+&lt;h4 id=&quot;cpu-load-average-on-the-basis-of-number-of-cpu&quot;&gt;CPU load average on the basis of number of CPU&lt;/h4&gt;
+&lt;p&gt;Let’s say we have load averages below:&lt;/p&gt;
+
+&lt;p&gt;23:16:49 up  10:49,  5 user,  load average: 1.00, 0.40, 3.35&lt;/p&gt;
+
+&lt;h5 id=&quot;on-a-single-core-system-this-would-mean&quot;&gt;On a single core system this would mean:&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The CPU was fully (100%) utilized on average; 1 processes was running on the CPU (1.00) over the last 1 minute.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The CPU was idle by 60% on average; no processes were waiting for CPU time (0.40) over the last 5 minutes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The CPU was overloaded by 235% on average; 2.35 processes were waiting for CPU time (3.35) over the last 15 minutes.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;build&quot;&gt;Build&lt;/h3&gt;
-
+&lt;h5 id=&quot;on-a-dual-core-system-this-would-mean&quot;&gt;On a dual-core system this would mean:&lt;/h5&gt;
 &lt;ul&gt;
-  &lt;li&gt;To build the static site you can use the generated site folder that Jekyll creates when you use &lt;code&gt;jekyll serve&lt;/code&gt; or you can build it explicitly with &lt;code&gt;jekyll build&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;If you like to use GitHub to host your blog you can fork this project and publish the code to &lt;code&gt;gh-pages&lt;/code&gt;. GitHub has jekyll included and will generate the site for you.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The one CPU was 100% idle on average, one CPU was being used; no processes were waiting for CPU time(1.00) over the last 1 minute.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The CPUs were idle by 160% on average; no processes were waiting for CPU time. (0.40) over the last 5 minutes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The CPUs were overloaded by 135% on average; 1.35 processes were waiting for CPU time. (3.35) over the last 15 minutes.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;user-content&quot;&gt;User Content&lt;/h2&gt;
-
-&lt;p&gt;Blogposts can be written in &lt;a href=&quot;https://de.wikipedia.org/wiki/Markdown&quot;&gt;Markdown&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The folder for blog content is &lt;code&gt;_posts&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;For author details you need to modify &lt;code&gt;_data/authors.yml&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;For site properties (like the name) you need to modify &lt;code&gt;_config.yml&lt;/code&gt; and &lt;code&gt;robots.txt&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;For the about page you need to modify the &lt;code&gt;about.md&lt;/code&gt; in &lt;code&gt;_pages&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;After modifying &lt;code&gt;*.yml&lt;/code&gt; files you need to restart jekyll to take effect.&lt;/p&gt;
-
-&lt;h3 id=&quot;yaml-features&quot;&gt;YAML Features&lt;/h3&gt;
-
-&lt;p&gt;Following (additional) features are supported in the header (&lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;YAML Front Matter&lt;/a&gt;) of each post. A detailed description can be found in the &lt;a href=&quot;/blog/features/YAML-Features&quot;&gt;YAML Custom Features post&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---
-title:         Example      #Page/post title
-author:        jwillmer     #Page/post author
-cover:         /image.jpg   #Optional: Posibillity to change cover on a post/page
-redirect_from: /foo         #Optional: Redirect url
-visible:       false        #Optional: Hide page from listing in the menu.
-weight:        5            #Optional: Influence sorting of pages in the menu
-menutitle:     Offline      #Optional: Use a secondary name in the menu/post list
-tags:          hallo welt   #Optional: Will be displayed as tags and as keywords in posts
-keywords:      hallo welt   #Optional: Will add keywords to a page
-language:      en           #Optional: Will set a specific language of the page
----
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;license&quot;&gt;License&lt;/h2&gt;
-
-&lt;p&gt;The theme is released under &lt;strong&gt;&lt;a href=&quot;https://github.com/jwillmer/jekyllDecent/blob/gh-pages/LICENSE&quot;&gt;The MIT License (MIT)&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;The MIT License (MIT)
-
-Copyright (c) 2016 Jens Willmer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.    
-&lt;/code&gt;&lt;/pre&gt;
 </description>
-        <pubDate>Wed, 08 Jun 2016 20:55:00 +0530</pubDate>
-        <link>/blog/readme/Readme</link>
-        <guid isPermaLink="true">/blog/readme/Readme</guid>
+        <pubDate>Sun, 24 Mar 2019 02:49:00 +0530</pubDate>
+        <link>/blog/tutorial/Linux-Load-Average</link>
+        <guid isPermaLink="true">/blog/tutorial/Linux-Load-Average</guid>
         
-        <category>Jekyll</category>
+        <category>Load</category>
         
-        <category>Theme</category>
+        <category>Average+</category>
         
-        <category>GitHub</category>
-        
-        <category>Installation</category>
+        <category>CPU</category>
         
         
-        <category>Readme</category>
+        <category>Tutorial</category>
         
       </item>
     
       <item>
-        <title>Theme Features</title>
-        <description>&lt;p&gt;The features described in this section are specific for this template. All other language features can be found in the &lt;a href=&quot;http://kramdown.gettalong.org/syntax.html&quot;&gt;kramdown documentation&lt;/a&gt;.&lt;/p&gt;
+        <title>What happens before Linux Boots up!</title>
+        <description>&lt;h2 id=&quot;the-warm-up-before-the-boot-process&quot;&gt;The Warm up before the Boot Process&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;On the ground level boot process starts with loading the operating system (where machine doesn't know anything about operating system) from any of the storage device.
+So without wasting time I will get into the deeper level.
 
-&lt;h3 id=&quot;image-features&quot;&gt;Image Features&lt;/h3&gt;
+On this initial stage we donot have privilege even of the file system. What we have is the BIOS - a collection of software routines that are initially loaded from chip into the memory and initialised when we switch on the computer. BIOS makes some hardware checks to ensure all hardaware componenets are at stable switched on state.
 
-&lt;h4 id=&quot;parallax-effect&quot;&gt;Parallax Effect&lt;/h4&gt;
+So, now we know that we have something called BIOS that could be of some help.
+BIOS cannot load the operating system as a 'file' as we mentioned above that it doesn't know about file system.
 
-&lt;p&gt;Keep in mind that paralax effect will not be captured if you like to print the page.&lt;/p&gt;
+BIOS must read specific sectors of data from specific physical location of the disk devices.
+BIOS load the OS from the first sector of the disk device. Here we can have multiple disk devices that may confuse BIOS to which device it should read from.
 
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&quot;bg-scroll&quot; style=&quot;background-image: url(&#39;/media/img/mountain1.jpg&#39;)&quot;&amp;gt;&amp;lt;/div&amp;gt;
+CPU cannot differentiate between code and data, for CPU both are instructions.
+Here comes the magic number which is a unsophisticated way of BIOS to determine the boot sector.
+BIOS loops through each disk device, read the boot sector into memory and search for the magic number which is 0xaa55 and instructs CPU to begin executing the first boot sector it finds that ends with the magic number.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;div class=&quot;bg-scroll&quot; style=&quot;background-image: url(&#39;/media/img/mountain1.jpg&#39;)&quot;&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;caption-for-image&quot;&gt;Caption for Image&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;figure&amp;gt;
-   &amp;lt;img src=&quot;/media/img/mountain2.jpg&quot; /&amp;gt;
-   &amp;lt;figcaption&amp;gt;A nice mountain.&amp;lt;/figcaption&amp;gt;
-&amp;lt;/figure&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;figure&gt;
-&lt;img src=&quot;/media/img/mountain2.jpg&quot; /&gt;
-&lt;figcaption&gt;A nice mountain&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h4 id=&quot;image-allignment&quot;&gt;Image Allignment&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;![](/media/img/mountain3.gif#right)
-![](/media/img/mountain2.gif#left)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Allignment with caption&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;aside&amp;gt;
-   &amp;lt;figure class=&quot;left&quot;&amp;gt;
-      &amp;lt;img src=&quot;/media/img/mountain3.jpg#left&quot; /&amp;gt;
-      &amp;lt;figcaption&amp;gt;What a view!&amp;lt;/figcaption&amp;gt;
-   &amp;lt;/figure&amp;gt;
-&amp;lt;/aside&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&quot;/media/img/mountain2.jpg#right&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent accumsan ante nulla, quis pulvinar nibh tempus sed. In congue congue odio, vel ornare mauris ultrices vel. Vestibulum tristique eros at enim vulputate fringilla. Nullam non augue sit amet elit interdum tempus non ut justo.&lt;/p&gt;
-
-&lt;aside&gt;
-&lt;figure class=&quot;left&quot;&gt;
-&lt;img src=&quot;/media/img/mountain3.jpg&quot; /&gt;
-&lt;figcaption&gt;What a view!&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/aside&gt;
-
-&lt;p&gt;Phasellus ut ipsum id leo sagittis pretium a quis neque. Maecenas rutrum lectus id magna malesuada, non dapibus neque tincidunt. Suspendisse ultrices accumsan eros, sit amet facilisis quam hendrerit a. Integer sed felis et diam efficitur accumsan. Suspendisse facilisis lectus non orci mattis vestibulum. Suspendisse molestie vulputate nunc non tincidunt. Maecenas vulputate, mauris ut rhoncus vulputate, tellus augue aliquet nibh, vel egestas nulla ipsum bibendum lorem. Pellentesque posuere laoreet lectus eget luctus. Vestibulum mattis ut ligula sed sodales. Vestibulum sit amet viverra arcu.&lt;/p&gt;
-
-&lt;h4 id=&quot;fullscreen-image&quot;&gt;Fullscreen image&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&quot;large&quot;&amp;gt;
-   ![](/media/img/mountain2.jpg)
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With caption&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;figure class=&quot;large&quot; markdown=&quot;1&quot;&amp;gt;   
-   ![](/media/img/mountain2.jpg)
-   &amp;lt;figcaption&amp;gt;On top of the mountain!&amp;lt;/figcaption&amp;gt;
-&amp;lt;/figure&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;figure class=&quot;large&quot;&gt;
-  &lt;p&gt;&lt;img src=&quot;/media/img/mountain2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;figcaption&gt;On top of the mountain!&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h4 id=&quot;image-gallery&quot;&gt;Image Gallery&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&quot;album&quot;&amp;gt;
-   ![](/media/img/Screenshot_2016-04-09-19-16-28.png)
-   ![](/media/img/Screenshot_2016-04-02-00-48-25.png)
-   ![](/media/img/Screenshot_2016-04-01-12-03-36.png)
-   ![](/media/img/Screenshot_2016-04-01-12-01-33.png)
-   ![](/media/img/Screenshot_2016-03-24-12-13-58.png)
-   ![](/media/img/Screenshot_2016-03-17-22-50-05.png)
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With caption&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&quot;album&quot;&amp;gt;
-   // ...
-   &amp;lt;figure&amp;gt;
-      &amp;lt;img src=&quot;/media/img/mountain2.jpg&quot; /&amp;gt;
-      &amp;lt;figcaption&amp;gt;On top of the mountain!&amp;lt;/figcaption&amp;gt;
-   &amp;lt;/figure&amp;gt;
-   &amp;lt;figure&amp;gt;
-      &amp;lt;img src=&quot;/media/img/mountain3.jpg&quot; /&amp;gt;
-      &amp;lt;figcaption&amp;gt;What a view&amp;lt;/figcaption&amp;gt;
-   &amp;lt;/figure&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&quot;album&quot;&gt;
-   &lt;figure&gt;
-      &lt;img src=&quot;/media/img/mountain1.jpg&quot; /&gt;
-      &lt;figcaption&gt;Mountain and lake&lt;/figcaption&gt;
-   &lt;/figure&gt;   
-   &lt;figure&gt;
-      &lt;img src=&quot;/media/img/mountain2.jpg&quot; /&gt;
-      &lt;figcaption&gt;On top of the mountain!&lt;/figcaption&gt;
-   &lt;/figure&gt;   
-   &lt;figure&gt;
-      &lt;img src=&quot;/media/img/mountain3.jpg&quot; /&gt;
-      &lt;figcaption&gt;What a view&lt;/figcaption&gt;
-   &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;sourcecode-features&quot;&gt;Sourcecode Features&lt;/h3&gt;
-
-&lt;p&gt;With language highlighting&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;    ```html
-    &amp;lt;script&amp;gt;
-        var decentThemeConfig = {
-            ga: &#39;YOUR TRACK ID&#39;
-        };
-    &amp;lt;/script&amp;gt;
-    ```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With language highlighting, line numbers and line highlighting&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&amp;lt;pre data-line=&quot;5&quot; class=&quot;line-numbers language-javascript&quot;&amp;gt;&amp;lt;code&amp;gt;
-   Array.prototype.uniq = function () {
-       var map = {};
-       return this.filter(function (item) {
-           if (map[item]) {
-               return false;
-           } else {
-               map[item] = true;
-               return true;
-           }
-       });
-   };
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;author-in-quote&quot;&gt;Author in quote&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt; Our destiny offers not the cup of despair, but the chalice of opportunity. So let us seize it, not in fear, but in gladness.
-&amp;gt; 
-&amp;gt; &amp;lt;cite&amp;gt;——R.M. Nixon&amp;lt;/cite&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Our destiny offers not the cup of despair, but the chalice of opportunity. So let us seize it, not in fear, but in gladness.&lt;/p&gt;
-
-  &lt;p&gt;&lt;cite&gt;——R.M. Nixon&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;attention-box&quot;&gt;Attention Box&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;tip&quot;&amp;gt;
-Chemicals including paint and thinners must be stored in labelled containers that are in good condition, as provided for in the regulations. Liquids must be placed in holding tanks.
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&quot;tip&quot;&gt;
-Chemicals including paint and thinners must be stored in labelled containers that are in good condition, as provided for in the regulations. Liquids must be placed in holding tanks.
-&lt;/div&gt;
-
-&lt;h3 id=&quot;page&quot;&gt;404 Page&lt;/h3&gt;
-
-&lt;p&gt;The 404 page has a fuzzy search implemented that lists urls that are similar to the entered url. Try it out: &lt;a href=&quot;/features&quot;&gt;Unknown URL&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;json-api&quot;&gt;JSON API&lt;/h3&gt;
-
-&lt;p&gt;The theme offers a JSON API for the blog posts. You can query all blog posts via: &lt;a href=&quot;/api/posts.json&quot;&gt;&lt;code&gt;/api/posts.json&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;pdf-and-powerpoint-integration&quot;&gt;PDF and PowerPoint integration&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;iframe src=&#39;https://view.officeapps.live.com/op/embed.aspx?src=http://img.labnol.org/di/PowerPoint.ppt&#39; frameborder=&#39;0&#39;&amp;gt;&amp;lt;/iframe&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;iframe src=&quot;https://view.officeapps.live.com/op/embed.aspx?src=http://img.labnol.org/di/PowerPoint.ppt&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&quot;more&quot;&gt;More&lt;/h2&gt;
-
-&lt;p&gt;More formating features can be found in the &lt;a href=&quot;http://kramdown.gettalong.org/syntax.html&quot;&gt;Kramdown syntax&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 07 Jun 2016 15:40:00 +0530</pubDate>
-        <link>/blog/features/Features</link>
-        <guid isPermaLink="true">/blog/features/Features</guid>
+        <pubDate>Wed, 28 Nov 2018 01:48:00 +0530</pubDate>
+        <link>/blog/tutorial/What-happens-before-Linux-Boots-up!</link>
+        <guid isPermaLink="true">/blog/tutorial/What-happens-before-Linux-Boots-up!</guid>
         
-        <category>Jekyll</category>
+        <category>BIOS</category>
         
-        <category>Theme</category>
+        <category>+</category>
         
-        <category>GitHub</category>
+        <category>File</category>
         
-        <category>Installation</category>
+        <category>+</category>
+        
+        <category>MagicNumber</category>
         
         
-        <category>Features</category>
+        <category>Tutorial</category>
         
       </item>
     
       <item>
-        <title>YAML Custom Features</title>
-        <description>&lt;p&gt;In this short post I changed the title that is displayed on the front page from &lt;code&gt;YAML Custom Features&lt;/code&gt; to &lt;code&gt;YAML Features&lt;/code&gt;.&lt;/p&gt;
+        <title>My Art Gallery</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/media/img/drawing1.jpg&quot; alt=&quot;Drawing1&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+April 24, 2018 and it all began…&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---
-title:             &quot;YAML Custom Features&quot;
-menutitle:         &quot;YAML Features&quot;
----
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing2.jpg&quot; alt=&quot;Drawing2&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+April 25, 2018 mornings started like this…&lt;/p&gt;
 
-&lt;p&gt;I also added a redirect to this post. If you browse to &lt;a href=&quot;/YAML-Features-Redirect&quot;&gt;YAML-Feature-Redirect&lt;/a&gt; you should be redirected to this page. This only works if you have not removed the plugins.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing3.jpg&quot; alt=&quot;Drawing3&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+and this one April 26 2018…&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---
-redirect_from:     &quot;/YAML-Features-Redirect&quot;
----
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing4.jpg&quot; alt=&quot;Drawing4&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+April 27 2018 …&lt;/p&gt;
 
-&lt;p&gt;If you like to redirect from multible sources you can specify it as an array.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing5.jpg&quot; alt=&quot;Drawing5&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+May 1st 2018 another one to present somebody…&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---
-redirect_from:  
-  - &quot;/YAML-Features-Redirect/&quot;
-  - &quot;/blog/old-category/YAML-Features/&quot;
----
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing6.jpg&quot; alt=&quot;Drawing6&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+May 2nd 2018 was also awesome…&lt;/p&gt;
 
-&lt;p&gt;I also changed the cover image for this block via YAML.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing7.jpg&quot; alt=&quot;Drawing7&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+May 5th 2018 with some break now…&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---
-cover:         /assets/mountain-alternative-cover.jpg
----
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing8.jpg&quot; alt=&quot;Drawing8&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+October 07 2018 and busy again with some goals….&lt;/p&gt;
 
-&lt;p&gt;To generate keywords for the search engines I use the tags that you specify in the post. If you are writing a page you need to specify keywords instead of tags.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/drawing9.jpg&quot; alt=&quot;Drawing9&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+August 05 2019 and I am back!&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---        
-tags:          Jekyll YAML Features Explained  #Only used in posts!
-keywords:      Jekyll YAML Features Explained  #Only used in pages!
----
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/dream.jpeg&quot; alt=&quot;dream.jpeg&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+August 07 2019 and Dreaming about someone…&lt;/p&gt;
 
-&lt;p&gt;Post will be sorted by category on the front page. This is how you define the category in YAML.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/imagination.jpeg&quot; alt=&quot;imagination.jpeg&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+August 09 2019 Just the imagination..&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---        
-category:     Readme
----
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/perfect_together.jpeg&quot; alt=&quot;perfect_together.jpeg&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+August 10 2019 Imperfections around but perfect together..&lt;/p&gt;
 
-&lt;p&gt;On a page I have additional options. For instance I can hide the page from the menu by setting the &lt;code&gt;visible&lt;/code&gt; tag to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/grandpa.jpg&quot; alt=&quot;grandpa.jpg&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+August 10 2019 grandpa :-)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---        
-visible:       false     
----
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If I like to have the page in the menu I can add &lt;code&gt;weight&lt;/code&gt; to the page in order to specify a position in the menu.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---        
-weight:       5  
----
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The default language of your blog is defined in the &lt;code&gt;_config.yml&lt;/code&gt; file but if you like to write a post/page in another language you can use the &lt;code&gt;language&lt;/code&gt; attribute. This will specify that you are using another language on this page for search engines. Please use on of the &lt;a href=&quot;http://www.w3schools.com/tags/ref_language_codes.asp&quot;&gt;language codes&lt;/a&gt; as value.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---        
-language:       en  
----
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can enable &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; comments in posts by adding &lt;code&gt;comments&lt;/code&gt; to the page. To configure the disqus forum you need to modify the &lt;code&gt;disqus_shortname&lt;/code&gt; in the &lt;code&gt;_config.yml&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;---        
-comments:       true  
----
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Additional features, that can be specified, can be found in the &lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;YAML Front Matter documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/img/kashmir.jpg&quot; alt=&quot;kashmir.jpg&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;
+August 12 2019 A view of Kashmir… (use of water color)&lt;/p&gt;
 </description>
-        <pubDate>Wed, 06 Apr 2016 03:10:00 +0530</pubDate>
-        <link>/blog/features/YAML-Features</link>
-        <guid isPermaLink="true">/blog/features/YAML-Features</guid>
+        <pubDate>Thu, 18 Oct 2018 22:10:00 +0530</pubDate>
+        <link>/blog/tutorial/Art-Gallery</link>
+        <guid isPermaLink="true">/blog/tutorial/Art-Gallery</guid>
         
-        <category>Jekyll</category>
-        
-        <category>YAML</category>
-        
-        <category>Features</category>
-        
-        <category>Explained</category>
+        <category>Paintings</category>
         
         
-        <category>Features</category>
+        <category>Tutorial</category>
         
       </item>
     
       <item>
-        <title>This post demonstrates post content styles</title>
-        <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.&lt;/p&gt;
-
-&lt;h2 id=&quot;some-great-heading-h2&quot;&gt;Some great heading (h2)&lt;/h2&gt;
-
-&lt;p&gt;Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.&lt;/p&gt;
-
-&lt;p&gt;Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;h2 id=&quot;another-great-heading-h2&quot;&gt;Another great heading (h2)&lt;/h2&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.&lt;/p&gt;
-
-&lt;h3 id=&quot;some-great-subheading-h3&quot;&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum.&lt;/p&gt;
-
-&lt;p&gt;Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.&lt;/p&gt;
-
-&lt;h3 id=&quot;some-great-subheading-h3-1&quot;&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt.&lt;/p&gt;
-
-&lt;h3 id=&quot;some-great-subheading-h3-2&quot;&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;html&amp;gt;
-  &amp;lt;head&amp;gt;
-  &amp;lt;/head&amp;gt;
-  &amp;lt;body&amp;gt;
-    &amp;lt;p&amp;gt;Hello, World!&amp;lt;/p&amp;gt;
-  &amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h4 id=&quot;you-might-want-a-sub-subheading-h4&quot;&gt;You might want a sub-subheading (h4)&lt;/h4&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h4 id=&quot;but-its-probably-overkill-h4&quot;&gt;But it’s probably overkill (h4)&lt;/h4&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h2 id=&quot;specifying-some-footnotes-h2&quot;&gt;Specifying some footnotes (h2)&lt;/h2&gt;
-
-&lt;p&gt;This is text with a footnote. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;p&gt;Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;oh-hai-an-unordered-list&quot;&gt;Oh hai, an unordered list!!&lt;/h3&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
+        <title>How to setup Mesos, Marathon, Zookeeper and Docker</title>
+        <description>&lt;h1 id=&quot;mesos&quot;&gt;Mesos&lt;/h1&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;First item, yo&lt;/li&gt;
-  &lt;li&gt;Second item, dawg&lt;/li&gt;
-  &lt;li&gt;Third item, what what?!&lt;/li&gt;
-  &lt;li&gt;Fourth item, fo sheezy my neezy&lt;/li&gt;
+  &lt;li&gt;is open source cluster manager, It provides resource isolation and sharing across distributed applications.&lt;/li&gt;
+  &lt;li&gt;Mesos consists of a master daemon that manages slave daemons running on each cluster node. Mesos frameworks are applications that run on Mesos and run tasks on these slaves&lt;/li&gt;
+  &lt;li&gt;Mesos uses a two-level scheduling mechanism where resource offers are made to frameworks. The Mesos master node decides how many resources to offer each framework, while each framework determines the resources it accepts and what application to execute on those resources.
+For more insight refer this: &lt;a href=&quot;https://mesos.apache.org/documentation/latest/architecture/&quot;&gt;
+Mesos Architecture and Overview
+&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;oh-hai-an-ordered-list&quot;&gt;Oh hai, an ordered list!!&lt;/h3&gt;
+&lt;h1 id=&quot;marathon&quot;&gt;Marathon&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;is a container orchestration platform running on Mesos.&lt;/li&gt;
+  &lt;li&gt;Multiple Container formats are supported.
+For more insight refer this: &lt;a href=&quot;https://mesosphere.github.io/marathon/&quot;&gt;
+Marathon Architecture and Overview
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
+&lt;h1 id=&quot;zookeeper&quot;&gt;Zookeeper&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;ZooKeeper is a distributed co-ordination service to manage large set of hosts. Co-ordinating and managing a service in a distributed environment is solved by ZooKeeper with its simple architecture and API. &lt;/li&gt;
+  &lt;li&gt;If the Mesos master is unavailable, existing tasks can continue to execute, but new resources cannot be allocated and new tasks cannot be launched. To reduce the chance of this situation occurring, Mesos has a high-availability mode that uses multiple Mesos masters: one active master (called the leader or leading master) and several backups in case it fails. The masters elect the leader, with Apache ZooKeeper both coordinating the election and handling leader detection by masters, agents, and scheduler drivers.
+For more insight refer this: &lt;a href=&quot;https://zookeeper.apache.org/doc/trunk/zookeeperOver.html&quot;&gt;
+Zookeeper Architecture and Overview
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;h2 id=&quot;master-nodes-setup&quot;&gt;Master Nodes Setup&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;First item, yo&lt;/li&gt;
-  &lt;li&gt;Second item, dawg&lt;/li&gt;
-  &lt;li&gt;Third item, what what?!&lt;/li&gt;
-  &lt;li&gt;Fourth item, fo sheezy my neezy&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Package Installation&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Highly-available clusters will typically have multiple master nodes and any number of slave nodes. Each master node runs Apache Mesos, Marathon and ZooKeeper (to provide leader  election).&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Setup repositories:
+        &lt;ul&gt;
+          &lt;li&gt;The easiest way to install Mesos is via the GitHub repositories.Mesosphere has official package repositories which connect directly to the native package management tools of your favorite Linux distribution — namely apt-get and yum — to install Mesos on top of the most common Linux distributions.
+            &lt;ol&gt;
+              &lt;li&gt;Commands for Ubuntu&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Setup&lt;br /&gt;
+  &lt;code&gt;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;Add the repository&lt;br /&gt;
+  &lt;code&gt;echo &quot;deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main&quot; | sudo tee /etc/apt/sources.list.d/mesosphere.list&lt;/code&gt;
+  &lt;code&gt;sudo apt-get -y update&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;Install&lt;br /&gt;
+  &lt;code&gt;sudo apt-get -y install mesos marathon&lt;/code&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;The Mesosphere package ships with a default configuration. The default configuration includes:&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;File: /etc/default/mesos&lt;br /&gt;
+ sets master and slave log dir to /var/log/mesos.&lt;/li&gt;
+      &lt;li&gt;File: /etc/default/mesos-master&lt;br /&gt;
+	sets port to 5050.  &lt;br /&gt;
+ sets zk to the value in the file /etc/mesos/zk.&lt;/li&gt;
+      &lt;li&gt;File: /etc/default/mesos-slave&lt;br /&gt;
+ sets master as the value of /etc/mesos/zk&lt;/li&gt;
+      &lt;li&gt;File: /etc/mesos/zk&lt;br /&gt;
+	sets the ZooKeeper instance to zk://localhost:2181/mesos&lt;/li&gt;
+      &lt;li&gt;File: /etc/mesos-master/work_dir&lt;br /&gt;
+ sets working_dir to var/lib/mesos&lt;/li&gt;
+      &lt;li&gt;File: /etc/mesos-master/quorum&lt;br /&gt;
+ sets quorum to 1&lt;br /&gt;
+	&lt;em&gt;This default configuration allows Mesos to start immediately on a single node.&lt;/em&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Configure Zookeeper:&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Setting ID&lt;br /&gt;
+ Set /etc/zookeeper/conf/myid to a unique integer between 1 and 255 on each node.The Mesosphere package ships with a default configuration&lt;/li&gt;
+      &lt;li&gt;Server Addresses&lt;br /&gt;
+ Append the following values to /etc/zookeeper/conf/zoo.cfg on each node, replacing the IP addresses with your own:&lt;br /&gt;
+ &lt;code&gt;server.1=1.1.1.1:2888:3888&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;server.2=2.2.2.2:2888:3888&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;server.3=3.3.3.3:2888:3888&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Start Zookeeper&lt;br /&gt;
+ &lt;code&gt;sudo service zookeeper restart&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Mesos &amp;amp; Marathon&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;ZooKeeper&lt;br /&gt;
+ On each node, replacing the IP addresses below with each master’s IP address, set/etc/mesos/zk to:&lt;br /&gt;
+ &lt;code&gt;zk://1.1.1.1:2181,2.2.2.2:2181,3.3.3.3:2181/mesos&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Quorum&lt;br /&gt;
+ Set /etc/mesos-master/quorum on each master node to a number greater than the number of masters divided by 2. For example, the optimal quorum size for a five node master cluster would be 3. In this case, there are three masters and the quorum size should be set to 2 on each node.&lt;/li&gt;
+      &lt;li&gt;Host name&lt;br /&gt;
+ In case unable to resolve the hostname of the machine directly, set /etc/mesos-master/hostname to a value that you can resolve.&lt;br /&gt;
+ For example, an externally accessible IP address or DNS hostname. This will ensure all links from the Mesos console work correctly.&lt;br /&gt;
+ Also, set this property in /etc/marathon/conf/hostname&lt;/li&gt;
+      &lt;li&gt;Disable mesos-slave service&lt;br /&gt;
+ &lt;code&gt;sudo service mesos-slave stop&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;sudo sh -c &quot;echo manual &amp;gt; /etc/init/mesos-slave.override&quot;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Restart Services&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Bring up Mesos master&lt;br /&gt;
+&lt;code&gt;sudo service mesos-master restart&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Now restart Marathon&lt;br /&gt;
+&lt;code&gt;sudo service marathon restart&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;headings-are-cool-h2&quot;&gt;Headings are cool! (h2)&lt;/h2&gt;
+&lt;h2 id=&quot;slave-nodes-setup&quot;&gt;Slave Nodes Setup&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Package Installation&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Setup repositories:
+        &lt;ol&gt;
+          &lt;li&gt;Commands for Ubuntu
+            &lt;ul&gt;
+              &lt;li&gt;Setup&lt;br /&gt;
+ &lt;code&gt;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BFDISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt; Add the repository&lt;br /&gt;
+ &lt;code&gt;echo &quot;deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main&quot; | sudo tee /etc/apt/sources.list.d/mesosphere.list&lt;/code&gt;&lt;br /&gt;
+          &lt;code&gt;sudo apt-get -y update&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;Install&lt;br /&gt;
+          &lt;code&gt;sudo apt-get -y install mesos&lt;/code&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Disable Zookeeper:&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;If you’re using the Debian or Ubuntu package, ZooKeeper will be pulled in and installed as a dependency automaticallyi.    &lt;br /&gt;
+ &lt;code&gt;sudo service zookeeper stop&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;sudo sh -c &quot;echo manual &amp;gt; /etc/init/zookeeper.override&quot;&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Mesos
+            &lt;ol&gt;
+              &lt;li&gt;ZooKeeper&lt;br /&gt;
+ On each node, replacing the IP addresses below with each master’s IP address, set/etc/mesos/zk to:&lt;br /&gt;
+ &lt;code&gt;zk://1.1.1.1:2181,2.2.2.2:2181,3.3.3.3:2181/mesos&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;Disable mesos-master service&lt;br /&gt;
+ &lt;code&gt;sudo service mesos-master stop&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;sudo sh -c &quot;echo manual &amp;gt; /etc/init/mesos-master.override&quot;&lt;/code&gt;&lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Start Services&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Restart mesos-slave on each node to use the new configuration:&lt;br /&gt;
+&lt;code&gt;sudo service mesos-slave restart&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Verify Installation&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;If the packages were installed and configured correctly, you should be able to access the Mesos console at &lt;code&gt;http://&amp;lt;master-ip&amp;gt;:5050&lt;/code&gt; and the Marathon console at &lt;code&gt;http://&amp;lt;master-ip&amp;gt;:8080&lt;/code&gt; (where &lt;master-ip&gt; is any of the master IP addresses).&lt;/master-ip&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
+&lt;h1 id=&quot;docker&quot;&gt;Docker&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Docker is an open platform for developing, shipping, and running applications. Docker is designed to deliver your applications faster. With Docker you can separate your applications from  your infrastructure and treat your infrastructure like a managed application.&lt;/li&gt;
+  &lt;li&gt;Docker helps you ship code faster, test faster, deploy faster, and shorten the cycle between writing code and running code.
+For more insight refer this: &lt;a href=&quot;https://docs.docker.com/engine/understanding-docker/&quot;&gt;
+Docker Architecture and Overview
+&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;These instructions are intended for installing Docker on Ubuntu. Docker’s APT repository contains Docker 1.7.1 and higher. To set APT to use packages from the new repository.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
+&lt;h2 id=&quot;docker-installation&quot;&gt;Docker Installation&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Update your apt sources&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Log into your machine as a user with sudo or root privileges.&lt;/li&gt;
+      &lt;li&gt;Open a terminal window.&lt;/li&gt;
+      &lt;li&gt;Update package information, ensure that APT works with the https method, and that CA certificates are installed.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;sudo apt-get install apt-transport-https ca-certificates&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Add the new GPG key
+ &lt;code&gt;sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Open the /etc/apt/sources.list.d/docker.list file in your favorite editor.&lt;/li&gt;
+      &lt;li&gt;If the file doesn’t exist, create it.&lt;/li&gt;
+      &lt;li&gt;Remove any existing entries.&lt;/li&gt;
+      &lt;li&gt;Add an entry for your Ubuntu operating system.&lt;br /&gt;
+ &lt;code&gt;deb https://apt.dockerproject.org/repo ubuntu-trusty main&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Save and close the /etc/apt/sources.list.d/docker.list file.&lt;/li&gt;
+      &lt;li&gt;Update the APT package index.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Purge the old repo if it exists.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get purge lxc-docker&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Verify that APT is pulling from the right repository.&lt;br /&gt;
+ &lt;code&gt;apt-cache policy docker-engine&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;From now on when you run &lt;code&gt;apt-get upgrade&lt;/code&gt;, APT pulls from the new repository.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Prerequisites by Ubuntu Version&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;For Ubuntu Trusty, Wily, and Xenial, it’s recommended to install the linux-image-extra kernel package. Thelinux-image-extra package allows you use the aufs storage driver.&lt;br /&gt;
+To install the linux-image-extra package for your kernel version:&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Open a terminal on your Ubuntu host.&lt;/li&gt;
+      &lt;li&gt;Update your package manager.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Install the recommended package.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get install linux-image-extra-$(uname -r)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Go ahead and install Docker.&lt;br /&gt;
+ If you are installing on Ubuntu 14.04 or 12.04, apparmor is required. You can install it using: apt-get install apparmor.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Install&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Make sure you have installed the prerequisites for your Ubuntu version.Then, install Docker using the following:&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Log into your Ubuntu installation as a user with sudo privileges.&lt;/li&gt;
+      &lt;li&gt;Update your APT package index.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Install Docker.&lt;br /&gt;
+ &lt;code&gt;sudo apt-get install docker-engine&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Start the docker daemon.&lt;br /&gt;
+ &lt;code&gt;sudo service docker start&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Verify docker is installed correctly.&lt;br /&gt;
+ &lt;code&gt;sudo docker run hello-world&lt;/code&gt;&lt;br /&gt;
+ This command downloads a test image and runs it in a container. When the container runs, it prints an informational message. Then, it exits.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Create a Docker group&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;The docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can access it with sudo. For this reason, docker daemon always runs as the rootuser.&lt;br /&gt;
+To avoid having to use sudo when you use the docker command, create a Unix group called docker and add users to it. When the docker daemon starts, it makes the ownership of the Unix socket read/writable by thedocker group.&lt;/li&gt;
+      &lt;li&gt;To create the docker group and add your user:&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Log into Ubuntu as a user with sudo privileges.&lt;br /&gt;
+ This procedure assumes you log in as the ubuntu user.&lt;/li&gt;
+      &lt;li&gt;Create the docker group.&lt;br /&gt;
+ &lt;code&gt;sudo groupadd docker&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Add your user to docker group.&lt;br /&gt;
+ &lt;code&gt;sudo usermod -aG docker ubuntu&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Log out and log back in.&lt;br /&gt;
+ This ensures your user is running with the correct permissions.&lt;/li&gt;
+      &lt;li&gt;Verify your work by running docker without sudo.&lt;br /&gt;
+ &lt;code&gt;docker run hello-world&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;If this fails with a message similar to this:&lt;br /&gt;
+ &lt;em&gt;Cannot connect to the Docker daemon. Is ‘docker daemon’ running on this host?&lt;/em&gt;&lt;br /&gt;
+ Check that the DOCKER_HOST environment variable is not set for your shell. If it is, unset it.
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Upgrade Docker&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;To install the latest version of Docker with apt-get:&lt;br /&gt;
+ &lt;code&gt;sudo apt-get upgrade docker-engine&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Uninstall Docker&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;To uninstall the Docker package:&lt;br /&gt;
+ &lt;code&gt;sudo apt-get purge docker-engine&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;To uninstall the Docker package and dependencies that are no longer needed:&lt;br /&gt;
+ &lt;code&gt;sudo apt-get autoremove --purge docker-engine&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;To delete all images, containers, and volumes or user created configuration files on your host run the following command:&lt;br /&gt;
+ &lt;code&gt;rm -rf /var/lib/docker&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.&lt;/p&gt;
+&lt;h2 id=&quot;deploying-a-container-within-the-architecture&quot;&gt;Deploying a container within the Architecture&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Deployment with script:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Create a small json file which will contain app information to be deployed:&lt;br /&gt;
+ Eg: definition.json&lt;br /&gt;
+ &lt;code&gt;{&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;container&quot;: {&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;type&quot;: &quot;DOCKER”,&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;&quot;docker&quot;: {&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;image&quot;: &quot;superguenter/demo-app”&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;}&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;},&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;cmd&quot;: &quot;python -m SimpleHTTPServer $PORT”,&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;id&quot;: &quot;demo”,&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;cpus&quot;: 0.01,&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;mem&quot;: 256,&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;&quot;ports&quot;: [3000]&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;}&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Now to deploy the app below is the python code:&lt;br /&gt;
+ &lt;code&gt;import requests&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;import json&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;import pprint&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;url = &quot;http://localhost:8080/v2/apps&quot;&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;res = requests.post( url, data=open('/path/to/json/file/definition.json','rb'), headers={'Content-Type': 'application/json'})&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;json_data = json.loads(res.text)&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;pp = pprint.PrettyPrinter(indent=4)&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;pp.pprint (json_data)&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Deployment through dashboard:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Login to dashboard Localhost:8080 marathon is running on 8080.&lt;/li&gt;
+      &lt;li&gt;Click on the createApplication&lt;/li&gt;
+      &lt;li&gt;Enter the ID (ID should be unique), allocate the CPU, memory usuage as required.&lt;/li&gt;
+      &lt;li&gt;Now, go to DockerContainer: Provide the image name that you have created.&lt;/li&gt;
+      &lt;li&gt;Click on Create Application&lt;/li&gt;
+      &lt;li&gt;You should be able to see the image name with status as Running/Delayed/Waiting.&lt;/li&gt;
+      &lt;li&gt;Running refers: Success&lt;/li&gt;
+      &lt;li&gt;Delayed refers:  Failed&lt;/li&gt;
+      &lt;li&gt;Waiting refers:  Waiting to be started&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Deployment with  Rest API:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Execute the following command in the server. Make sure you have provided the required components correctly in the json file.&lt;br /&gt;
+&lt;code&gt;curl -X POST -H &quot;Content-Type: application/json&quot; http://localhost:8080/v2/apps -d@docker.json&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;Some footnote &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Another footnote &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;Last footnote &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
 </description>
-        <pubDate>Sat, 05 Mar 2016 00:00:00 +0530</pubDate>
-        <link>/blog/features/Content</link>
-        <guid isPermaLink="true">/blog/features/Content</guid>
+        <pubDate>Thu, 15 Dec 2016 03:24:00 +0530</pubDate>
+        <link>/blog/tutorial/MMZD</link>
+        <guid isPermaLink="true">/blog/tutorial/MMZD</guid>
         
-        <category>Jekyll</category>
-        
-        <category>Content</category>
-        
-        <category>Demo</category>
+        <category>Mesos+Marathon+Zookeeper+Docker</category>
         
         
-        <category>Features</category>
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Docker Vs VirtualMachine</title>
+        <description>&lt;h2 id=&quot;explaination-of-the-architecture&quot;&gt;Explaination Of the Architecture&lt;/h2&gt;
+
+&lt;h4 id=&quot;docker&quot;&gt;Docker&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Image is a box with set of all containers with small layered images. An image is an executable package that includes everything needed to run an application–the code, a runtime, libraries, environment variables, and configuration files.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A container is launched by running an image.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A container is a runtime instance of an image–what the image becomes in memory when executed (that is, an image with state, or a user process).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;virtual-machine&quot;&gt;Virtual Machine&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;A virtual Machine is an image of operating system running on Hypervisor over host operating system.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Comparision Basis&lt;/td&gt;
+      &lt;td&gt;Docker&lt;/td&gt;
+      &lt;td&gt;Virtual machine&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Architecture&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/media/img/Architecture_Docker.png&quot; alt=&quot;Docker&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/media/img/Architecture_VM.png&quot; alt=&quot;Virtual Machine&quot; height=&quot;70%&quot; width=&quot;100%&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Build&lt;/td&gt;
+      &lt;td&gt;Only Binaries and libraries of OS over which services run&lt;/td&gt;
+      &lt;td&gt;Image of the entire OS&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Virtualization&lt;/td&gt;
+      &lt;td&gt;OS level virtualization by abstracting user space&lt;/td&gt;
+      &lt;td&gt;Hardware Virtualization&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Processing boundaries&lt;/td&gt;
+      &lt;td&gt;Container have private space for processing, can execute commands as root&lt;/td&gt;
+      &lt;td&gt;Virtual Box have confined space for processing and can execue command as user&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;kernel boundaries&lt;/td&gt;
+      &lt;td&gt;Container share host sytstem kernel&lt;/td&gt;
+      &lt;td&gt;Virtual Box share host system kernel with Guest Operating System with Hypervisor&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 17:58:00 +0530</pubDate>
+        <link>/blog/tutorial/DockerAndVM</link>
+        <guid isPermaLink="true">/blog/tutorial/DockerAndVM</guid>
+        
+        <category>Docker</category>
+        
+        <category>+VirtualMachine</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Simple SMTP Server with Python</title>
+        <description>&lt;p&gt;You really want to design a simple mail server in python then here is the way you can do that.&lt;/p&gt;
+
+&lt;p&gt;This post gives the idea, architecture and implementation of a simple SMTP server in python, where a flask api is used to initialise and start the server, client can use the apis to play around with different type of requests, and send the mail to the server started by api using any of the way to send email(here a small python script client.py to send mail).&lt;/p&gt;
+
+&lt;h2 id=&quot;explaination-of-the-architecture&quot;&gt;Explaination Of the Architecture&lt;/h2&gt;
+
+&lt;h4 id=&quot;we-have-a-flask-app-which-gives-api-to-do-the-following-tasks&quot;&gt;We have a Flask App which gives api to do the following tasks:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Initialise Log location.&lt;/li&gt;
+  &lt;li&gt;Create DB.&lt;/li&gt;
+  &lt;li&gt;Start-Server.&lt;/li&gt;
+  &lt;li&gt;Get emails received by a particular id.&lt;/li&gt;
+  &lt;li&gt;Get emails received after a particular time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;we-have-smtp-server-implemented-using-python-smtp-library-which-does-the-following&quot;&gt;We have SMTP server implemented using python smtp library which does the following:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Receives email from clients.&lt;/li&gt;
+  &lt;li&gt;Stores emails in database.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;database-store-we-are-using-sqlite-db-store&quot;&gt;DataBase store, we are using sqlite db store:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Stores the email received by Smtp server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;client&quot;&gt;Client:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Uses Flask Apis to perform the requests.&lt;/li&gt;
+  &lt;li&gt;Send email to the server.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;architecture-of-smtp-server&quot;&gt;Architecture Of SMTP server&lt;/h2&gt;
+
+&lt;div&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/media/img/Architecture_smtp.png&quot; /&gt;
+&lt;figcaption&gt;Architecture&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can find the code in the github location: &lt;a href=&quot;https://github.com/agrawalpoonam/smtpapp&quot;&gt;
+https://github.com/agrawalpoonam/smtpapp
+&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Nov 2016 17:58:00 +0530</pubDate>
+        <link>/blog/tutorial/SMTP</link>
+        <guid isPermaLink="true">/blog/tutorial/SMTP</guid>
+        
+        <category>Simple</category>
+        
+        <category>SMTP</category>
+        
+        <category>Server+Python</category>
+        
+        
+        <category>Tutorial</category>
         
       </item>
     

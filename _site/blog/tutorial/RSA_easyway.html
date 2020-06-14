@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>RSA algorithm (asymmetric algorithm)</title>
+    <meta name="description" content="What is RSA algorithm?">
+  
+    
+    <meta name="keywords" content="Asymmetric, algorithm,, Public, key, Cryptography" />
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	
+    <!-- Open Graph data -->
+
+	<meta property="og:title" content="RSA algorithm (asymmetric algorithm)" />
+	<meta property="og:type" content="article" />
+
+
+
+
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
+
+
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="What is RSA algorithm?" />
+
+
+<meta property="og:url" content="/blog/tutorial/RSA_easyway" />
+
+
+    
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
+
+
+
+<meta property="article:published_time" content="2020-04-25T22:40:00+05:30" />
+
+
+
+<meta property="article:tag" content="Asymmetric" />
+
+<meta property="article:tag" content="algorithm," />
+
+<meta property="article:tag" content="Public" />
+
+<meta property="article:tag" content="key" />
+
+<meta property="article:tag" content="Cryptography" />
+
+<!-- End: Open Graph data -->	
+	<!-- Twitter data -->
+    
+
+<meta name="twitter:card" content="summary">
+
+
+<meta name="twitter:site" content="@jenswillmer">
+
+
+
+<meta name="twitter:title" content="RSA algorithm (asymmetric algorithm)">
+
+
+
+
+<meta name="twitter:url" content="/blog/tutorial/RSA_easyway">
+
+
+<meta name="twitter:description" content="What is RSA algorithm?">
+
+<meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
+<!-- End: Twitter data -->	
+
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
+
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/assets/favicon-62.png" sizes="62x62" type="image/png">
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        
+
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
+    <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
+    <h2 class="page-description"></h2>
+    <div class="nav">
+        <ul>
+            <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/offline-warning/" title="Offline">Offline</a></li>
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/about/" title="About">About</a></li>
+            
+            
+        </ul>
+    </div>
+</header>
+        <main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">RSA algorithm (asymmetric algorithm)</h1>
+            <section class="post-meta">
+                <time datetime="2020-04-25T22:40:00+05:30" itemprop="datePublished">Apr 25, 2020</time>
+                on
+                
+                <span>Asymmetric</span>
+                
+                <span>algorithm,</span>
+                
+                <span>Public</span>
+                
+                <span>key</span>
+                
+                <span>Cryptography</span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h3 id="what-is-rsa-algorithm">What is RSA algorithm?</h3>
+
+<pre><code>RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+</code></pre>
+
+<h3 id="example">Example:</h3>
+
+<pre><code>-   EncryptionKey =&gt; (5,14)
+    Suppose a text to be encrypted is letter 'B' -&gt;  2, then  2^5(mod 14)
+    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&gt; (5,14)
+    is encryption key
+
+
+    DecriptionKey: (11, 14),
+    4^11(mod 14) =&gt; 2 == B, where (d,N) that is 4^d(mod N) =&gt; (11, 14) is
+    decription key
+
+-   How does it work, what is the algoritm? There is no magic it is just
+    simple mathematics:
+    Take two prime numbers (numbers can be hundreds &amp; hundreds digit long),
+    I choose small number (for better explanation) (2,7) where p = 2, q = 7
+    -   N = p * q =&gt; N = 14
+
+    -   choose φ(N) = (p-1)(q-1)
+
+    -   Now choose a number for encryption e where
+        { 1 &lt; e &lt; φ(N) and coprime with N and φ(N)}
+        1 &lt; e &lt; 6 =  2, 3, 4, 5
+        number which is coprime with 14 and 6 is 5
+        so our lock is (e,N) = (5,14)
+
+    -   Now for decryption we choose d such that {d.e(mod φ(N))}
+        that is -&gt; d.5(mod 6) = 1
+        the options could be -&gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
+        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
+        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
+
+        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
+        So the key is (11, 14)
+</code></pre>
+
+        </section>
+
+        <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+        
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var config = {
+  'disqus_shortname': 'jekylldecent'
+};
+</script>
+<script src="/js/jquery-1.12.0.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.js"></script>
+<script src="/js/post.js"></script>
+
+
+        <footer class="site-footer">
+    <button class="go-to-top"></button>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+</body>
+
+<script src="/js/global.js"></script>
+</script>
+</html>

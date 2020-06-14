@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>What happens before Linux Boots up!</title>
+    <meta name="description" content="The Warm up before the Boot ProcessOn the ground level boot process starts with loading the operating system (where machine doesn't know anything about opera...">
+  
+    
+    <meta name="keywords" content="BIOS, +, File, +, MagicNumber" />
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	
+    <!-- Open Graph data -->
+
+	<meta property="og:title" content="What happens before Linux Boots up!" />
+	<meta property="og:type" content="article" />
+
+
+
+
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
+
+
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="The Warm up before the Boot ProcessOn the ground level boot process starts with loading the operating system (where machine doesn't know anything about opera..." />
+
+
+<meta property="og:url" content="/blog/tutorial/What-happens-before-Linux-Boots-up!" />
+
+
+    
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
+
+
+
+<meta property="article:published_time" content="2018-11-28T01:48:00+05:30" />
+
+
+
+<meta property="article:tag" content="BIOS" />
+
+<meta property="article:tag" content="+" />
+
+<meta property="article:tag" content="File" />
+
+<meta property="article:tag" content="+" />
+
+<meta property="article:tag" content="MagicNumber" />
+
+<!-- End: Open Graph data -->	
+	<!-- Twitter data -->
+    
+
+<meta name="twitter:card" content="summary">
+
+
+<meta name="twitter:site" content="@jenswillmer">
+
+
+
+<meta name="twitter:title" content="What happens before Linux Boots up!">
+
+
+
+
+<meta name="twitter:url" content="/blog/tutorial/What-happens-before-Linux-Boots-up!">
+
+
+<meta name="twitter:description" content="The Warm up before the Boot ProcessOn the ground level boot process starts with loading the operating system (where machine doesn't know anything about opera...">
+
+<meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
+<!-- End: Twitter data -->	
+
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
+
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/assets/favicon-62.png" sizes="62x62" type="image/png">
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        
+
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
+    <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
+    <h2 class="page-description"></h2>
+    <div class="nav">
+        <ul>
+            <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/offline-warning/" title="Offline">Offline</a></li>
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/about/" title="About">About</a></li>
+            
+            
+        </ul>
+    </div>
+</header>
+        <main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">What happens before Linux Boots up!</h1>
+            <section class="post-meta">
+                <time datetime="2018-11-28T01:48:00+05:30" itemprop="datePublished">Nov 28, 2018</time>
+                on
+                
+                <span>BIOS</span>
+                
+                <span>+</span>
+                
+                <span>File</span>
+                
+                <span>+</span>
+                
+                <span>MagicNumber</span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h2 id="the-warm-up-before-the-boot-process">The Warm up before the Boot Process</h2>
+<pre><code>On the ground level boot process starts with loading the operating system (where machine doesn't know anything about operating system) from any of the storage device.
+So without wasting time I will get into the deeper level.
+
+On this initial stage we donot have privilege even of the file system. What we have is the BIOS - a collection of software routines that are initially loaded from chip into the memory and initialised when we switch on the computer. BIOS makes some hardware checks to ensure all hardaware componenets are at stable switched on state.
+
+So, now we know that we have something called BIOS that could be of some help.
+BIOS cannot load the operating system as a 'file' as we mentioned above that it doesn't know about file system.
+
+BIOS must read specific sectors of data from specific physical location of the disk devices.
+BIOS load the OS from the first sector of the disk device. Here we can have multiple disk devices that may confuse BIOS to which device it should read from.
+
+CPU cannot differentiate between code and data, for CPU both are instructions.
+Here comes the magic number which is a unsophisticated way of BIOS to determine the boot sector.
+BIOS loops through each disk device, read the boot sector into memory and search for the magic number which is 0xaa55 and instructs CPU to begin executing the first boot sector it finds that ends with the magic number.
+</code></pre>
+
+
+        </section>
+
+        <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+        
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var config = {
+  'disqus_shortname': 'jekylldecent'
+};
+</script>
+<script src="/js/jquery-1.12.0.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.js"></script>
+<script src="/js/post.js"></script>
+
+
+        <footer class="site-footer">
+    <button class="go-to-top"></button>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+</body>
+
+<script src="/js/global.js"></script>
+</script>
+</html>

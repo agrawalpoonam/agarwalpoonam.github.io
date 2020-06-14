@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>How to setup Mesos, Marathon, Zookeeper and Docker</title>
+    <meta name="description" content="Mesos">
+  
+    
+    <meta name="keywords" content="Mesos+Marathon+Zookeeper+Docker" />
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	
+    <!-- Open Graph data -->
+
+	<meta property="og:title" content="How to setup Mesos, Marathon, Zookeeper and Docker" />
+	<meta property="og:type" content="article" />
+
+
+
+
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
+
+
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="Mesos" />
+
+
+<meta property="og:url" content="/blog/tutorial/MMZD" />
+
+
+    
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
+
+
+
+<meta property="article:published_time" content="2016-12-15T03:24:00+05:30" />
+
+
+
+<meta property="article:tag" content="Mesos+Marathon+Zookeeper+Docker" />
+
+<!-- End: Open Graph data -->	
+	<!-- Twitter data -->
+    
+
+<meta name="twitter:card" content="summary">
+
+
+<meta name="twitter:site" content="@jenswillmer">
+
+
+
+<meta name="twitter:title" content="How to setup Mesos, Marathon, Zookeeper and Docker">
+
+
+
+
+<meta name="twitter:url" content="/blog/tutorial/MMZD">
+
+
+<meta name="twitter:description" content="Mesos">
+
+<meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
+<!-- End: Twitter data -->	
+
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
+
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/assets/favicon-62.png" sizes="62x62" type="image/png">
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        
+
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
+    <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
+    <h2 class="page-description"></h2>
+    <div class="nav">
+        <ul>
+            <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/offline-warning/" title="Offline">Offline</a></li>
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/about/" title="About">About</a></li>
+            
+            
+        </ul>
+    </div>
+</header>
+        <main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">How to setup Mesos, Marathon, Zookeeper and Docker</h1>
+            <section class="post-meta">
+                <time datetime="2016-12-15T03:24:00+05:30" itemprop="datePublished">Dec 15, 2016</time>
+                on
+                
+                <span>Mesos+Marathon+Zookeeper+Docker</span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h1 id="mesos">Mesos</h1>
+
+<ul>
+  <li>is open source cluster manager, It provides resource isolation and sharing across distributed applications.</li>
+  <li>Mesos consists of a master daemon that manages slave daemons running on each cluster node. Mesos frameworks are applications that run on Mesos and run tasks on these slaves</li>
+  <li>Mesos uses a two-level scheduling mechanism where resource offers are made to frameworks. The Mesos master node decides how many resources to offer each framework, while each framework determines the resources it accepts and what application to execute on those resources.
+For more insight refer this: <a href="https://mesos.apache.org/documentation/latest/architecture/">
+Mesos Architecture and Overview
+</a></li>
+</ul>
+
+<h1 id="marathon">Marathon</h1>
+<ul>
+  <li>is a container orchestration platform running on Mesos.</li>
+  <li>Multiple Container formats are supported.
+For more insight refer this: <a href="https://mesosphere.github.io/marathon/">
+Marathon Architecture and Overview
+</a></li>
+</ul>
+
+<h1 id="zookeeper">Zookeeper</h1>
+<ul>
+  <li>ZooKeeper is a distributed co-ordination service to manage large set of hosts. Co-ordinating and managing a service in a distributed environment is solved by ZooKeeper with its simple architecture and API. </li>
+  <li>If the Mesos master is unavailable, existing tasks can continue to execute, but new resources cannot be allocated and new tasks cannot be launched. To reduce the chance of this situation occurring, Mesos has a high-availability mode that uses multiple Mesos masters: one active master (called the leader or leading master) and several backups in case it fails. The masters elect the leader, with Apache ZooKeeper both coordinating the election and handling leader detection by masters, agents, and scheduler drivers.
+For more insight refer this: <a href="https://zookeeper.apache.org/doc/trunk/zookeeperOver.html">
+Zookeeper Architecture and Overview
+</a></li>
+</ul>
+
+<h2 id="master-nodes-setup">Master Nodes Setup</h2>
+<ol>
+  <li><strong>Package Installation</strong>
+    <ul>
+      <li>Highly-available clusters will typically have multiple master nodes and any number of slave nodes. Each master node runs Apache Mesos, Marathon and ZooKeeper (to provide leader  election).</li>
+    </ul>
+    <ul>
+      <li>Setup repositories:
+        <ul>
+          <li>The easiest way to install Mesos is via the GitHub repositories.Mesosphere has official package repositories which connect directly to the native package management tools of your favorite Linux distribution — namely apt-get and yum — to install Mesos on top of the most common Linux distributions.
+            <ol>
+              <li>Commands for Ubuntu</li>
+            </ol>
+            <ul>
+              <li>Setup<br />
+  <code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)</code></li>
+              <li>Add the repository<br />
+  <code>echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | sudo tee /etc/apt/sources.list.d/mesosphere.list</code>
+  <code>sudo apt-get -y update</code></li>
+              <li>Install<br />
+  <code>sudo apt-get -y install mesos marathon</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Configuration</strong>
+    <ul>
+      <li>The Mesosphere package ships with a default configuration. The default configuration includes:</li>
+    </ul>
+    <ol>
+      <li>File: /etc/default/mesos<br />
+ sets master and slave log dir to /var/log/mesos.</li>
+      <li>File: /etc/default/mesos-master<br />
+	sets port to 5050.  <br />
+ sets zk to the value in the file /etc/mesos/zk.</li>
+      <li>File: /etc/default/mesos-slave<br />
+ sets master as the value of /etc/mesos/zk</li>
+      <li>File: /etc/mesos/zk<br />
+	sets the ZooKeeper instance to zk://localhost:2181/mesos</li>
+      <li>File: /etc/mesos-master/work_dir<br />
+ sets working_dir to var/lib/mesos</li>
+      <li>File: /etc/mesos-master/quorum<br />
+ sets quorum to 1<br />
+	<em>This default configuration allows Mesos to start immediately on a single node.</em>
+        <ul>
+          <li>Configure Zookeeper:</li>
+        </ul>
+      </li>
+      <li>Setting ID<br />
+ Set /etc/zookeeper/conf/myid to a unique integer between 1 and 255 on each node.The Mesosphere package ships with a default configuration</li>
+      <li>Server Addresses<br />
+ Append the following values to /etc/zookeeper/conf/zoo.cfg on each node, replacing the IP addresses with your own:<br />
+ <code>server.1=1.1.1.1:2888:3888</code><br />
+ <code>server.2=2.2.2.2:2888:3888</code><br />
+ <code>server.3=3.3.3.3:2888:3888</code></li>
+      <li>Start Zookeeper<br />
+ <code>sudo service zookeeper restart</code>
+        <ul>
+          <li>Mesos &amp; Marathon</li>
+        </ul>
+      </li>
+      <li>ZooKeeper<br />
+ On each node, replacing the IP addresses below with each master’s IP address, set/etc/mesos/zk to:<br />
+ <code>zk://1.1.1.1:2181,2.2.2.2:2181,3.3.3.3:2181/mesos</code></li>
+      <li>Quorum<br />
+ Set /etc/mesos-master/quorum on each master node to a number greater than the number of masters divided by 2. For example, the optimal quorum size for a five node master cluster would be 3. In this case, there are three masters and the quorum size should be set to 2 on each node.</li>
+      <li>Host name<br />
+ In case unable to resolve the hostname of the machine directly, set /etc/mesos-master/hostname to a value that you can resolve.<br />
+ For example, an externally accessible IP address or DNS hostname. This will ensure all links from the Mesos console work correctly.<br />
+ Also, set this property in /etc/marathon/conf/hostname</li>
+      <li>Disable mesos-slave service<br />
+ <code>sudo service mesos-slave stop</code><br />
+ <code>sudo sh -c "echo manual &gt; /etc/init/mesos-slave.override"</code></li>
+    </ol>
+  </li>
+  <li><strong>Restart Services</strong>
+    <ul>
+      <li>Bring up Mesos master<br />
+<code>sudo service mesos-master restart</code></li>
+      <li>Now restart Marathon<br />
+<code>sudo service marathon restart</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="slave-nodes-setup">Slave Nodes Setup</h2>
+<ol>
+  <li><strong>Package Installation</strong>
+    <ul>
+      <li>Setup repositories:
+        <ol>
+          <li>Commands for Ubuntu
+            <ul>
+              <li>Setup<br />
+ <code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BFDISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)</code></li>
+              <li> Add the repository<br />
+ <code>echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | sudo tee /etc/apt/sources.list.d/mesosphere.list</code><br />
+          <code>sudo apt-get -y update</code></li>
+              <li>Install<br />
+          <code>sudo apt-get -y install mesos</code></li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Configuration</strong>
+    <ul>
+      <li>Disable Zookeeper:</li>
+    </ul>
+    <ol>
+      <li>If you’re using the Debian or Ubuntu package, ZooKeeper will be pulled in and installed as a dependency automaticallyi.    <br />
+ <code>sudo service zookeeper stop</code><br />
+ <code>sudo sh -c "echo manual &gt; /etc/init/zookeeper.override"</code>
+        <ul>
+          <li>Mesos
+            <ol>
+              <li>ZooKeeper<br />
+ On each node, replacing the IP addresses below with each master’s IP address, set/etc/mesos/zk to:<br />
+ <code>zk://1.1.1.1:2181,2.2.2.2:2181,3.3.3.3:2181/mesos</code></li>
+              <li>Disable mesos-master service<br />
+ <code>sudo service mesos-master stop</code><br />
+ <code>sudo sh -c "echo manual &gt; /etc/init/mesos-master.override"</code></li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li><strong>Start Services</strong>
+    <ul>
+      <li>Restart mesos-slave on each node to use the new configuration:<br />
+<code>sudo service mesos-slave restart</code></li>
+    </ul>
+  </li>
+  <li><strong>Verify Installation</strong>
+    <ul>
+      <li>If the packages were installed and configured correctly, you should be able to access the Mesos console at <code>http://&lt;master-ip&gt;:5050</code> and the Marathon console at <code>http://&lt;master-ip&gt;:8080</code> (where <master-ip> is any of the master IP addresses).</master-ip></li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="docker">Docker</h1>
+<ul>
+  <li>Docker is an open platform for developing, shipping, and running applications. Docker is designed to deliver your applications faster. With Docker you can separate your applications from  your infrastructure and treat your infrastructure like a managed application.</li>
+  <li>Docker helps you ship code faster, test faster, deploy faster, and shorten the cycle between writing code and running code.
+For more insight refer this: <a href="https://docs.docker.com/engine/understanding-docker/">
+Docker Architecture and Overview
+</a></li>
+  <li>These instructions are intended for installing Docker on Ubuntu. Docker’s APT repository contains Docker 1.7.1 and higher. To set APT to use packages from the new repository.</li>
+</ul>
+
+<h2 id="docker-installation">Docker Installation</h2>
+<ol>
+  <li><strong>Update your apt sources</strong>
+    <ul>
+      <li>Log into your machine as a user with sudo or root privileges.</li>
+      <li>Open a terminal window.</li>
+      <li>Update package information, ensure that APT works with the https method, and that CA certificates are installed.<br />
+ <code>sudo apt-get update</code><br />
+ <code>sudo apt-get install apt-transport-https ca-certificates</code></li>
+      <li>Add the new GPG key
+ <code>sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D</code></li>
+      <li>Open the /etc/apt/sources.list.d/docker.list file in your favorite editor.</li>
+      <li>If the file doesn’t exist, create it.</li>
+      <li>Remove any existing entries.</li>
+      <li>Add an entry for your Ubuntu operating system.<br />
+ <code>deb https://apt.dockerproject.org/repo ubuntu-trusty main</code></li>
+      <li>Save and close the /etc/apt/sources.list.d/docker.list file.</li>
+      <li>Update the APT package index.<br />
+ <code>sudo apt-get update</code></li>
+      <li>Purge the old repo if it exists.<br />
+ <code>sudo apt-get purge lxc-docker</code></li>
+      <li>Verify that APT is pulling from the right repository.<br />
+ <code>apt-cache policy docker-engine</code></li>
+      <li>From now on when you run <code>apt-get upgrade</code>, APT pulls from the new repository.</li>
+    </ul>
+  </li>
+  <li><strong>Prerequisites by Ubuntu Version</strong>
+    <ul>
+      <li>For Ubuntu Trusty, Wily, and Xenial, it’s recommended to install the linux-image-extra kernel package. Thelinux-image-extra package allows you use the aufs storage driver.<br />
+To install the linux-image-extra package for your kernel version:</li>
+    </ul>
+    <ol>
+      <li>Open a terminal on your Ubuntu host.</li>
+      <li>Update your package manager.<br />
+ <code>sudo apt-get update</code></li>
+      <li>Install the recommended package.<br />
+ <code>sudo apt-get install linux-image-extra-$(uname -r)</code></li>
+      <li>Go ahead and install Docker.<br />
+ If you are installing on Ubuntu 14.04 or 12.04, apparmor is required. You can install it using: apt-get install apparmor.</li>
+    </ol>
+  </li>
+  <li><strong>Install</strong>
+    <ul>
+      <li>Make sure you have installed the prerequisites for your Ubuntu version.Then, install Docker using the following:</li>
+    </ul>
+    <ol>
+      <li>Log into your Ubuntu installation as a user with sudo privileges.</li>
+      <li>Update your APT package index.<br />
+ <code>sudo apt-get update</code></li>
+      <li>Install Docker.<br />
+ <code>sudo apt-get install docker-engine</code></li>
+      <li>Start the docker daemon.<br />
+ <code>sudo service docker start</code></li>
+      <li>Verify docker is installed correctly.<br />
+ <code>sudo docker run hello-world</code><br />
+ This command downloads a test image and runs it in a container. When the container runs, it prints an informational message. Then, it exits.</li>
+    </ol>
+  </li>
+  <li><strong>Create a Docker group</strong>
+    <ul>
+      <li>The docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can access it with sudo. For this reason, docker daemon always runs as the rootuser.<br />
+To avoid having to use sudo when you use the docker command, create a Unix group called docker and add users to it. When the docker daemon starts, it makes the ownership of the Unix socket read/writable by thedocker group.</li>
+      <li>To create the docker group and add your user:</li>
+    </ul>
+    <ol>
+      <li>Log into Ubuntu as a user with sudo privileges.<br />
+ This procedure assumes you log in as the ubuntu user.</li>
+      <li>Create the docker group.<br />
+ <code>sudo groupadd docker</code></li>
+      <li>Add your user to docker group.<br />
+ <code>sudo usermod -aG docker ubuntu</code></li>
+      <li>Log out and log back in.<br />
+ This ensures your user is running with the correct permissions.</li>
+      <li>Verify your work by running docker without sudo.<br />
+ <code>docker run hello-world</code></li>
+      <li>If this fails with a message similar to this:<br />
+ <em>Cannot connect to the Docker daemon. Is ‘docker daemon’ running on this host?</em><br />
+ Check that the DOCKER_HOST environment variable is not set for your shell. If it is, unset it.
+        <ul>
+          <li><strong>Upgrade Docker</strong></li>
+        </ul>
+      </li>
+      <li>To install the latest version of Docker with apt-get:<br />
+ <code>sudo apt-get upgrade docker-engine</code>
+        <ul>
+          <li><strong>Uninstall Docker</strong></li>
+        </ul>
+      </li>
+      <li>To uninstall the Docker package:<br />
+ <code>sudo apt-get purge docker-engine</code></li>
+      <li>To uninstall the Docker package and dependencies that are no longer needed:<br />
+ <code>sudo apt-get autoremove --purge docker-engine</code></li>
+      <li>To delete all images, containers, and volumes or user created configuration files on your host run the following command:<br />
+ <code>rm -rf /var/lib/docker</code></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="deploying-a-container-within-the-architecture">Deploying a container within the Architecture</h2>
+<ol>
+  <li><strong>Deployment with script:</strong>
+    <ul>
+      <li>Create a small json file which will contain app information to be deployed:<br />
+ Eg: definition.json<br />
+ <code>{</code><br />
+ <code>"container": {</code><br />
+ <code>"type": "DOCKER”,</code> <br />
+ <code>"docker": {</code><br />
+ <code>"image": "superguenter/demo-app”</code><br />
+ <code>}</code><br />
+ <code>},</code><br />
+ <code>"cmd": "python -m SimpleHTTPServer $PORT”,</code><br />
+ <code>"id": "demo”,</code><br />
+ <code>"cpus": 0.01,</code><br />
+ <code>"mem": 256,</code><br />
+ <code>"ports": [3000]</code><br />
+ <code>}</code></li>
+      <li>Now to deploy the app below is the python code:<br />
+ <code>import requests</code><br />
+ <code>import json</code><br />
+ <code>import pprint</code><br />
+ <code>url = "http://localhost:8080/v2/apps"</code><br />
+ <code>res = requests.post( url, data=open('/path/to/json/file/definition.json','rb'), headers={'Content-Type': 'application/json'})</code><br />
+ <code>json_data = json.loads(res.text)</code><br />
+ <code>pp = pprint.PrettyPrinter(indent=4)</code><br />
+ <code>pp.pprint (json_data)</code></li>
+    </ul>
+  </li>
+  <li><strong>Deployment through dashboard:</strong>
+    <ul>
+      <li>Login to dashboard Localhost:8080 marathon is running on 8080.</li>
+      <li>Click on the createApplication</li>
+      <li>Enter the ID (ID should be unique), allocate the CPU, memory usuage as required.</li>
+      <li>Now, go to DockerContainer: Provide the image name that you have created.</li>
+      <li>Click on Create Application</li>
+      <li>You should be able to see the image name with status as Running/Delayed/Waiting.</li>
+      <li>Running refers: Success</li>
+      <li>Delayed refers:  Failed</li>
+      <li>Waiting refers:  Waiting to be started</li>
+    </ul>
+  </li>
+  <li><strong>Deployment with  Rest API:</strong>
+    <ul>
+      <li>Execute the following command in the server. Make sure you have provided the required components correctly in the json file.<br />
+<code>curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d@docker.json</code></li>
+    </ul>
+  </li>
+</ol>
+
+
+        </section>
+
+        <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+        
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var config = {
+  'disqus_shortname': 'jekylldecent'
+};
+</script>
+<script src="/js/jquery-1.12.0.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.js"></script>
+<script src="/js/post.js"></script>
+
+
+        <footer class="site-footer">
+    <button class="go-to-top"></button>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+</body>
+
+<script src="/js/global.js"></script>
+</script>
+</html>

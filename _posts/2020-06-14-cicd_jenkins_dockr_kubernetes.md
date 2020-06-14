@@ -7,10 +7,11 @@ category: Tutorial
 author: Poonam Agarwal
 ---
 
-### setup Jenkins
-$ mkdir jenkins
-$ cd jenkins
-$ vim Vagrantfile
+### Setup Jenkins server
+
+	$ mkdir jenkins
+	$ cd jenkins
+	$ vim Vagrantfile
 
 	Vagrant.configure("2") do |config|
 	  config.vm.box = "bento/ubuntu-20.04"
@@ -28,78 +29,80 @@ $ vim Vagrantfile
 	  SHELL
 	end
 
-$ vagrant up
-$ vagrabt ssh
+	$ vagrant up
+	$ vagrabt ssh
 
 ### Setup Repository for docker
 
-$ sudo apt-get update
-$ sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+	$ sudo apt-get update \
+	$ sudo apt-get install \
+	    apt-transport-https \
+	    ca-certificates \
+	    curl \
+	    gnupg-agent \
+	    software-properties-common
 
 
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-$ sudo apt-key fingerprint 0EBFCD88
+	$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	$ sudo apt-key fingerprint 0EBFCD88
 
-$ sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+	$ sudo add-apt-repository \
+	   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+	   $(lsb_release -cs) \
+	   stable"
 
 
 ### Install docker engine
 
-$ sudo apt-get update
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+	$ sudo apt-get update
+	$ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 #### updated user jenkins to run docker 
-$ sudo usermod -G docker jenkins	
-$ sudo apt-get install acl
+	$ sudo usermod -G docker jenkins	
+	$ sudo apt-get install acl
 
-$ sudo setfacl -m user:jenkins:rw /var/run/docker.sock
+	$ sudo setfacl -m user:jenkins:rw /var/run/docker.sock
 
 ### Setup Kubernetes
 
-$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+	$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
-$ chmod +x ./kubectl
-$ sudo mv ./kubectl /usr/local/bin/kubectl
+	$ chmod +x ./kubectl
+	$ sudo mv ./kubectl /usr/local/bin/kubectl
 
-$ cp -r ~/.kube /var/lib/jenkins/
-$ sudo chown -R jenkins:jenkins /var/lib/jenkins/
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority: /var/lib/jenkins/.minikube/ca.crt
-    server: https://192.168.99.100:8443
-  name: minikube
-contexts:
-- context:
-    cluster: minikube
-    user: minikube
-  name: minikube
-current-context: minikube
-kind: Config
-preferences: {}
-users:
-- name: minikube
-  user:
-    client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
-    client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
+	$ cp -r ~/.kube /var/lib/jenkins/
+	$ sudo chown -R jenkins:jenkins /var/lib/jenkins/
+	$ vim /var/lib/jenkins/.kube/config
 
-make sure the permission of the following files should be as follows
-client.crt 644, 
-client.key 600, 
-ca.crt 644
-and folder /var/lib/jenkins/.minikube must have user as jenkins user
+			apiVersion: v1
+			clusters:
+			- cluster:
+			    certificate-authority: /var/lib/jenkins/.minikube/ca.crt
+			    server: https://192.168.99.100:8443
+			  name: minikube
+			contexts:
+			- context:
+			    cluster: minikube
+			    user: minikube
+			  name: minikube
+			current-context: minikube
+			kind: Config
+			preferences: {}
+			users:
+			- name: minikube
+			  user:
+			    client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
+			    client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
 
 
-$ Adding docker hub credentials in jenkins
-Credentials → System → Global Credentials → Add Credentials
+	❖ make sure the permission of the following files should be as follows
+		➢ client.crt 644, 
+		➢ client.key 600, 
+		➢ ca.crt 644
+
+
+	$ Adding docker hub credentials in jenkins
+	Credentials → System → Global Credentials → Add Credentials
 
 <div>
 
@@ -130,43 +133,43 @@ Job → Pipeline → Poll SCM(after every push it will auto build the job)
 		➢ kubectl get svc
 		➢ http://192.168.10.30:<< port >>/hello/deepak
 
-$ The groovy script:
+### The groovy script:
 
-pipeline {
-   agent any
-   environment {
-       dockerHub = "docker.io"
-       docker_cred = 'dockerhub'
-   }
-   stages {
-		stage('SCM Checkout'){
-			steps{
-				checkout([$class: 'GitSCM',branches: [[name: 'origin/master']],extensions: [[$class: 'WipeWorkspace']],userRemoteConfigs: [[url: 'https://github.com/agrawalpoonam/python-app.git']]  ])
+	pipeline {
+	   agent any
+	   environment {
+	       dockerHub = "docker.io"
+	       docker_cred = 'dockerhub'
+	   }
+	   stages {
+			stage('SCM Checkout'){
+				steps{
+					checkout([$class: 'GitSCM',branches: [[name: 'origin/master']],extensions: [[$class: 'WipeWorkspace']],userRemoteConfigs: [[url: 'https://github.com/agrawalpoonam/python-app.git']]  ])
+				}
 			}
-		}
-		stage("Build Docker Image"){
-			steps{
-				sh 'pwd'
-				sh "docker build -t poonamag/test-app . --no-cache"
+			stage("Build Docker Image"){
+				steps{
+					sh 'pwd'
+					sh "docker build -t poonamag/test-app . --no-cache"
+				}
 			}
-		}
-		stage('Upload Image to DockerHub'){
-			steps{ 
-	     	    withCredentials([
-     		 	[$class: 'UsernamePasswordMultiBinding', credentialsId: docker_cred, usernameVariable: 'dockeruser', passwordVariable: 'dockerpass'],
-  				]){
-					sh "docker login -u ${dockeruser} -p ${dockerpass} ${dockerHub}"
-  				}
-	    	  	sh 'docker push poonamag/test-app'
-	    	 }
-	  	}
-		stage("Running Docker Image"){
-			steps{
-				sh "kubectl get namespaces"
-				sh "kubectl apply -f deployment.yaml"
+			stage('Upload Image to DockerHub'){
+				steps{ 
+		     	    withCredentials([
+	     		 	[$class: 'UsernamePasswordMultiBinding', credentialsId: docker_cred, usernameVariable: 'dockeruser', passwordVariable: 'dockerpass'],
+	  				]){
+						sh "docker login -u ${dockeruser} -p ${dockerpass} ${dockerHub}"
+	  				}
+		    	  	sh 'docker push poonamag/test-app'
+		    	 }
+		  	}
+			stage("Running Docker Image"){
+				steps{
+					sh "kubectl get namespaces"
+					sh "kubectl apply -f deployment.yaml"
+				}
 			}
-		}
-}
-}
+	}
+	}
 
 

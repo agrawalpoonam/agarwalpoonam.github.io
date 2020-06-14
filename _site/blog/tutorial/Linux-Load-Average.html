@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Load average in cpu</title>
+    <meta name="description" content="Understanding CPU load Average On the basis of following variables:- CPU cores.- CPU load average.- CPU load average on the basis of number of CPU.">
+  
+    
+    <meta name="keywords" content="Load, Average+, CPU" />
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	
+    <!-- Open Graph data -->
+
+	<meta property="og:title" content="Load average in cpu" />
+	<meta property="og:type" content="article" />
+
+
+
+
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
+
+
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="Understanding CPU load Average On the basis of following variables:- CPU cores.- CPU load average.- CPU load average on the basis of number of CPU." />
+
+
+<meta property="og:url" content="/blog/tutorial/Linux-Load-Average" />
+
+
+    
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
+
+
+
+<meta property="article:published_time" content="2019-03-24T02:49:00+05:30" />
+
+
+
+<meta property="article:tag" content="Load" />
+
+<meta property="article:tag" content="Average+" />
+
+<meta property="article:tag" content="CPU" />
+
+<!-- End: Open Graph data -->	
+	<!-- Twitter data -->
+    
+
+<meta name="twitter:card" content="summary">
+
+
+<meta name="twitter:site" content="@jenswillmer">
+
+
+
+<meta name="twitter:title" content="Load average in cpu">
+
+
+
+
+<meta name="twitter:url" content="/blog/tutorial/Linux-Load-Average">
+
+
+<meta name="twitter:description" content="Understanding CPU load Average On the basis of following variables:- CPU cores.- CPU load average.- CPU load average on the basis of number of CPU.">
+
+<meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
+<!-- End: Twitter data -->	
+
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
+
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/assets/favicon-62.png" sizes="62x62" type="image/png">
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        
+
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
+    <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
+    <h2 class="page-description"></h2>
+    <div class="nav">
+        <ul>
+            <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/offline-warning/" title="Offline">Offline</a></li>
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/about/" title="About">About</a></li>
+            
+            
+        </ul>
+    </div>
+</header>
+        <main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Load average in cpu</h1>
+            <section class="post-meta">
+                <time datetime="2019-03-24T02:49:00+05:30" itemprop="datePublished">Mar 24, 2019</time>
+                on
+                
+                <span>Load</span>
+                
+                <span>Average+</span>
+                
+                <span>CPU</span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h2 id="understanding-cpu-load-average-on-the-basis-of-following-variables">Understanding CPU load Average On the basis of following variables:</h2>
+<h4 id="--cpu-cores">- CPU cores.</h4>
+<h4 id="--cpu-load-average">- CPU load average.</h4>
+<h4 id="--cpu-load-average-on-the-basis-of-number-of-cpu">- CPU load average on the basis of number of CPU.</h4>
+
+<h4 id="cpu-cores">CPU Cores</h4>
+<ul>
+  <li>We can check the number of cpu cores by one of the following commands:
+$ nproc
+4</li>
+</ul>
+
+<p>OR
+lscpu</p>
+
+<p>$ grep ‘model name’ /proc/cpuinfo | wc -l
+4</p>
+
+<h4 id="cpu-load-average">CPU load average</h4>
+<ul>
+  <li>We can check load on the cpu with the following commands:
+$ cat /proc/loadavg</li>
+</ul>
+
+<p>2.48 1.69 1.42 5/889 10570</p>
+
+<p>$ cat /proc/loadavg</p>
+
+<p>2.48 1.69 1.42 5/889 10570
+top - 00:07:16 up  5:36,  1 user,  load average: 0.86, 0.78, 0.77
+Tasks: 312 total,   1 running, 256 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.7 us,  0.8 sy,  0.0 ni, 96.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  8033996 total,  1619612 free,  3388332 used,  3026052 buff/cache
+KiB Swap:  2097148 total,  2097148 free,        0 used.  3859444 avail Mem</p>
+
+<p>PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                 <br />
+ 3059 poonam    20   0 3839156 223956  74324 S   3.3  2.8   2:53.46 gnome-shell                                                             <br />
+ 2913 poonam    20   0  399424  85528  58908 S   3.0  1.1   1:38.02 Xorg                                                                    <br />
+ 9269 poonam    20   0  679612  56704  34448 S   2.0  0.7   0:01.05 terminator                                                              <br />
+ 8075 poonam    20   0  407236  98308   9112 S   1.3  1.2   2:42.54 plugin_host</p>
+
+<p>$ uptime
+ 00:08:07 up  5:36,  1 user,  load average: 0.84, 0.78, 0.78</p>
+
+<p>$ cat /proc/loadavg
+0.96 0.82 0.79 1/1269 10197</p>
+
+<h4 id="cpu-load-average-on-the-basis-of-number-of-cpu">CPU load average on the basis of number of CPU</h4>
+<p>Let’s say we have load averages below:</p>
+
+<p>23:16:49 up  10:49,  5 user,  load average: 1.00, 0.40, 3.35</p>
+
+<h5 id="on-a-single-core-system-this-would-mean">On a single core system this would mean:</h5>
+<ul>
+  <li>
+    <p>The CPU was fully (100%) utilized on average; 1 processes was running on the CPU (1.00) over the last 1 minute.</p>
+  </li>
+  <li>
+    <p>The CPU was idle by 60% on average; no processes were waiting for CPU time (0.40) over the last 5 minutes.</p>
+  </li>
+  <li>
+    <p>The CPU was overloaded by 235% on average; 2.35 processes were waiting for CPU time (3.35) over the last 15 minutes.</p>
+  </li>
+</ul>
+
+<h5 id="on-a-dual-core-system-this-would-mean">On a dual-core system this would mean:</h5>
+<ul>
+  <li>
+    <p>The one CPU was 100% idle on average, one CPU was being used; no processes were waiting for CPU time(1.00) over the last 1 minute.</p>
+  </li>
+  <li>
+    <p>The CPUs were idle by 160% on average; no processes were waiting for CPU time. (0.40) over the last 5 minutes.</p>
+  </li>
+  <li>
+    <p>The CPUs were overloaded by 135% on average; 1.35 processes were waiting for CPU time. (3.35) over the last 15 minutes.</p>
+  </li>
+</ul>
+
+
+        </section>
+
+        <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+        
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var config = {
+  'disqus_shortname': 'jekylldecent'
+};
+</script>
+<script src="/js/jquery-1.12.0.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.js"></script>
+<script src="/js/post.js"></script>
+
+
+        <footer class="site-footer">
+    <button class="go-to-top"></button>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+</body>
+
+<script src="/js/global.js"></script>
+</script>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Transactional System Administration Vs Service Centric Model in SRE</title>
+    <meta name="description" content="What is Transactional System Administration?Think of it as a scenario between Customer and SysAdmin:- Customer : Would you do xyz task?- SysAdmin : Yes, Done...">
+  
+    
+    <meta name="keywords" content="TransactionalAdministrationSystem, +, ServiceCentricModel" />
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	
+    <!-- Open Graph data -->
+
+	<meta property="og:title" content="Transactional System Administration Vs Service Centric Model in SRE" />
+	<meta property="og:type" content="article" />
+
+
+
+
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
+
+
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="What is Transactional System Administration?Think of it as a scenario between Customer and SysAdmin:- Customer : Would you do xyz task?- SysAdmin : Yes, Done..." />
+
+
+<meta property="og:url" content="/blog/tutorial/Transactional-System-Administration-Vs-Service-Centric-Model-in-SRE" />
+
+
+    
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
+
+
+
+<meta property="article:published_time" content="2019-03-27T22:40:00+05:30" />
+
+
+
+<meta property="article:tag" content="TransactionalAdministrationSystem" />
+
+<meta property="article:tag" content="+" />
+
+<meta property="article:tag" content="ServiceCentricModel" />
+
+<!-- End: Open Graph data -->	
+	<!-- Twitter data -->
+    
+
+<meta name="twitter:card" content="summary">
+
+
+<meta name="twitter:site" content="@jenswillmer">
+
+
+
+<meta name="twitter:title" content="Transactional System Administration Vs Service Centric Model in SRE">
+
+
+
+
+<meta name="twitter:url" content="/blog/tutorial/Transactional-System-Administration-Vs-Service-Centric-Model-in-SRE">
+
+
+<meta name="twitter:description" content="What is Transactional System Administration?Think of it as a scenario between Customer and SysAdmin:- Customer : Would you do xyz task?- SysAdmin : Yes, Done...">
+
+<meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
+<!-- End: Twitter data -->	
+
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
+
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/assets/favicon-62.png" sizes="62x62" type="image/png">
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        
+
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
+    <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
+    <h2 class="page-description"></h2>
+    <div class="nav">
+        <ul>
+            <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/offline-warning/" title="Offline">Offline</a></li>
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/about/" title="About">About</a></li>
+            
+            
+        </ul>
+    </div>
+</header>
+        <main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Transactional System Administration Vs Service Centric Model in SRE</h1>
+            <section class="post-meta">
+                <time datetime="2019-03-27T22:40:00+05:30" itemprop="datePublished">Mar 27, 2019</time>
+                on
+                
+                <span>TransactionalAdministrationSystem</span>
+                
+                <span>+</span>
+                
+                <span>ServiceCentricModel</span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h3 id="what-is-transactional-system-administration">What is Transactional System Administration?</h3>
+<pre><code>Think of it as a scenario between Customer and SysAdmin:
+- Customer : Would you do xyz task?
+- SysAdmin : Yes, Done!
+- Customer verifies. 
+This is a typical transaction system. The best example is ticket system.
+</code></pre>
+
+<h3 id="why-is-it-bad">Why is it Bad?</h3>
+<pre><code>- It is a reactive process as the SysAdmin has to do job in a limited time frame which creates pressure over them.
+- It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
+- No automation for optimization and prioritization of the requests.
+- Customer considers SRE as "servant" and SRE thinks customer as "ever demanding child". Both of these is bad.
+- There is only one way to scale i.e. hire more people!
+- Users hate to open tickets for every task and hang on it.
+The whole ticket system is creating a pressured environment for SREs , lets call it as "Push" mechanism is working here.
+</code></pre>
+
+<h3 id="how-did-we-reach-here">How did we reach here?</h3>
+<pre><code>Have we really, ever gave a thought that do we really need Ticket System?  
+Actually No! It's not required.
+But then you need a way to track your work, right!
+</code></pre>
+
+<h3 id="some-of-the-ways-that-different-organizations-has-adopted">Some of the ways that different organizations has adopted.</h3>
+<h4 id="1-baseline--convert-push---collaboration">1) Baseline- Convert “Push” -&gt; “Collaboration”</h4>
+<pre><code>How? There are 2 ways: 
+- Put one SRE member in different development team's Agile meetings.
+- Put each team lead of different development team's in SRE Agile meetings.
+	&gt; Another version could be SRE communicating with all stakeholders of the product not just developers.
+Both of the above points gives a single solution by solving Administartion related problems in Dev teams. Isn't it? 
+SRE memebers become aware of their problems in the meetings and can solve them.
+Dev teams can also use SRE chat rooms for their issues.
+</code></pre>
+
+<h4 id="2-baseline--convert-push---automations">2) Baseline- Convert “Push” -&gt; “Automations”</h4>
+<pre><code>Some eg:
+- Automating compilation and build process in CI/CD for developers to do on their own. Click or give some APIs and it's done.
+- Auotmate load balance to point at service replicas.
+- Automate VM creation.
+- Laptop distribution: For new employees we should maintain laptop distribution system as-
+		&gt; SRE tracks HR DB for new employee, Emails when eligible and creates a portal for ordering machines.
+		&gt; Automates OS installation for use by laptop delivery crew.
+		&gt; Does capacity planning generates purchase orders etc for purchasing  and finance group.
+Here we try to automate as much as possible for users to get the task done by automations instead of killing SRE's time. This also keeps motivation of SRE high.
+</code></pre>
+
+<h4 id="3-baseline--convert-push---pull">3) Baseline- Convert “Push” -&gt; “Pull”</h4>
+<pre><code>Use Kanban boards, some good eg are:
+- Trello board
+- Learnkit.com
+</code></pre>
+
+<div><figure><img src="/media/img/kanban-board.png" /><figcaption></figcaption></figure></div>
+
+<pre><code>- Assign 3 task per person in action per week. You pull 3 tasks through system per week.
+This way everyone could prioritize their tasks. It's upto the product management to decide in case of high loads whether prioritize the tasks or hire more people.
+</code></pre>
+
+<p>Some References:
+<a href="https://www.usenix.org/conference/lisa15/conference-program/presentation/limoncelli">
+Reference
+</a></p>
+
+        </section>
+
+        <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+        
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var config = {
+  'disqus_shortname': 'jekylldecent'
+};
+</script>
+<script src="/js/jquery-1.12.0.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.js"></script>
+<script src="/js/post.js"></script>
+
+
+        <footer class="site-footer">
+    <button class="go-to-top"></button>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+</body>
+
+<script src="/js/global.js"></script>
+</script>
+</html>

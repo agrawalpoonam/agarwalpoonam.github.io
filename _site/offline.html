@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +9,7 @@
     <meta name="description" content="This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.">
   
     
-    <meta name="keywords" content="demo, theme, example, github, jekyll, features">
+    <meta name="keywords" content="demo, theme, example, github, jekyll, features" />
     
 
     <meta name="HandheldFriendly" content="True">
@@ -19,25 +18,25 @@
 	
     <!-- Open Graph data -->
 
-    <meta property="og:title" content="Life  is  Short  Do  More">
-	<meta property="og:type" content="website">
+    <meta property="og:title" content="Life  is  Short  Do  More" />
+	<meta property="og:type" content="website" />
 
 
 
 
-<meta property="og:image" content="/assets/mountain-cover.jpg">
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
 
 
-<meta property="og:site_name" content="Life  is  Short  Do  More">
-<meta property="og:description" content="This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.">
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels." />
 
 
-<meta property="og:url" content="/offline">
+<meta property="og:url" content="/offline" />
 
 
     
-	<meta property="article:author" content="http://jwillmer.de/about">
-	<link rel="author" href="http://jwillmer.de/about">
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
 
 
 
@@ -66,7 +65,7 @@
 <meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
 <!-- End: Twitter data -->	
 
-    <link href="https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield%7CMerriweather:300italic,700,300,700italic%7COpen+Sans:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/screen.css">
     <link rel="stylesheet" href="/css/prism.css">
     <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
@@ -82,12 +81,17 @@
     <div class="site-wrapper">
         
 
-<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)">
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
     <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
     <h2 class="page-description"></h2>
     <div class="nav">
         <ul>
             <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
 
             
             
@@ -144,7 +148,7 @@
     </div>
 </header>
         <h2 class="post-title">All posts in one long list</h2>
-<hr>
+<hr />
 
 
 
@@ -152,134 +156,606 @@
     <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
 
         <header class="post-header short-diver">
-            <h1 class="post-title" itemprop="name headline">Theme Installation and Usage</h1>
+            <h1 class="post-title" itemprop="name headline">RSA algorithm (asymmetric algorithm)</h1>
             <section class="post-meta">
-                <time datetime="2016-06-08T20:55:00+05:30" itemprop="datePublished">Jun 8, 2016</time> 
+                <time datetime="2020-04-25T22:40:00+05:30" itemprop="datePublished">Apr 25, 2020</time> 
                 on
                 
-                <span><a href="">Jekyll</a></span>
+                <span><a href="">Asymmetric</a></span>
                 
-                <span><a href="">Theme</a></span>
+                <span><a href="">algorithm,</a></span>
                 
-                <span><a href="">GitHub</a></span>
+                <span><a href="">Public</a></span>
                 
-                <span><a href="">Installation</a></span>
+                <span><a href="">key</a></span>
+                
+                <span><a href="">Cryptography</a></span>
                 
             </section>
         </header>
 
         <section class="post-content short-diver" itemprop="articleBody">
-            <p>This is a blog template for a static site generator named <a href="https://jekyllrb.com/docs/home/">Jekyll</a> based on a <a href="https://ghost.org">Ghost</a> template named <a href="https://github.com/serenader2014/decent">Decent</a>. 
-If you like to see the theme in production have a look at <a href="http://jwillmer.de">jwillmer.de</a>.</p>
+            <h3 id="what-is-rsa-algorithm">What is RSA algorithm?</h3>
 
-<h2 id="screenshots">Screenshots</h2>
+<pre><code>RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+</code></pre>
 
-<div class="album">
+<h3 id="example">Example:</h3>
+
+<pre><code>-   EncryptionKey =&gt; (5,14)
+    Suppose a text to be encrypted is letter 'B' -&gt;  2, then  2^5(mod 14)
+    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&gt; (5,14)
+    is encryption key
+
+
+    DecriptionKey: (11, 14),
+    4^11(mod 14) =&gt; 2 == B, where (d,N) that is 4^d(mod N) =&gt; (11, 14) is
+    decription key
+
+-   How does it work, what is the algoritm? There is no magic it is just
+    simple mathematics:
+    Take two prime numbers (numbers can be hundreds &amp; hundreds digit long),
+    I choose small number (for better explanation) (2,7) where p = 2, q = 7
+    -   N = p * q =&gt; N = 14
+
+    -   choose φ(N) = (p-1)(q-1)
+
+    -   Now choose a number for encryption e where
+        { 1 &lt; e &lt; φ(N) and coprime with N and φ(N)}
+        1 &lt; e &lt; 6 =  2, 3, 4, 5
+        number which is coprime with 14 and 6 is 5
+        so our lock is (e,N) = (5,14)
+
+    -   Now for decryption we choose d such that {d.e(mod φ(N))}
+        that is -&gt; d.5(mod 6) = 1
+        the options could be -&gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
+        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
+        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
+
+        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
+        So the key is (11, 14)
+</code></pre>
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">CI/CD pipeline with docker and kubernetes</h1>
+            <section class="post-meta">
+                <time datetime="2020-04-14T22:40:00+05:30" itemprop="datePublished">Apr 14, 2020</time> 
+                on
+                
+                <span><a href="">Jenkins,</a></span>
+                
+                <span><a href="">Docker</a></span>
+                
+                <span><a href="">,</a></span>
+                
+                <span><a href="">Kubernetes</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h3 id="setup-jenkins-server">Setup Jenkins server</h3>
+
+<pre><code>$ mkdir jenkins
+$ cd jenkins
+$ vim Vagrantfile
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-20.04"
+  config.vm.network "forwarded_port", guest: 8080, host: 8081, host_ip: "127.0.0.1"
+  config.vm.network "private_network", ip: "192.168.10.31"
+
+  config.vm.provision "shell", inline: &lt;&lt;-SHELL
+    sudo apt-get update
+    sudo apt-get -y upgrade
+    sudo apt install openjdk-11-jdk -y  
+    wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+    echo "deb https://pkg.jenkins.io/debian-stable binary/" | sudo tee -a  /etc/apt/sources.list &gt; /dev/null
+    sudo apt-get update
+    sudo apt-get install -y jenkins
+  SHELL
+end
+
+$ vagrant up
+$ vagrabt ssh
+</code></pre>
+
+<h3 id="setup-repository-for-docker">Setup Repository for docker</h3>
+
+<pre><code>$ sudo apt-get update \
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+</code></pre>
+
+<h3 id="install-docker-engine">Install docker engine</h3>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre>
+
+<h4 id="updated-user-jenkins-to-run-docker">updated user jenkins to run docker</h4>
+<pre><code>$ sudo usermod -G docker jenkins	
+$ sudo apt-get install acl
+
+$ sudo setfacl -m user:jenkins:rw /var/run/docker.sock
+</code></pre>
+
+<h3 id="setup-kubernetes">Setup Kubernetes</h3>
+
+<pre><code>$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+$ chmod +x ./kubectl
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+
+$ cp -r ~/.kube /var/lib/jenkins/
+$ sudo chown -R jenkins:jenkins /var/lib/jenkins/
+$ vim /var/lib/jenkins/.kube/config
+
+		apiVersion: v1
+		clusters:
+		- cluster:
+		    certificate-authority: /var/lib/jenkins/.minikube/ca.crt
+		    server: https://192.168.99.100:8443
+		  name: minikube
+		contexts:
+		- context:
+		    cluster: minikube
+		    user: minikube
+		  name: minikube
+		current-context: minikube
+		kind: Config
+		preferences: {}
+		users:
+		- name: minikube
+		  user:
+		    client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
+		    client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
+
+
+❖ make sure the permission of the following files should be as follows
+	➢ client.crt 644, 
+	➢ client.key 600, 
+	➢ ca.crt 644
+
+
+$ Adding docker hub credentials in jenkins
+Credentials → System → Global Credentials → Add Credentials
+</code></pre>
+
+<div>
 
 <figure>
-<img src="/media/img/2016-06-08-Readme-front-page-previewe.jpg">
-<figcaption>Frontpage</figcaption>
-</figure>
-
-<figure>
-<img src="/media/img/2016-06-08-Readme-post-preview.jpg">
-<figcaption>Post</figcaption>
-</figure>
-
-<figure>
-<img src="/media/img/2016-06-08-Readme-content-preview.jpg">
-<figcaption>Demo</figcaption>
-</figure>
-
-<figure>
-<img src="/media/img/2016-06-08-Readme-about-preview.jpg">
-<figcaption>About Page</figcaption>
+<img src="/media/img/credentials.png" />
+<figcaption>Login Details</figcaption>
 </figure>
 
 </div>
 
-<h2 id="installation">Installation</h2>
+<p>Job → Pipeline → Poll SCM(after every push it will auto build the job)</p>
 
+<div>
+
+<figure>
+<img src="/media/img/pollscm.png" />
+<figcaption>Poll Scm</figcaption>
+</figure>
+
+</div>
+
+<pre><code>❖ Add the groovy script
+	➢ either via copy
+	➢ or via SCM
+❖ Apply → Save → Build
+❖ Test on command line
+	➢ kubectl get svc
+	➢ http://192.168.10.30:&lt;&lt; port &gt;&gt;/hello/deepak
+</code></pre>
+
+<h3 id="the-groovy-script">The groovy script:</h3>
+
+<pre><code>pipeline {
+   agent any
+   environment {
+       dockerHub = "docker.io"
+       docker_cred = 'dockerhub'
+   }
+   stages {
+		stage('SCM Checkout'){
+			steps{
+				checkout([$class: 'GitSCM',branches: [[name: 'origin/master']],extensions: [[$class: 'WipeWorkspace']],userRemoteConfigs: [[url: 'https://github.com/agrawalpoonam/python-app.git']]  ])
+			}
+		}
+		stage("Build Docker Image"){
+			steps{
+				sh 'pwd'
+				sh "docker build -t poonamag/test-app . --no-cache"
+			}
+		}
+		stage('Upload Image to DockerHub'){
+			steps{ 
+	     	    withCredentials([
+     		 	[$class: 'UsernamePasswordMultiBinding', credentialsId: docker_cred, usernameVariable: 'dockeruser', passwordVariable: 'dockerpass'],
+  				]){
+					sh "docker login -u ${dockeruser} -p ${dockerpass} ${dockerHub}"
+  				}
+	    	  	sh 'docker push poonamag/test-app'
+	    	 }
+	  	}
+		stage("Running Docker Image"){
+			steps{
+				sh "kubectl get namespaces"
+				sh "kubectl apply -f deployment.yaml"
+			}
+		}
+}
+}
+</code></pre>
+
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Transactional System Administration Vs Service Centric Model in SRE</h1>
+            <section class="post-meta">
+                <time datetime="2019-03-27T22:40:00+05:30" itemprop="datePublished">Mar 27, 2019</time> 
+                on
+                
+                <span><a href="">TransactionalAdministrationSystem</a></span>
+                
+                <span><a href="">+</a></span>
+                
+                <span><a href="">ServiceCentricModel</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h3 id="what-is-transactional-system-administration">What is Transactional System Administration?</h3>
+<pre><code>Think of it as a scenario between Customer and SysAdmin:
+- Customer : Would you do xyz task?
+- SysAdmin : Yes, Done!
+- Customer verifies. 
+This is a typical transaction system. The best example is ticket system.
+</code></pre>
+
+<h3 id="why-is-it-bad">Why is it Bad?</h3>
+<pre><code>- It is a reactive process as the SysAdmin has to do job in a limited time frame which creates pressure over them.
+- It discourages the long term planning, for eg. Nobody comes and says I am working on service and will need this machine configuration in future. As a result there are emergency hacks and outages. Operations is an afterthought.
+- No automation for optimization and prioritization of the requests.
+- Customer considers SRE as "servant" and SRE thinks customer as "ever demanding child". Both of these is bad.
+- There is only one way to scale i.e. hire more people!
+- Users hate to open tickets for every task and hang on it.
+The whole ticket system is creating a pressured environment for SREs , lets call it as "Push" mechanism is working here.
+</code></pre>
+
+<h3 id="how-did-we-reach-here">How did we reach here?</h3>
+<pre><code>Have we really, ever gave a thought that do we really need Ticket System?  
+Actually No! It's not required.
+But then you need a way to track your work, right!
+</code></pre>
+
+<h3 id="some-of-the-ways-that-different-organizations-has-adopted">Some of the ways that different organizations has adopted.</h3>
+<h4 id="1-baseline--convert-push---collaboration">1) Baseline- Convert “Push” -&gt; “Collaboration”</h4>
+<pre><code>How? There are 2 ways: 
+- Put one SRE member in different development team's Agile meetings.
+- Put each team lead of different development team's in SRE Agile meetings.
+	&gt; Another version could be SRE communicating with all stakeholders of the product not just developers.
+Both of the above points gives a single solution by solving Administartion related problems in Dev teams. Isn't it? 
+SRE memebers become aware of their problems in the meetings and can solve them.
+Dev teams can also use SRE chat rooms for their issues.
+</code></pre>
+
+<h4 id="2-baseline--convert-push---automations">2) Baseline- Convert “Push” -&gt; “Automations”</h4>
+<pre><code>Some eg:
+- Automating compilation and build process in CI/CD for developers to do on their own. Click or give some APIs and it's done.
+- Auotmate load balance to point at service replicas.
+- Automate VM creation.
+- Laptop distribution: For new employees we should maintain laptop distribution system as-
+		&gt; SRE tracks HR DB for new employee, Emails when eligible and creates a portal for ordering machines.
+		&gt; Automates OS installation for use by laptop delivery crew.
+		&gt; Does capacity planning generates purchase orders etc for purchasing  and finance group.
+Here we try to automate as much as possible for users to get the task done by automations instead of killing SRE's time. This also keeps motivation of SRE high.
+</code></pre>
+
+<h4 id="3-baseline--convert-push---pull">3) Baseline- Convert “Push” -&gt; “Pull”</h4>
+<pre><code>Use Kanban boards, some good eg are:
+- Trello board
+- Learnkit.com
+</code></pre>
+
+<div><figure><img src="/media/img/kanban-board.png" /><figcaption></figcaption></figure></div>
+
+<pre><code>- Assign 3 task per person in action per week. You pull 3 tasks through system per week.
+This way everyone could prioritize their tasks. It's upto the product management to decide in case of high loads whether prioritize the tasks or hire more people.
+</code></pre>
+
+<p>Some References:
+<a href="https://www.usenix.org/conference/lisa15/conference-program/presentation/limoncelli">
+Reference
+</a></p>
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Load average in cpu</h1>
+            <section class="post-meta">
+                <time datetime="2019-03-24T02:49:00+05:30" itemprop="datePublished">Mar 24, 2019</time> 
+                on
+                
+                <span><a href="">Load</a></span>
+                
+                <span><a href="">Average+</a></span>
+                
+                <span><a href="">CPU</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h2 id="understanding-cpu-load-average-on-the-basis-of-following-variables">Understanding CPU load Average On the basis of following variables:</h2>
+<h4 id="--cpu-cores">- CPU cores.</h4>
+<h4 id="--cpu-load-average">- CPU load average.</h4>
+<h4 id="--cpu-load-average-on-the-basis-of-number-of-cpu">- CPU load average on the basis of number of CPU.</h4>
+
+<h4 id="cpu-cores">CPU Cores</h4>
 <ul>
-  <li>To generate/host the blog you need to <a href="https://jekyllrb.com/docs/installation/">install Jekyll</a>.</li>
-  <li>For the plugins (github-pages) you need to install <a href="http://bundler.io/">Bundler</a>: <code>gem install bundler</code>
-    <ul>
-      <li>Open a command prompt and install the plugins (github-pages): <code>bundle install</code>
-</li>
-      <li>On Windows you will propably get an exception. To solve it you can read <a href="http://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46">How to install Jekyll and pages-gem on Windows (x64)</a> or you remove the plugins by deleting the <code>Gemfile</code> and delete all <code>gems:</code> from the <code>_config.yml</code>
-</li>
-    </ul>
+  <li>We can check the number of cpu cores by one of the following commands:
+$ nproc
+4</li>
+</ul>
+
+<p>OR
+lscpu</p>
+
+<p>$ grep ‘model name’ /proc/cpuinfo | wc -l
+4</p>
+
+<h4 id="cpu-load-average">CPU load average</h4>
+<ul>
+  <li>We can check load on the cpu with the following commands:
+$ cat /proc/loadavg</li>
+</ul>
+
+<p>2.48 1.69 1.42 5/889 10570</p>
+
+<p>$ cat /proc/loadavg</p>
+
+<p>2.48 1.69 1.42 5/889 10570
+top - 00:07:16 up  5:36,  1 user,  load average: 0.86, 0.78, 0.77
+Tasks: 312 total,   1 running, 256 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.7 us,  0.8 sy,  0.0 ni, 96.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  8033996 total,  1619612 free,  3388332 used,  3026052 buff/cache
+KiB Swap:  2097148 total,  2097148 free,        0 used.  3859444 avail Mem</p>
+
+<p>PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                 <br />
+ 3059 poonam    20   0 3839156 223956  74324 S   3.3  2.8   2:53.46 gnome-shell                                                             <br />
+ 2913 poonam    20   0  399424  85528  58908 S   3.0  1.1   1:38.02 Xorg                                                                    <br />
+ 9269 poonam    20   0  679612  56704  34448 S   2.0  0.7   0:01.05 terminator                                                              <br />
+ 8075 poonam    20   0  407236  98308   9112 S   1.3  1.2   2:42.54 plugin_host</p>
+
+<p>$ uptime
+ 00:08:07 up  5:36,  1 user,  load average: 0.84, 0.78, 0.78</p>
+
+<p>$ cat /proc/loadavg
+0.96 0.82 0.79 1/1269 10197</p>
+
+<h4 id="cpu-load-average-on-the-basis-of-number-of-cpu">CPU load average on the basis of number of CPU</h4>
+<p>Let’s say we have load averages below:</p>
+
+<p>23:16:49 up  10:49,  5 user,  load average: 1.00, 0.40, 3.35</p>
+
+<h5 id="on-a-single-core-system-this-would-mean">On a single core system this would mean:</h5>
+<ul>
+  <li>
+    <p>The CPU was fully (100%) utilized on average; 1 processes was running on the CPU (1.00) over the last 1 minute.</p>
+  </li>
+  <li>
+    <p>The CPU was idle by 60% on average; no processes were waiting for CPU time (0.40) over the last 5 minutes.</p>
+  </li>
+  <li>
+    <p>The CPU was overloaded by 235% on average; 2.35 processes were waiting for CPU time (3.35) over the last 15 minutes.</p>
   </li>
 </ul>
 
-<h3 id="build">Build</h3>
-
+<h5 id="on-a-dual-core-system-this-would-mean">On a dual-core system this would mean:</h5>
 <ul>
-  <li>To build the static site you can use the generated site folder that Jekyll creates when you use <code>jekyll serve</code> or you can build it explicitly with <code>jekyll build</code>.</li>
-  <li>If you like to use GitHub to host your blog you can fork this project and publish the code to <code>gh-pages</code>. GitHub has jekyll included and will generate the site for you.</li>
+  <li>
+    <p>The one CPU was 100% idle on average, one CPU was being used; no processes were waiting for CPU time(1.00) over the last 1 minute.</p>
+  </li>
+  <li>
+    <p>The CPUs were idle by 160% on average; no processes were waiting for CPU time. (0.40) over the last 5 minutes.</p>
+  </li>
+  <li>
+    <p>The CPUs were overloaded by 135% on average; 1.35 processes were waiting for CPU time. (3.35) over the last 15 minutes.</p>
+  </li>
 </ul>
 
-<h2 id="user-content">User Content</h2>
-
-<p>Blogposts can be written in <a href="https://de.wikipedia.org/wiki/Markdown">Markdown</a>.</p>
-
-<ul>
-  <li>The folder for blog content is <code>_posts</code>
-</li>
-  <li>For author details you need to modify <code>_data/authors.yml</code>
-</li>
-  <li>For site properties (like the name) you need to modify <code>_config.yml</code> and <code>robots.txt</code>
-</li>
-  <li>For the about page you need to modify the <code>about.md</code> in <code>_pages</code>
-</li>
-</ul>
-
-<p>After modifying <code>*.yml</code> files you need to restart jekyll to take effect.</p>
-
-<h3 id="yaml-features">YAML Features</h3>
-
-<p>Following (additional) features are supported in the header (<a href="https://jekyllrb.com/docs/frontmatter/">YAML Front Matter</a>) of each post. A detailed description can be found in the <a href="/blog/features/YAML-Features">YAML Custom Features post</a>.</p>
-
-<pre><code class="language-bash">---
-title:         Example      #Page/post title
-author:        jwillmer     #Page/post author
-cover:         /image.jpg   #Optional: Posibillity to change cover on a post/page
-redirect_from: /foo         #Optional: Redirect url
-visible:       false        #Optional: Hide page from listing in the menu.
-weight:        5            #Optional: Influence sorting of pages in the menu
-menutitle:     Offline      #Optional: Use a secondary name in the menu/post list
-tags:          hallo welt   #Optional: Will be displayed as tags and as keywords in posts
-keywords:      hallo welt   #Optional: Will add keywords to a page
-language:      en           #Optional: Will set a specific language of the page
----
-</code></pre>
-
-<h2 id="license">License</h2>
-
-<p>The theme is released under <strong><a href="https://github.com/jwillmer/jekyllDecent/blob/gh-pages/LICENSE">The MIT License (MIT)</a></strong>.</p>
-
-<pre><code>The MIT License (MIT)
-
-Copyright (c) 2016 Jens Willmer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.    
-</code></pre>
 
         </section>
 
@@ -291,26 +767,6 @@ SOFTWARE.
     
     
 
-    
-    
-    <div class="author-image">
-        <div class="img image-bg" style="background-image: url(/assets/jwillmer.jpg)">
-            <a class="hidden" href="/assets/jwillmer.jpg" itemprop="image">Jens Willmer's Picture</a>
-        </div>
-    </div>
-    
-
-    <div class="short-diver">
-        <h4 class="author" itemprop="name">Jens Willmer</h4>
-
-        <p itemprop="description">All about technology</p>
-
-        <div class="author-meta">
-            <span class="author-location icon-location" itemprop="nationality">Germany</span>
-            <span class="author-stats"><i class="icon-stats"></i>4 posts</span>
-            <span class="author-link icon-link" itemprop="url"><a href="http://jwillmer.de/about">About</a></span>
-        </div>
-    </div>
     
 
 </div>
@@ -361,212 +817,42 @@ SOFTWARE.
     <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
 
         <header class="post-header short-diver">
-            <h1 class="post-title" itemprop="name headline">Theme Features</h1>
+            <h1 class="post-title" itemprop="name headline">What happens before Linux Boots up!</h1>
             <section class="post-meta">
-                <time datetime="2016-06-07T15:40:00+05:30" itemprop="datePublished">Jun 7, 2016</time> 
+                <time datetime="2018-11-28T01:48:00+05:30" itemprop="datePublished">Nov 28, 2018</time> 
                 on
                 
-                <span><a href="">Jekyll</a></span>
+                <span><a href="">BIOS</a></span>
                 
-                <span><a href="">Theme</a></span>
+                <span><a href="">+</a></span>
                 
-                <span><a href="">GitHub</a></span>
+                <span><a href="">File</a></span>
                 
-                <span><a href="">Installation</a></span>
+                <span><a href="">+</a></span>
+                
+                <span><a href="">MagicNumber</a></span>
                 
             </section>
         </header>
 
         <section class="post-content short-diver" itemprop="articleBody">
-            <p>The features described in this section are specific for this template. All other language features can be found in the <a href="http://kramdown.gettalong.org/syntax.html">kramdown documentation</a>.</p>
+            <h2 id="the-warm-up-before-the-boot-process">The Warm up before the Boot Process</h2>
+<pre><code>On the ground level boot process starts with loading the operating system (where machine doesn't know anything about operating system) from any of the storage device.
+So without wasting time I will get into the deeper level.
 
-<h3 id="image-features">Image Features</h3>
+On this initial stage we donot have privilege even of the file system. What we have is the BIOS - a collection of software routines that are initially loaded from chip into the memory and initialised when we switch on the computer. BIOS makes some hardware checks to ensure all hardaware componenets are at stable switched on state.
 
-<h4 id="parallax-effect">Parallax Effect</h4>
+So, now we know that we have something called BIOS that could be of some help.
+BIOS cannot load the operating system as a 'file' as we mentioned above that it doesn't know about file system.
 
-<p>Keep in mind that paralax effect will not be captured if you like to print the page.</p>
+BIOS must read specific sectors of data from specific physical location of the disk devices.
+BIOS load the OS from the first sector of the disk device. Here we can have multiple disk devices that may confuse BIOS to which device it should read from.
 
-<pre><code class="language-html">&lt;div class="bg-scroll" style="background-image: url('/media/img/mountain1.jpg')"&gt;&lt;/div&gt;
+CPU cannot differentiate between code and data, for CPU both are instructions.
+Here comes the magic number which is a unsophisticated way of BIOS to determine the boot sector.
+BIOS loops through each disk device, read the boot sector into memory and search for the magic number which is 0xaa55 and instructs CPU to begin executing the first boot sector it finds that ends with the magic number.
 </code></pre>
 
-<div class="bg-scroll" style="background-image: url('/media/img/mountain1.jpg')"></div>
-
-<h4 id="caption-for-image">Caption for Image</h4>
-
-<pre><code class="language-html">&lt;figure&gt;
-   &lt;img src="/media/img/mountain2.jpg" /&gt;
-   &lt;figcaption&gt;A nice mountain.&lt;/figcaption&gt;
-&lt;/figure&gt;
-</code></pre>
-
-<figure>
-<img src="/media/img/mountain2.jpg">
-<figcaption>A nice mountain</figcaption>
-</figure>
-
-<h4 id="image-allignment">Image Allignment</h4>
-
-<pre><code class="language-html">![](/media/img/mountain3.gif#right)
-![](/media/img/mountain2.gif#left)
-</code></pre>
-
-<p>Allignment with caption</p>
-
-<pre><code class="language-html">&lt;aside&gt;
-   &lt;figure class="left"&gt;
-      &lt;img src="/media/img/mountain3.jpg#left" /&gt;
-      &lt;figcaption&gt;What a view!&lt;/figcaption&gt;
-   &lt;/figure&gt;
-&lt;/aside&gt;
-</code></pre>
-
-<p><img src="/media/img/mountain2.jpg#right" alt=""></p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent accumsan ante nulla, quis pulvinar nibh tempus sed. In congue congue odio, vel ornare mauris ultrices vel. Vestibulum tristique eros at enim vulputate fringilla. Nullam non augue sit amet elit interdum tempus non ut justo.</p>
-
-<aside>
-<figure class="left">
-<img src="/media/img/mountain3.jpg">
-<figcaption>What a view!</figcaption>
-</figure>
-</aside>
-
-<p>Phasellus ut ipsum id leo sagittis pretium a quis neque. Maecenas rutrum lectus id magna malesuada, non dapibus neque tincidunt. Suspendisse ultrices accumsan eros, sit amet facilisis quam hendrerit a. Integer sed felis et diam efficitur accumsan. Suspendisse facilisis lectus non orci mattis vestibulum. Suspendisse molestie vulputate nunc non tincidunt. Maecenas vulputate, mauris ut rhoncus vulputate, tellus augue aliquet nibh, vel egestas nulla ipsum bibendum lorem. Pellentesque posuere laoreet lectus eget luctus. Vestibulum mattis ut ligula sed sodales. Vestibulum sit amet viverra arcu.</p>
-
-<h4 id="fullscreen-image">Fullscreen image</h4>
-
-<pre><code class="language-html">&lt;div class="large"&gt;
-   ![](/media/img/mountain2.jpg)
-&lt;/div&gt;
-</code></pre>
-
-<p>With caption</p>
-
-<pre><code class="language-html">&lt;figure class="large" markdown="1"&gt;   
-   ![](/media/img/mountain2.jpg)
-   &lt;figcaption&gt;On top of the mountain!&lt;/figcaption&gt;
-&lt;/figure&gt;
-</code></pre>
-
-<figure class="large">
-  <p><img src="/media/img/mountain2.jpg" alt=""></p>
-  <figcaption>On top of the mountain!</figcaption>
-</figure>
-
-<h4 id="image-gallery">Image Gallery</h4>
-
-<pre><code class="language-html">&lt;div class="album"&gt;
-   ![](/media/img/Screenshot_2016-04-09-19-16-28.png)
-   ![](/media/img/Screenshot_2016-04-02-00-48-25.png)
-   ![](/media/img/Screenshot_2016-04-01-12-03-36.png)
-   ![](/media/img/Screenshot_2016-04-01-12-01-33.png)
-   ![](/media/img/Screenshot_2016-03-24-12-13-58.png)
-   ![](/media/img/Screenshot_2016-03-17-22-50-05.png)
-&lt;/div&gt;
-</code></pre>
-
-<p>With caption</p>
-
-<pre><code class="language-html">&lt;div class="album"&gt;
-   // ...
-   &lt;figure&gt;
-      &lt;img src="/media/img/mountain2.jpg" /&gt;
-      &lt;figcaption&gt;On top of the mountain!&lt;/figcaption&gt;
-   &lt;/figure&gt;
-   &lt;figure&gt;
-      &lt;img src="/media/img/mountain3.jpg" /&gt;
-      &lt;figcaption&gt;What a view&lt;/figcaption&gt;
-   &lt;/figure&gt;
-&lt;/div&gt;
-</code></pre>
-
-<div class="album">
-   <figure>
-      <img src="/media/img/mountain1.jpg">
-      <figcaption>Mountain and lake</figcaption>
-   </figure>   
-   <figure>
-      <img src="/media/img/mountain2.jpg">
-      <figcaption>On top of the mountain!</figcaption>
-   </figure>   
-   <figure>
-      <img src="/media/img/mountain3.jpg">
-      <figcaption>What a view</figcaption>
-   </figure>
-</div>
-
-<h3 id="sourcecode-features">Sourcecode Features</h3>
-
-<p>With language highlighting</p>
-
-<pre><code class="language-html">    ```html
-    &lt;script&gt;
-        var decentThemeConfig = {
-            ga: 'YOUR TRACK ID'
-        };
-    &lt;/script&gt;
-    ```
-</code></pre>
-
-<p>With language highlighting, line numbers and line highlighting</p>
-
-<pre><code class="language-javascript">&lt;pre data-line="5" class="line-numbers language-javascript"&gt;&lt;code&gt;
-   Array.prototype.uniq = function () {
-       var map = {};
-       return this.filter(function (item) {
-           if (map[item]) {
-               return false;
-           } else {
-               map[item] = true;
-               return true;
-           }
-       });
-   };
-&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
-
-<h3 id="author-in-quote">Author in quote</h3>
-
-<pre><code>&gt; Our destiny offers not the cup of despair, but the chalice of opportunity. So let us seize it, not in fear, but in gladness.
-&gt; 
-&gt; &lt;cite&gt;——R.M. Nixon&lt;/cite&gt;
-</code></pre>
-
-<blockquote>
-  <p>Our destiny offers not the cup of despair, but the chalice of opportunity. So let us seize it, not in fear, but in gladness.</p>
-
-  <p><cite>——R.M. Nixon</cite></p>
-</blockquote>
-
-<h3 id="attention-box">Attention Box</h3>
-
-<pre><code>&lt;div class="tip"&gt;
-Chemicals including paint and thinners must be stored in labelled containers that are in good condition, as provided for in the regulations. Liquids must be placed in holding tanks.
-&lt;/div&gt;
-</code></pre>
-
-<div class="tip">
-Chemicals including paint and thinners must be stored in labelled containers that are in good condition, as provided for in the regulations. Liquids must be placed in holding tanks.
-</div>
-
-<h3 id="page">404 Page</h3>
-
-<p>The 404 page has a fuzzy search implemented that lists urls that are similar to the entered url. Try it out: <a href="/features">Unknown URL</a></p>
-
-<h3 id="json-api">JSON API</h3>
-
-<p>The theme offers a JSON API for the blog posts. You can query all blog posts via: <a href="/api/posts.json"><code>/api/posts.json</code></a></p>
-
-<h3 id="pdf-and-powerpoint-integration">PDF and PowerPoint integration</h3>
-
-<pre><code class="language-html">&lt;iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://img.labnol.org/di/PowerPoint.ppt' frameborder='0'&gt;&lt;/iframe&gt;
-</code></pre>
-
-<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=http://img.labnol.org/di/PowerPoint.ppt" frameborder="0"></iframe>
-
-<h2 id="more">More</h2>
-
-<p>More formating features can be found in the <a href="http://kramdown.gettalong.org/syntax.html">Kramdown syntax</a>.</p>
 
         </section>
 
@@ -578,26 +864,6 @@ Chemicals including paint and thinners must be stored in labelled containers tha
     
     
 
-    
-    
-    <div class="author-image">
-        <div class="img image-bg" style="background-image: url(/assets/jwillmer.jpg)">
-            <a class="hidden" href="/assets/jwillmer.jpg" itemprop="image">Jens Willmer's Picture</a>
-        </div>
-    </div>
-    
-
-    <div class="short-diver">
-        <h4 class="author" itemprop="name">Jens Willmer</h4>
-
-        <p itemprop="description">All about technology</p>
-
-        <div class="author-meta">
-            <span class="author-location icon-location" itemprop="nationality">Germany</span>
-            <span class="author-stats"><i class="icon-stats"></i>4 posts</span>
-            <span class="author-link icon-link" itemprop="url"><a href="http://jwillmer.de/about">About</a></span>
-        </div>
-    </div>
     
 
 </div>
@@ -648,98 +914,58 @@ Chemicals including paint and thinners must be stored in labelled containers tha
     <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
 
         <header class="post-header short-diver">
-            <h1 class="post-title" itemprop="name headline">YAML Custom Features</h1>
+            <h1 class="post-title" itemprop="name headline">My Art Gallery</h1>
             <section class="post-meta">
-                <time datetime="2016-04-06T03:10:00+05:30" itemprop="datePublished">Apr 6, 2016</time> 
+                <time datetime="2018-10-18T22:10:00+05:30" itemprop="datePublished">Oct 18, 2018</time> 
                 on
                 
-                <span><a href="">Jekyll</a></span>
-                
-                <span><a href="">YAML</a></span>
-                
-                <span><a href="">Features</a></span>
-                
-                <span><a href="">Explained</a></span>
+                <span><a href="">Paintings</a></span>
                 
             </section>
         </header>
 
         <section class="post-content short-diver" itemprop="articleBody">
-            <p>In this short post I changed the title that is displayed on the front page from <code>YAML Custom Features</code> to <code>YAML Features</code>.</p>
+            <p><img src="/media/img/drawing1.jpg" alt="Drawing1" height="70%" width="100%" />
+April 24, 2018 and it all began…</p>
 
-<pre><code class="language-bash">---
-title:             "YAML Custom Features"
-menutitle:         "YAML Features"
----
-</code></pre>
+<p><img src="/media/img/drawing2.jpg" alt="Drawing2" height="70%" width="100%" />
+April 25, 2018 mornings started like this…</p>
 
-<p>I also added a redirect to this post. If you browse to <a href="/YAML-Features-Redirect">YAML-Feature-Redirect</a> you should be redirected to this page. This only works if you have not removed the plugins.</p>
+<p><img src="/media/img/drawing3.jpg" alt="Drawing3" height="70%" width="100%" />
+and this one April 26 2018…</p>
 
-<pre><code class="language-bash">---
-redirect_from:     "/YAML-Features-Redirect"
----
-</code></pre>
+<p><img src="/media/img/drawing4.jpg" alt="Drawing4" height="70%" width="100%" />
+April 27 2018 …</p>
 
-<p>If you like to redirect from multible sources you can specify it as an array.</p>
+<p><img src="/media/img/drawing5.jpg" alt="Drawing5" height="70%" width="100%" />
+May 1st 2018 another one to present somebody…</p>
 
-<pre><code class="language-bash">---
-redirect_from:  
-  - "/YAML-Features-Redirect/"
-  - "/blog/old-category/YAML-Features/"
----
-</code></pre>
+<p><img src="/media/img/drawing6.jpg" alt="Drawing6" height="70%" width="100%" />
+May 2nd 2018 was also awesome…</p>
 
-<p>I also changed the cover image for this block via YAML.</p>
+<p><img src="/media/img/drawing7.jpg" alt="Drawing7" height="70%" width="100%" />
+May 5th 2018 with some break now…</p>
 
-<pre><code class="language-bash">---
-cover:         /assets/mountain-alternative-cover.jpg
----
-</code></pre>
+<p><img src="/media/img/drawing8.jpg" alt="Drawing8" height="70%" width="100%" />
+October 07 2018 and busy again with some goals….</p>
 
-<p>To generate keywords for the search engines I use the tags that you specify in the post. If you are writing a page you need to specify keywords instead of tags.</p>
+<p><img src="/media/img/drawing9.jpg" alt="Drawing9" height="70%" width="100%" />
+August 05 2019 and I am back!</p>
 
-<pre><code class="language-bash">---        
-tags:          Jekyll YAML Features Explained  #Only used in posts!
-keywords:      Jekyll YAML Features Explained  #Only used in pages!
----
-</code></pre>
+<p><img src="/media/img/dream.jpeg" alt="dream.jpeg" height="70%" width="100%" />
+August 07 2019 and Dreaming about someone…</p>
 
-<p>Post will be sorted by category on the front page. This is how you define the category in YAML.</p>
+<p><img src="/media/img/imagination.jpeg" alt="imagination.jpeg" height="70%" width="100%" />
+August 09 2019 Just the imagination..</p>
 
-<pre><code class="language-bash">---        
-category:     Readme
----
-</code></pre>
+<p><img src="/media/img/perfect_together.jpeg" alt="perfect_together.jpeg" height="70%" width="100%" />
+August 10 2019 Imperfections around but perfect together..</p>
 
-<p>On a page I have additional options. For instance I can hide the page from the menu by setting the <code>visible</code> tag to <code>false</code>.</p>
+<p><img src="/media/img/grandpa.jpg" alt="grandpa.jpg" height="70%" width="100%" />
+August 10 2019 grandpa :-)</p>
 
-<pre><code class="language-bash">---        
-visible:       false     
----
-</code></pre>
-
-<p>If I like to have the page in the menu I can add <code>weight</code> to the page in order to specify a position in the menu.</p>
-
-<pre><code class="language-bash">---        
-weight:       5  
----
-</code></pre>
-
-<p>The default language of your blog is defined in the <code>_config.yml</code> file but if you like to write a post/page in another language you can use the <code>language</code> attribute. This will specify that you are using another language on this page for search engines. Please use on of the <a href="http://www.w3schools.com/tags/ref_language_codes.asp">language codes</a> as value.</p>
-
-<pre><code class="language-bash">---        
-language:       en  
----
-</code></pre>
-
-<p>You can enable <a href="https://disqus.com/">disqus</a> comments in posts by adding <code>comments</code> to the page. To configure the disqus forum you need to modify the <code>disqus_shortname</code> in the <code>_config.yml</code> file.</p>
-
-<pre><code class="language-bash">---        
-comments:       true  
----
-</code></pre>
-
-<p>Additional features, that can be specified, can be found in the <a href="https://jekyllrb.com/docs/frontmatter/">YAML Front Matter documentation</a>.</p>
+<p><img src="/media/img/kashmir.jpg" alt="kashmir.jpg" height="70%" width="100%" />
+August 12 2019 A view of Kashmir… (use of water color)</p>
 
         </section>
 
@@ -751,26 +977,6 @@ comments:       true
     
     
 
-    
-    
-    <div class="author-image">
-        <div class="img image-bg" style="background-image: url(/assets/jwillmer.jpg)">
-            <a class="hidden" href="/assets/jwillmer.jpg" itemprop="image">Jens Willmer's Picture</a>
-        </div>
-    </div>
-    
-
-    <div class="short-diver">
-        <h4 class="author" itemprop="name">Jens Willmer</h4>
-
-        <p itemprop="description">All about technology</p>
-
-        <div class="author-meta">
-            <span class="author-location icon-location" itemprop="nationality">Germany</span>
-            <span class="author-stats"><i class="icon-stats"></i>4 posts</span>
-            <span class="author-link icon-link" itemprop="url"><a href="http://jwillmer.de/about">About</a></span>
-        </div>
-    </div>
     
 
 </div>
@@ -821,123 +1027,349 @@ comments:       true
     <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
 
         <header class="post-header short-diver">
-            <h1 class="post-title" itemprop="name headline">This post demonstrates post content styles</h1>
+            <h1 class="post-title" itemprop="name headline">How to setup Mesos, Marathon, Zookeeper and Docker</h1>
             <section class="post-meta">
-                <time datetime="2016-03-05T00:00:00+05:30" itemprop="datePublished">Mar 5, 2016</time> 
+                <time datetime="2016-12-15T03:24:00+05:30" itemprop="datePublished">Dec 15, 2016</time> 
                 on
                 
-                <span><a href="">Jekyll</a></span>
-                
-                <span><a href="">Content</a></span>
-                
-                <span><a href="">Demo</a></span>
+                <span><a href="">Mesos+Marathon+Zookeeper+Docker</a></span>
                 
             </section>
         </header>
 
         <section class="post-content short-diver" itemprop="articleBody">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.</p>
-
-<h2 id="some-great-heading-h2">Some great heading (h2)</h2>
-
-<p>Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.</p>
-
-<p>Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<h2 id="another-great-heading-h2">Another great heading (h2)</h2>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.</p>
-
-<h3 id="some-great-subheading-h3">Some great subheading (h3)</h3>
-
-<p>Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum.</p>
-
-<p>Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.</p>
-
-<h3 id="some-great-subheading-h3-1">Some great subheading (h3)</h3>
-
-<p>Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
-
-<blockquote>
-  <p>This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it.</p>
-</blockquote>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt.</p>
-
-<h3 id="some-great-subheading-h3-2">Some great subheading (h3)</h3>
-
-<p>Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum.</p>
-
-<pre><code class="language-html">&lt;html&gt;
-  &lt;head&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;Hello, World!&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<h4 id="you-might-want-a-sub-subheading-h4">You might want a sub-subheading (h4)</h4>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<h4 id="but-its-probably-overkill-h4">But it’s probably overkill (h4)</h4>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
-
-<h2 id="specifying-some-footnotes-h2">Specifying some footnotes (h2)</h2>
-
-<p>This is text with a footnote. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<h3 id="oh-hai-an-unordered-list">Oh hai, an unordered list!!</h3>
-
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
+            <h1 id="mesos">Mesos</h1>
 
 <ul>
-  <li>First item, yo</li>
-  <li>Second item, dawg</li>
-  <li>Third item, what what?!</li>
-  <li>Fourth item, fo sheezy my neezy</li>
+  <li>is open source cluster manager, It provides resource isolation and sharing across distributed applications.</li>
+  <li>Mesos consists of a master daemon that manages slave daemons running on each cluster node. Mesos frameworks are applications that run on Mesos and run tasks on these slaves</li>
+  <li>Mesos uses a two-level scheduling mechanism where resource offers are made to frameworks. The Mesos master node decides how many resources to offer each framework, while each framework determines the resources it accepts and what application to execute on those resources.
+For more insight refer this: <a href="https://mesos.apache.org/documentation/latest/architecture/">
+Mesos Architecture and Overview
+</a></li>
 </ul>
 
-<h3 id="oh-hai-an-ordered-list">Oh hai, an ordered list!!</h3>
+<h1 id="marathon">Marathon</h1>
+<ul>
+  <li>is a container orchestration platform running on Mesos.</li>
+  <li>Multiple Container formats are supported.
+For more insight refer this: <a href="https://mesosphere.github.io/marathon/">
+Marathon Architecture and Overview
+</a></li>
+</ul>
 
-<p>In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.</p>
+<h1 id="zookeeper">Zookeeper</h1>
+<ul>
+  <li>ZooKeeper is a distributed co-ordination service to manage large set of hosts. Co-ordinating and managing a service in a distributed environment is solved by ZooKeeper with its simple architecture and API. </li>
+  <li>If the Mesos master is unavailable, existing tasks can continue to execute, but new resources cannot be allocated and new tasks cannot be launched. To reduce the chance of this situation occurring, Mesos has a high-availability mode that uses multiple Mesos masters: one active master (called the leader or leading master) and several backups in case it fails. The masters elect the leader, with Apache ZooKeeper both coordinating the election and handling leader detection by masters, agents, and scheduler drivers.
+For more insight refer this: <a href="https://zookeeper.apache.org/doc/trunk/zookeeperOver.html">
+Zookeeper Architecture and Overview
+</a></li>
+</ul>
 
+<h2 id="master-nodes-setup">Master Nodes Setup</h2>
 <ol>
-  <li>First item, yo</li>
-  <li>Second item, dawg</li>
-  <li>Third item, what what?!</li>
-  <li>Fourth item, fo sheezy my neezy</li>
+  <li><strong>Package Installation</strong>
+    <ul>
+      <li>Highly-available clusters will typically have multiple master nodes and any number of slave nodes. Each master node runs Apache Mesos, Marathon and ZooKeeper (to provide leader  election).</li>
+    </ul>
+    <ul>
+      <li>Setup repositories:
+        <ul>
+          <li>The easiest way to install Mesos is via the GitHub repositories.Mesosphere has official package repositories which connect directly to the native package management tools of your favorite Linux distribution — namely apt-get and yum — to install Mesos on top of the most common Linux distributions.
+            <ol>
+              <li>Commands for Ubuntu</li>
+            </ol>
+            <ul>
+              <li>Setup<br />
+  <code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)</code></li>
+              <li>Add the repository<br />
+  <code>echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | sudo tee /etc/apt/sources.list.d/mesosphere.list</code>
+  <code>sudo apt-get -y update</code></li>
+              <li>Install<br />
+  <code>sudo apt-get -y install mesos marathon</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Configuration</strong>
+    <ul>
+      <li>The Mesosphere package ships with a default configuration. The default configuration includes:</li>
+    </ul>
+    <ol>
+      <li>File: /etc/default/mesos<br />
+ sets master and slave log dir to /var/log/mesos.</li>
+      <li>File: /etc/default/mesos-master<br />
+	sets port to 5050.  <br />
+ sets zk to the value in the file /etc/mesos/zk.</li>
+      <li>File: /etc/default/mesos-slave<br />
+ sets master as the value of /etc/mesos/zk</li>
+      <li>File: /etc/mesos/zk<br />
+	sets the ZooKeeper instance to zk://localhost:2181/mesos</li>
+      <li>File: /etc/mesos-master/work_dir<br />
+ sets working_dir to var/lib/mesos</li>
+      <li>File: /etc/mesos-master/quorum<br />
+ sets quorum to 1<br />
+	<em>This default configuration allows Mesos to start immediately on a single node.</em>
+        <ul>
+          <li>Configure Zookeeper:</li>
+        </ul>
+      </li>
+      <li>Setting ID<br />
+ Set /etc/zookeeper/conf/myid to a unique integer between 1 and 255 on each node.The Mesosphere package ships with a default configuration</li>
+      <li>Server Addresses<br />
+ Append the following values to /etc/zookeeper/conf/zoo.cfg on each node, replacing the IP addresses with your own:<br />
+ <code>server.1=1.1.1.1:2888:3888</code><br />
+ <code>server.2=2.2.2.2:2888:3888</code><br />
+ <code>server.3=3.3.3.3:2888:3888</code></li>
+      <li>Start Zookeeper<br />
+ <code>sudo service zookeeper restart</code>
+        <ul>
+          <li>Mesos &amp; Marathon</li>
+        </ul>
+      </li>
+      <li>ZooKeeper<br />
+ On each node, replacing the IP addresses below with each master’s IP address, set/etc/mesos/zk to:<br />
+ <code>zk://1.1.1.1:2181,2.2.2.2:2181,3.3.3.3:2181/mesos</code></li>
+      <li>Quorum<br />
+ Set /etc/mesos-master/quorum on each master node to a number greater than the number of masters divided by 2. For example, the optimal quorum size for a five node master cluster would be 3. In this case, there are three masters and the quorum size should be set to 2 on each node.</li>
+      <li>Host name<br />
+ In case unable to resolve the hostname of the machine directly, set /etc/mesos-master/hostname to a value that you can resolve.<br />
+ For example, an externally accessible IP address or DNS hostname. This will ensure all links from the Mesos console work correctly.<br />
+ Also, set this property in /etc/marathon/conf/hostname</li>
+      <li>Disable mesos-slave service<br />
+ <code>sudo service mesos-slave stop</code><br />
+ <code>sudo sh -c "echo manual &gt; /etc/init/mesos-slave.override"</code></li>
+    </ol>
+  </li>
+  <li><strong>Restart Services</strong>
+    <ul>
+      <li>Bring up Mesos master<br />
+<code>sudo service mesos-master restart</code></li>
+      <li>Now restart Marathon<br />
+<code>sudo service marathon restart</code></li>
+    </ul>
+  </li>
 </ol>
 
-<h2 id="headings-are-cool-h2">Headings are cool! (h2)</h2>
+<h2 id="slave-nodes-setup">Slave Nodes Setup</h2>
+<ol>
+  <li><strong>Package Installation</strong>
+    <ul>
+      <li>Setup repositories:
+        <ol>
+          <li>Commands for Ubuntu
+            <ul>
+              <li>Setup<br />
+ <code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BFDISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)</code></li>
+              <li> Add the repository<br />
+ <code>echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | sudo tee /etc/apt/sources.list.d/mesosphere.list</code><br />
+          <code>sudo apt-get -y update</code></li>
+              <li>Install<br />
+          <code>sudo apt-get -y install mesos</code></li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Configuration</strong>
+    <ul>
+      <li>Disable Zookeeper:</li>
+    </ul>
+    <ol>
+      <li>If you’re using the Debian or Ubuntu package, ZooKeeper will be pulled in and installed as a dependency automaticallyi.    <br />
+ <code>sudo service zookeeper stop</code><br />
+ <code>sudo sh -c "echo manual &gt; /etc/init/zookeeper.override"</code>
+        <ul>
+          <li>Mesos
+            <ol>
+              <li>ZooKeeper<br />
+ On each node, replacing the IP addresses below with each master’s IP address, set/etc/mesos/zk to:<br />
+ <code>zk://1.1.1.1:2181,2.2.2.2:2181,3.3.3.3:2181/mesos</code></li>
+              <li>Disable mesos-master service<br />
+ <code>sudo service mesos-master stop</code><br />
+ <code>sudo sh -c "echo manual &gt; /etc/init/mesos-master.override"</code></li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li><strong>Start Services</strong>
+    <ul>
+      <li>Restart mesos-slave on each node to use the new configuration:<br />
+<code>sudo service mesos-slave restart</code></li>
+    </ul>
+  </li>
+  <li><strong>Verify Installation</strong>
+    <ul>
+      <li>If the packages were installed and configured correctly, you should be able to access the Mesos console at <code>http://&lt;master-ip&gt;:5050</code> and the Marathon console at <code>http://&lt;master-ip&gt;:8080</code> (where <master-ip> is any of the master IP addresses).</master-ip></li>
+    </ul>
+  </li>
+</ol>
 
-<p>Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
+<h1 id="docker">Docker</h1>
+<ul>
+  <li>Docker is an open platform for developing, shipping, and running applications. Docker is designed to deliver your applications faster. With Docker you can separate your applications from  your infrastructure and treat your infrastructure like a managed application.</li>
+  <li>Docker helps you ship code faster, test faster, deploy faster, and shorten the cycle between writing code and running code.
+For more insight refer this: <a href="https://docs.docker.com/engine/understanding-docker/">
+Docker Architecture and Overview
+</a></li>
+  <li>These instructions are intended for installing Docker on Ubuntu. Docker’s APT repository contains Docker 1.7.1 and higher. To set APT to use packages from the new repository.</li>
+</ul>
 
-<p>Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</p>
+<h2 id="docker-installation">Docker Installation</h2>
+<ol>
+  <li><strong>Update your apt sources</strong>
+    <ul>
+      <li>Log into your machine as a user with sudo or root privileges.</li>
+      <li>Open a terminal window.</li>
+      <li>Update package information, ensure that APT works with the https method, and that CA certificates are installed.<br />
+ <code>sudo apt-get update</code><br />
+ <code>sudo apt-get install apt-transport-https ca-certificates</code></li>
+      <li>Add the new GPG key
+ <code>sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D</code></li>
+      <li>Open the /etc/apt/sources.list.d/docker.list file in your favorite editor.</li>
+      <li>If the file doesn’t exist, create it.</li>
+      <li>Remove any existing entries.</li>
+      <li>Add an entry for your Ubuntu operating system.<br />
+ <code>deb https://apt.dockerproject.org/repo ubuntu-trusty main</code></li>
+      <li>Save and close the /etc/apt/sources.list.d/docker.list file.</li>
+      <li>Update the APT package index.<br />
+ <code>sudo apt-get update</code></li>
+      <li>Purge the old repo if it exists.<br />
+ <code>sudo apt-get purge lxc-docker</code></li>
+      <li>Verify that APT is pulling from the right repository.<br />
+ <code>apt-cache policy docker-engine</code></li>
+      <li>From now on when you run <code>apt-get upgrade</code>, APT pulls from the new repository.</li>
+    </ul>
+  </li>
+  <li><strong>Prerequisites by Ubuntu Version</strong>
+    <ul>
+      <li>For Ubuntu Trusty, Wily, and Xenial, it’s recommended to install the linux-image-extra kernel package. Thelinux-image-extra package allows you use the aufs storage driver.<br />
+To install the linux-image-extra package for your kernel version:</li>
+    </ul>
+    <ol>
+      <li>Open a terminal on your Ubuntu host.</li>
+      <li>Update your package manager.<br />
+ <code>sudo apt-get update</code></li>
+      <li>Install the recommended package.<br />
+ <code>sudo apt-get install linux-image-extra-$(uname -r)</code></li>
+      <li>Go ahead and install Docker.<br />
+ If you are installing on Ubuntu 14.04 or 12.04, apparmor is required. You can install it using: apt-get install apparmor.</li>
+    </ol>
+  </li>
+  <li><strong>Install</strong>
+    <ul>
+      <li>Make sure you have installed the prerequisites for your Ubuntu version.Then, install Docker using the following:</li>
+    </ul>
+    <ol>
+      <li>Log into your Ubuntu installation as a user with sudo privileges.</li>
+      <li>Update your APT package index.<br />
+ <code>sudo apt-get update</code></li>
+      <li>Install Docker.<br />
+ <code>sudo apt-get install docker-engine</code></li>
+      <li>Start the docker daemon.<br />
+ <code>sudo service docker start</code></li>
+      <li>Verify docker is installed correctly.<br />
+ <code>sudo docker run hello-world</code><br />
+ This command downloads a test image and runs it in a container. When the container runs, it prints an informational message. Then, it exits.</li>
+    </ol>
+  </li>
+  <li><strong>Create a Docker group</strong>
+    <ul>
+      <li>The docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can access it with sudo. For this reason, docker daemon always runs as the rootuser.<br />
+To avoid having to use sudo when you use the docker command, create a Unix group called docker and add users to it. When the docker daemon starts, it makes the ownership of the Unix socket read/writable by thedocker group.</li>
+      <li>To create the docker group and add your user:</li>
+    </ul>
+    <ol>
+      <li>Log into Ubuntu as a user with sudo privileges.<br />
+ This procedure assumes you log in as the ubuntu user.</li>
+      <li>Create the docker group.<br />
+ <code>sudo groupadd docker</code></li>
+      <li>Add your user to docker group.<br />
+ <code>sudo usermod -aG docker ubuntu</code></li>
+      <li>Log out and log back in.<br />
+ This ensures your user is running with the correct permissions.</li>
+      <li>Verify your work by running docker without sudo.<br />
+ <code>docker run hello-world</code></li>
+      <li>If this fails with a message similar to this:<br />
+ <em>Cannot connect to the Docker daemon. Is ‘docker daemon’ running on this host?</em><br />
+ Check that the DOCKER_HOST environment variable is not set for your shell. If it is, unset it.
+        <ul>
+          <li><strong>Upgrade Docker</strong></li>
+        </ul>
+      </li>
+      <li>To install the latest version of Docker with apt-get:<br />
+ <code>sudo apt-get upgrade docker-engine</code>
+        <ul>
+          <li><strong>Uninstall Docker</strong></li>
+        </ul>
+      </li>
+      <li>To uninstall the Docker package:<br />
+ <code>sudo apt-get purge docker-engine</code></li>
+      <li>To uninstall the Docker package and dependencies that are no longer needed:<br />
+ <code>sudo apt-get autoremove --purge docker-engine</code></li>
+      <li>To delete all images, containers, and volumes or user created configuration files on your host run the following command:<br />
+ <code>rm -rf /var/lib/docker</code></li>
+    </ol>
+  </li>
+</ol>
 
-<p>Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.</p>
+<h2 id="deploying-a-container-within-the-architecture">Deploying a container within the Architecture</h2>
+<ol>
+  <li><strong>Deployment with script:</strong>
+    <ul>
+      <li>Create a small json file which will contain app information to be deployed:<br />
+ Eg: definition.json<br />
+ <code>{</code><br />
+ <code>"container": {</code><br />
+ <code>"type": "DOCKER”,</code> <br />
+ <code>"docker": {</code><br />
+ <code>"image": "superguenter/demo-app”</code><br />
+ <code>}</code><br />
+ <code>},</code><br />
+ <code>"cmd": "python -m SimpleHTTPServer $PORT”,</code><br />
+ <code>"id": "demo”,</code><br />
+ <code>"cpus": 0.01,</code><br />
+ <code>"mem": 256,</code><br />
+ <code>"ports": [3000]</code><br />
+ <code>}</code></li>
+      <li>Now to deploy the app below is the python code:<br />
+ <code>import requests</code><br />
+ <code>import json</code><br />
+ <code>import pprint</code><br />
+ <code>url = "http://localhost:8080/v2/apps"</code><br />
+ <code>res = requests.post( url, data=open('/path/to/json/file/definition.json','rb'), headers={'Content-Type': 'application/json'})</code><br />
+ <code>json_data = json.loads(res.text)</code><br />
+ <code>pp = pprint.PrettyPrinter(indent=4)</code><br />
+ <code>pp.pprint (json_data)</code></li>
+    </ul>
+  </li>
+  <li><strong>Deployment through dashboard:</strong>
+    <ul>
+      <li>Login to dashboard Localhost:8080 marathon is running on 8080.</li>
+      <li>Click on the createApplication</li>
+      <li>Enter the ID (ID should be unique), allocate the CPU, memory usuage as required.</li>
+      <li>Now, go to DockerContainer: Provide the image name that you have created.</li>
+      <li>Click on Create Application</li>
+      <li>You should be able to see the image name with status as Running/Delayed/Waiting.</li>
+      <li>Running refers: Success</li>
+      <li>Delayed refers:  Failed</li>
+      <li>Waiting refers:  Waiting to be started</li>
+    </ul>
+  </li>
+  <li><strong>Deployment with  Rest API:</strong>
+    <ul>
+      <li>Execute the following command in the server. Make sure you have provided the required components correctly in the json file.<br />
+<code>curl -X POST -H "Content-Type: application/json" http://localhost:8080/v2/apps -d@docker.json</code></li>
+    </ul>
+  </li>
+</ol>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Some footnote <a href="#fnref:1" class="reversefootnote">↩</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Another footnote <a href="#fnref:2" class="reversefootnote">↩</a></p>
-    </li>
-    <li id="fn:3">
-      <p>Last footnote <a href="#fnref:3" class="reversefootnote">↩</a></p>
-    </li>
-  </ol>
-</div>
 
         </section>
 
@@ -950,25 +1382,261 @@ comments:       true
     
 
     
-    
-    <div class="author-image">
-        <div class="img image-bg" style="background-image: url(/assets/jwillmer.jpg)">
-            <a class="hidden" href="/assets/jwillmer.jpg" itemprop="image">Jens Willmer's Picture</a>
+
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
         </div>
     </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Docker Vs VirtualMachine</h1>
+            <section class="post-meta">
+                <time datetime="2016-11-01T17:58:00+05:30" itemprop="datePublished">Nov 1, 2016</time> 
+                on
+                
+                <span><a href="">Docker</a></span>
+                
+                <span><a href="">+VirtualMachine</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h2 id="explaination-of-the-architecture">Explaination Of the Architecture</h2>
+
+<h4 id="docker">Docker</h4>
+<ul>
+  <li>
+    <p>Image is a box with set of all containers with small layered images. An image is an executable package that includes everything needed to run an application–the code, a runtime, libraries, environment variables, and configuration files.</p>
+  </li>
+  <li>
+    <p>A container is launched by running an image.</p>
+  </li>
+  <li>
+    <p>A container is a runtime instance of an image–what the image becomes in memory when executed (that is, an image with state, or a user process).</p>
+  </li>
+</ul>
+
+<h4 id="virtual-machine">Virtual Machine</h4>
+<ul>
+  <li>A virtual Machine is an image of operating system running on Hypervisor over host operating system.</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Comparision Basis</td>
+      <td>Docker</td>
+      <td>Virtual machine</td>
+    </tr>
+    <tr>
+      <td>Architecture</td>
+      <td><img src="/media/img/Architecture_Docker.png" alt="Docker" height="70%" width="100%" /></td>
+      <td><img src="/media/img/Architecture_VM.png" alt="Virtual Machine" height="70%" width="100%" /></td>
+    </tr>
+    <tr>
+      <td>Build</td>
+      <td>Only Binaries and libraries of OS over which services run</td>
+      <td>Image of the entire OS</td>
+    </tr>
+    <tr>
+      <td>Virtualization</td>
+      <td>OS level virtualization by abstracting user space</td>
+      <td>Hardware Virtualization</td>
+    </tr>
+    <tr>
+      <td>Processing boundaries</td>
+      <td>Container have private space for processing, can execute commands as root</td>
+      <td>Virtual Box have confined space for processing and can execue command as user</td>
+    </tr>
+    <tr>
+      <td>kernel boundaries</td>
+      <td>Container share host sytstem kernel</td>
+      <td>Virtual Box share host system kernel with Guest Operating System with Hypervisor</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
     
 
-    <div class="short-diver">
-        <h4 class="author" itemprop="name">Jens Willmer</h4>
+    
+    
 
-        <p itemprop="description">All about technology</p>
+    
 
-        <div class="author-meta">
-            <span class="author-location icon-location" itemprop="nationality">Germany</span>
-            <span class="author-stats"><i class="icon-stats"></i>4 posts</span>
-            <span class="author-link icon-link" itemprop="url"><a href="http://jwillmer.de/about">About</a></span>
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
         </div>
     </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Simple SMTP Server with Python</h1>
+            <section class="post-meta">
+                <time datetime="2016-11-01T17:58:00+05:30" itemprop="datePublished">Nov 1, 2016</time> 
+                on
+                
+                <span><a href="">Simple</a></span>
+                
+                <span><a href="">SMTP</a></span>
+                
+                <span><a href="">Server+Python</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <p>You really want to design a simple mail server in python then here is the way you can do that.</p>
+
+<p>This post gives the idea, architecture and implementation of a simple SMTP server in python, where a flask api is used to initialise and start the server, client can use the apis to play around with different type of requests, and send the mail to the server started by api using any of the way to send email(here a small python script client.py to send mail).</p>
+
+<h2 id="explaination-of-the-architecture">Explaination Of the Architecture</h2>
+
+<h4 id="we-have-a-flask-app-which-gives-api-to-do-the-following-tasks">We have a Flask App which gives api to do the following tasks:</h4>
+
+<ul>
+  <li>Initialise Log location.</li>
+  <li>Create DB.</li>
+  <li>Start-Server.</li>
+  <li>Get emails received by a particular id.</li>
+  <li>Get emails received after a particular time.</li>
+</ul>
+
+<h4 id="we-have-smtp-server-implemented-using-python-smtp-library-which-does-the-following">We have SMTP server implemented using python smtp library which does the following:</h4>
+
+<ul>
+  <li>Receives email from clients.</li>
+  <li>Stores emails in database.</li>
+</ul>
+
+<h4 id="database-store-we-are-using-sqlite-db-store">DataBase store, we are using sqlite db store:</h4>
+
+<ul>
+  <li>Stores the email received by Smtp server</li>
+</ul>
+
+<h4 id="client">Client:</h4>
+
+<ul>
+  <li>Uses Flask Apis to perform the requests.</li>
+  <li>Send email to the server.</li>
+</ul>
+
+<h2 id="architecture-of-smtp-server">Architecture Of SMTP server</h2>
+
+<div>
+
+<figure>
+<img src="/media/img/Architecture_smtp.png" />
+<figcaption>Architecture</figcaption>
+</figure>
+
+</div>
+
+<p>You can find the code in the github location: <a href="https://github.com/agrawalpoonam/smtpapp">
+https://github.com/agrawalpoonam/smtpapp
+</a></p>
+
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
     
 
 </div>
@@ -1029,12 +1697,20 @@ var config = {
 
         <footer class="site-footer">
     <button class="go-to-top"></button>
-    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> © 2016 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
-    <p class="poweredby">powered by <a href="https://jekyllrb.com/" title="Jekyll">Jekyll</a> with the <a href="https://github.com/jwillmer/jekyllDecent" title="jekyllDecent Theme">jekyllDecent</a> theme</p>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
 </footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
     </div>
 </body>
 
 <script src="/js/global.js"></script>
-
+</script>
 </html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CI/CD pipeline with docker and kubernetes</title>
+    <meta name="description" content="Setup Jenkins server">
+  
+    
+    <meta name="keywords" content="Jenkins,, Docker, ,, Kubernetes" />
+    
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	
+    <!-- Open Graph data -->
+
+	<meta property="og:title" content="CI/CD pipeline with docker and kubernetes" />
+	<meta property="og:type" content="article" />
+
+
+
+
+<meta property="og:image" content="/assets/mountain-cover.jpg" />
+
+
+<meta property="og:site_name" content="Life  is  Short  Do  More" />
+<meta property="og:description" content="Setup Jenkins server" />
+
+
+<meta property="og:url" content="/blog/tutorial/cicd_jenkins_dockr_kubernetes" />
+
+
+    
+	<meta property="article:author" content="http://jwillmer.de/about" />
+	<link rel="author" href="http://jwillmer.de/about" />
+
+
+
+<meta property="article:published_time" content="2020-04-14T22:40:00+05:30" />
+
+
+
+<meta property="article:tag" content="Jenkins," />
+
+<meta property="article:tag" content="Docker" />
+
+<meta property="article:tag" content="," />
+
+<meta property="article:tag" content="Kubernetes" />
+
+<!-- End: Open Graph data -->	
+	<!-- Twitter data -->
+    
+
+<meta name="twitter:card" content="summary">
+
+
+<meta name="twitter:site" content="@jenswillmer">
+
+
+
+<meta name="twitter:title" content="CI/CD pipeline with docker and kubernetes">
+
+
+
+
+<meta name="twitter:url" content="/blog/tutorial/cicd_jenkins_dockr_kubernetes">
+
+
+<meta name="twitter:description" content="Setup Jenkins server">
+
+<meta name="twitter:image:src" content="/assets/mountain-cover.jpg">
+<!-- End: Twitter data -->	
+
+    <link href='https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Merriweather:300italic,700,300,700italic|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="alternate" type="application/rss+xml" title="Life  is  Short  Do  More" href="/feed.xml">
+
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/assets/favicon-62.png" sizes="62x62" type="image/png">
+</head>
+
+<body class="home-template">
+    <div class="site-wrapper">
+        
+
+<header class="main-header detail-page image-bg  has-cover" style="background-image: url(/assets/mountain-cover.jpg)" >
+    <h1 class="page-title"><a href="/" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a></h1>
+    <h2 class="page-description"></h2>
+    <div class="nav">
+        <ul>
+            <li><a class="page-link" href="/" title="Home">Home</a></li>
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/offline-warning/" title="Offline">Offline</a></li>
+            
+            
+
+            
+
+            
+            <li><a class="page-link" href="/about/" title="About">About</a></li>
+            
+            
+        </ul>
+    </div>
+</header>
+        <main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">CI/CD pipeline with docker and kubernetes</h1>
+            <section class="post-meta">
+                <time datetime="2020-04-14T22:40:00+05:30" itemprop="datePublished">Apr 14, 2020</time>
+                on
+                
+                <span>Jenkins,</span>
+                
+                <span>Docker</span>
+                
+                <span>,</span>
+                
+                <span>Kubernetes</span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h3 id="setup-jenkins-server">Setup Jenkins server</h3>
+
+<pre><code>$ mkdir jenkins
+$ cd jenkins
+$ vim Vagrantfile
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-20.04"
+  config.vm.network "forwarded_port", guest: 8080, host: 8081, host_ip: "127.0.0.1"
+  config.vm.network "private_network", ip: "192.168.10.31"
+
+  config.vm.provision "shell", inline: &lt;&lt;-SHELL
+    sudo apt-get update
+    sudo apt-get -y upgrade
+    sudo apt install openjdk-11-jdk -y  
+    wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+    echo "deb https://pkg.jenkins.io/debian-stable binary/" | sudo tee -a  /etc/apt/sources.list &gt; /dev/null
+    sudo apt-get update
+    sudo apt-get install -y jenkins
+  SHELL
+end
+
+$ vagrant up
+$ vagrabt ssh
+</code></pre>
+
+<h3 id="setup-repository-for-docker">Setup Repository for docker</h3>
+
+<pre><code>$ sudo apt-get update \
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+</code></pre>
+
+<h3 id="install-docker-engine">Install docker engine</h3>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre>
+
+<h4 id="updated-user-jenkins-to-run-docker">updated user jenkins to run docker</h4>
+<pre><code>$ sudo usermod -G docker jenkins	
+$ sudo apt-get install acl
+
+$ sudo setfacl -m user:jenkins:rw /var/run/docker.sock
+</code></pre>
+
+<h3 id="setup-kubernetes">Setup Kubernetes</h3>
+
+<pre><code>$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+$ chmod +x ./kubectl
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+
+$ cp -r ~/.kube /var/lib/jenkins/
+$ sudo chown -R jenkins:jenkins /var/lib/jenkins/
+$ vim /var/lib/jenkins/.kube/config
+
+		apiVersion: v1
+		clusters:
+		- cluster:
+		    certificate-authority: /var/lib/jenkins/.minikube/ca.crt
+		    server: https://192.168.99.100:8443
+		  name: minikube
+		contexts:
+		- context:
+		    cluster: minikube
+		    user: minikube
+		  name: minikube
+		current-context: minikube
+		kind: Config
+		preferences: {}
+		users:
+		- name: minikube
+		  user:
+		    client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
+		    client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
+
+
+❖ make sure the permission of the following files should be as follows
+	➢ client.crt 644, 
+	➢ client.key 600, 
+	➢ ca.crt 644
+
+
+$ Adding docker hub credentials in jenkins
+Credentials → System → Global Credentials → Add Credentials
+</code></pre>
+
+<div>
+
+<figure>
+<img src="/media/img/credentials.png" />
+<figcaption>Login Details</figcaption>
+</figure>
+
+</div>
+
+<p>Job → Pipeline → Poll SCM(after every push it will auto build the job)</p>
+
+<div>
+
+<figure>
+<img src="/media/img/pollscm.png" />
+<figcaption>Poll Scm</figcaption>
+</figure>
+
+</div>
+
+<pre><code>❖ Add the groovy script
+	➢ either via copy
+	➢ or via SCM
+❖ Apply → Save → Build
+❖ Test on command line
+	➢ kubectl get svc
+	➢ http://192.168.10.30:&lt;&lt; port &gt;&gt;/hello/deepak
+</code></pre>
+
+<h3 id="the-groovy-script">The groovy script:</h3>
+
+<pre><code>pipeline {
+   agent any
+   environment {
+       dockerHub = "docker.io"
+       docker_cred = 'dockerhub'
+   }
+   stages {
+		stage('SCM Checkout'){
+			steps{
+				checkout([$class: 'GitSCM',branches: [[name: 'origin/master']],extensions: [[$class: 'WipeWorkspace']],userRemoteConfigs: [[url: 'https://github.com/agrawalpoonam/python-app.git']]  ])
+			}
+		}
+		stage("Build Docker Image"){
+			steps{
+				sh 'pwd'
+				sh "docker build -t poonamag/test-app . --no-cache"
+			}
+		}
+		stage('Upload Image to DockerHub'){
+			steps{ 
+	     	    withCredentials([
+     		 	[$class: 'UsernamePasswordMultiBinding', credentialsId: docker_cred, usernameVariable: 'dockeruser', passwordVariable: 'dockerpass'],
+  				]){
+					sh "docker login -u ${dockeruser} -p ${dockerpass} ${dockerHub}"
+  				}
+	    	  	sh 'docker push poonamag/test-app'
+	    	 }
+	  	}
+		stage("Running Docker Image"){
+			steps{
+				sh "kubectl get namespaces"
+				sh "kubectl apply -f deployment.yaml"
+			}
+		}
+}
+}
+</code></pre>
+
+
+        </section>
+
+        <footer class="post-footer">
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+        
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var config = {
+  'disqus_shortname': 'jekylldecent'
+};
+</script>
+<script src="/js/jquery-1.12.0.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/photoswipe.js"></script>
+<script src="/js/photoswipe-ui-default.js"></script>
+<script src="/js/post.js"></script>
+
+
+        <footer class="site-footer">
+    <button class="go-to-top"></button>
+    <p class="copyright"><a href="" title="Life  is  Short  Do  More">Life  is  Short  Do  More</a> &copy; 2020 | <a href="/feed.xml" title="RSS Feed">RSS Feed</a></p>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-86928019-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+</body>
+
+<script src="/js/global.js"></script>
+</script>
+</html>
