@@ -13,7 +13,7 @@
 
   
     {
-        "title": "CI/CD pipeline with docker and kubernetes",
+        "title": "CI/CD pipeline with Jenkins, docker and kubernetes",
         "category": "Tutorial",
         "url": "/blog/tutorial/cicd_jenkins_dockr_kubernetes",
         "tags": ["Jenkins,","Docker",",","Kubernetes"],

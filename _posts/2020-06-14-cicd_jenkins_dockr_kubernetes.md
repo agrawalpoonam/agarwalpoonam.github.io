@@ -131,7 +131,7 @@ Job → Pipeline → Poll SCM(after every push it will auto build the job)
 	❖ Apply → Save → Build
 	❖ Test on command line
 		➢ kubectl get svc
-		➢ http://192.168.10.30:<< port >>/hello/deepak
+		➢ https://192.168.10.30:<< port >>/hello/deepak
 
 ### The groovy script:
 

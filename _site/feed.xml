@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom">
   <channel>
     <title>Life  is  Short  Do  More</title>
     <description>This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-      <pubDate>Mon, 15 Jun 2020 22:19:10 +0530</pubDate>
-    <lastBuildDate>Mon, 15 Jun 2020 22:19:10 +0530</lastBuildDate>
+      <pubDate>Wed, 24 Jun 2020 11:44:16 +0530</pubDate>
+    <lastBuildDate>Wed, 24 Jun 2020 11:44:16 +0530</lastBuildDate>
     <generator>Jekyll v3.8.7</generator>
     
       <item>
@@ -72,7 +72,7 @@
       </item>
     
       <item>
-        <title>CI/CD pipeline with docker and kubernetes</title>
+        <title>CI/CD pipeline with Jenkins, docker and kubernetes</title>
         <description>&lt;h3 id=&quot;setup-jenkins-server&quot;&gt;Setup Jenkins server&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;$ mkdir jenkins
@@ -200,7 +200,7 @@ Credentials → System → Global Credentials → Add Credentials
 ❖ Apply → Save → Build
 ❖ Test on command line
 	➢ kubectl get svc
-	➢ http://192.168.10.30:&amp;lt;&amp;lt; port &amp;gt;&amp;gt;/hello/deepak
+	➢ https://192.168.10.30:&amp;lt;&amp;lt; port &amp;gt;&amp;gt;/hello/deepak
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;the-groovy-script&quot;&gt;The groovy script:&lt;/h3&gt;
@@ -580,7 +580,7 @@ Zookeeper Architecture and Overview
               &lt;li&gt;Setup&lt;br /&gt;
   &lt;code&gt;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)&lt;/code&gt;&lt;/li&gt;
               &lt;li&gt;Add the repository&lt;br /&gt;
-  &lt;code&gt;echo &quot;deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main&quot; | sudo tee /etc/apt/sources.list.d/mesosphere.list&lt;/code&gt;
+  &lt;code&gt;echo &quot;deb https://repos.mesosphere.com/${DISTRO} ${CODENAME} main&quot; | sudo tee /etc/apt/sources.list.d/mesosphere.list&lt;/code&gt;
   &lt;code&gt;sudo apt-get -y update&lt;/code&gt;&lt;/li&gt;
               &lt;li&gt;Install&lt;br /&gt;
   &lt;code&gt;sudo apt-get -y install mesos marathon&lt;/code&gt;&lt;/li&gt;
@@ -661,7 +661,7 @@ Zookeeper Architecture and Overview
               &lt;li&gt;Setup&lt;br /&gt;
  &lt;code&gt;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BFDISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]') CODENAME=$(lsb_release -cs)&lt;/code&gt;&lt;/li&gt;
               &lt;li&gt; Add the repository&lt;br /&gt;
- &lt;code&gt;echo &quot;deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main&quot; | sudo tee /etc/apt/sources.list.d/mesosphere.list&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;echo &quot;deb https://repos.mesosphere.com/${DISTRO} ${CODENAME} main&quot; | sudo tee /etc/apt/sources.list.d/mesosphere.list&lt;/code&gt;&lt;br /&gt;
           &lt;code&gt;sudo apt-get -y update&lt;/code&gt;&lt;/li&gt;
               &lt;li&gt;Install&lt;br /&gt;
           &lt;code&gt;sudo apt-get -y install mesos&lt;/code&gt;&lt;/li&gt;
@@ -702,7 +702,7 @@ Zookeeper Architecture and Overview
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Verify Installation&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;If the packages were installed and configured correctly, you should be able to access the Mesos console at &lt;code&gt;http://&amp;lt;master-ip&amp;gt;:5050&lt;/code&gt; and the Marathon console at &lt;code&gt;http://&amp;lt;master-ip&amp;gt;:8080&lt;/code&gt; (where &lt;master-ip&gt; is any of the master IP addresses).&lt;/master-ip&gt;&lt;/li&gt;
+      &lt;li&gt;If the packages were installed and configured correctly, you should be able to access the Mesos console at &lt;code&gt;https://&amp;lt;master-ip&amp;gt;:5050&lt;/code&gt; and the Marathon console at &lt;code&gt;https://&amp;lt;master-ip&amp;gt;:8080&lt;/code&gt; (where &lt;master-ip&gt; is any of the master IP addresses).&lt;/master-ip&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
@@ -838,7 +838,7 @@ To avoid having to use sudo when you use the docker command, create a Unix g
  &lt;code&gt;import requests&lt;/code&gt;&lt;br /&gt;
  &lt;code&gt;import json&lt;/code&gt;&lt;br /&gt;
  &lt;code&gt;import pprint&lt;/code&gt;&lt;br /&gt;
- &lt;code&gt;url = &quot;http://localhost:8080/v2/apps&quot;&lt;/code&gt;&lt;br /&gt;
+ &lt;code&gt;url = &quot;https://localhost:8080/v2/apps&quot;&lt;/code&gt;&lt;br /&gt;
  &lt;code&gt;res = requests.post( url, data=open('/path/to/json/file/definition.json','rb'), headers={'Content-Type': 'application/json'})&lt;/code&gt;&lt;br /&gt;
  &lt;code&gt;json_data = json.loads(res.text)&lt;/code&gt;&lt;br /&gt;
  &lt;code&gt;pp = pprint.PrettyPrinter(indent=4)&lt;/code&gt;&lt;br /&gt;
@@ -861,7 +861,7 @@ To avoid having to use sudo when you use the docker command, create a Unix g
   &lt;li&gt;&lt;strong&gt;Deployment with  Rest API:&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;Execute the following command in the server. Make sure you have provided the required components correctly in the json file.&lt;br /&gt;
-&lt;code&gt;curl -X POST -H &quot;Content-Type: application/json&quot; http://localhost:8080/v2/apps -d@docker.json&lt;/code&gt;&lt;/li&gt;
+&lt;code&gt;curl -X POST -H &quot;Content-Type: application/json&quot; https://localhost:8080/v2/apps -d@docker.json&lt;/code&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
