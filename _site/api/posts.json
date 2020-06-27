@@ -13,6 +13,17 @@
 
   
     {
+        "title": "Querying Dremio using Golang and ODBC driver",
+        "category": "Tutorial",
+        "url": "/blog/tutorial/dremio_odbc_golang",
+        "tags": ["Dremio,","Odbc",",","Golang,","Postgres,","Linux"],
+        "date": "2020-04-14 22:40:00 +0530",
+        "language": "en"
+    },
+  
+
+  
+    {
         "title": "CI/CD pipeline with Jenkins, docker and kubernetes",
         "category": "Tutorial",
         "url": "/blog/tutorial/cicd_jenkins_dockr_kubernetes",

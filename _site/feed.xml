@@ -5,8 +5,8 @@
     <description>This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-      <pubDate>Wed, 24 Jun 2020 11:56:01 +0530</pubDate>
-    <lastBuildDate>Wed, 24 Jun 2020 11:56:01 +0530</lastBuildDate>
+      <pubDate>Sat, 27 Jun 2020 20:00:06 +0530</pubDate>
+    <lastBuildDate>Sat, 27 Jun 2020 20:00:06 +0530</lastBuildDate>
     <generator>Jekyll v3.8.7</generator>
     
       <item>
@@ -65,6 +65,176 @@
         <category>key</category>
         
         <category>Cryptography</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Querying Dremio using Golang and ODBC driver</title>
+        <description>&lt;pre&gt;&lt;code&gt;Dremio can be accessed via golang or other programming language. Here we are moving ahead by having two docker containers one of dremio and other of the database postgres.
+To access it via code or isql you need to have Dremio odbc Driver and unixODBC driver installed as we are in Linux environment (For windos it is not required).
+	
+And that is it. Let follow the steps below.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Docker installed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;run-postgres-and-dremio-container&quot;&gt;Run postgres and dremio container&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Postgres:
+docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+Dremio:
+docker run -d -p 9047:9047 -p 31010:31010 -p 45678:45678 dremio/dremio-oss
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;configure-dremio-to-get-the-postgress-data&quot;&gt;Configure dremio to get the postgress data&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;* Go to http://127.0.0.1/9047 to access dremio
+* Create account in dremio by providing the details, and do remember username and password.
+* Go to → add source → select postgres → provide the required details
+* To get postgres ip you can go inside the container and do cat /etc/hosts and you can find the ip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/media/img/dremio-postgres1.png&quot; /&gt;
+&lt;figcaption&gt;Login Details&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;Once connected follow the steps below.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;install-dremio-odbc-driver&quot;&gt;Install Dremio odbc driver&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget https://download.dremio.com/odbc-driver/1.4.2.1003/dremio-odbc-1.4.2.1003-1.x86_64.rpm
+$ sudo yum localinstall dremio-odbc-1.4.2.1003-1.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;install-go&quot;&gt;Install go&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
+$ vi ~/.bash_profile
+	export PATH=$PATH:/usr/local/go/bin
+$ source ~/.bash_profile 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;setting-up-odbcini-and-odbcinstini-file&quot;&gt;Setting up odbc.ini and odbcinst.ini file&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Copy and Paste the below file to your odbc.ini file and odbcinst.ini respectively. You can find the location of ini file by the following command:
+
+$ odbcinst -j
+
+$ sudo vi /etc/odbc.ini
+		[ODBC Data Sources]
+		DREMIO=Dremio ODBC Driver 64-bit
+
+		[DREMIO]
+		Description=Dremio ODBC Driver (64-bit) DSN
+		Driver=/opt/dremio-odbc/lib64/libdrillodbc_sb64.so
+		ConnectionType=Direct
+		HOST=192.168.1.4
+		PORT=31010
+		DATABASE=mydb
+		ZKQuorum=
+		ZKClusterID=
+		AuthenticationType=Plain
+		DelegationUID=
+		AdvancedProperties=CastAnyToVarchar=true;HandshakeTimeout=5;QueryTimeout=180;TimestampTZDisplayTimezone=utc;NumberOfPrefetchBuffers=5;
+		Catalog=DREMIO
+		Schema=
+		SSL=0
+		DisableHostVerification=0
+		DisableCertificateVerification=0
+		TrustedCerts=/opt/dremio-odbc/lib64/cacerts.pem
+		UseSystemTrustStore=0
+		UseExactTLSProtocolVersion=0
+		Min_TLS=
+		TLSProtocol=
+
+$ sudo vi /etc/odbcinst.ini
+		[Dremio ODBC Driver 64-bit]
+		Description=Dremio ODBC Driver(64-bit)
+		Driver=/opt/dremio-odbc/lib64/libdrillodbc_sb64.so
+		UsageCount=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;install-unixodbc-driver&quot;&gt;Install unixODBC driver&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.7.tar.gz
+$ gunzip unixODBC-2.3.7.tar.gz
+$ tar xvf unixODBC*.tar
+$ cd unixODBC-2.3.7/
+$ ./configure  --prefix=/usr/local/unixODBC
+$ make
+$ sudo make install
+$ export CGO_CFLAGS=&quot;-I/usr/local/unixODBC/include&quot;
+$ export CGO_LDFLAGS=&quot;-L/usr/local/unixODBC/lib&quot;
+$ go get github.com/alexbrainman/odbc
+$ go run test.go
+		package main
+		import (
+		_ &quot;github.com/alexbrainman/odbc&quot;
+		&quot;database/sql&quot;
+		&quot;log&quot;
+		&quot;fmt&quot;
+		)
+		func main() {
+		    var (
+		        ID   int
+		        NAME string
+			   AGE int
+			   ADDRESS string
+			   SALARY float64
+		    )
+		    db, err := sql.Open(&quot;odbc&quot;,&quot;DSN=Dremio;UID=&amp;lt;dremio login username&amp;gt;;PWD=&amp;lt;dremio password&amp;gt;&quot;)
+		    if err != nil {
+		                log.Fatal(err)
+		    }
+		    rows, err := db.Query(&quot;SELECT * from test.company&quot;)
+		    if err != nil {
+		            log.Fatal(err)
+		    }
+		    if err != nil {
+		        fmt.Println(&quot;Unable to Query :( &quot;, err)
+		    }
+		    defer rows.Close()
+		    for rows.Next() {
+		        err := rows.Scan(&amp;amp;ID,&amp;amp;NAME,&amp;amp;AGE,&amp;amp;ADDRESS,&amp;amp;SALARY )
+		        if err != nil {
+		            fmt.Println(&quot;Error when parsing :( &quot;, err)
+		        }
+		 
+		        fmt.Println(ID, NAME, AGE, ADDRESS, SALARY)
+		    }
+		    err = rows.Err()
+		    if err != nil {
+		        fmt.Println(err)
+		    }
+			defer db.Close()
+		}
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Tue, 14 Apr 2020 22:40:00 +0530</pubDate>
+        <link>/blog/tutorial/dremio_odbc_golang</link>
+        <guid isPermaLink="true">/blog/tutorial/dremio_odbc_golang</guid>
+        
+        <category>Dremio,</category>
+        
+        <category>Odbc</category>
+        
+        <category>,</category>
+        
+        <category>Golang,</category>
+        
+        <category>Postgres,</category>
+        
+        <category>Linux</category>
         
         
         <category>Tutorial</category>

@@ -276,6 +276,232 @@
     <article class="post single-post" itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">Querying Dremio using Golang and ODBC driver</h1>
+            <section class="post-meta">
+                <time datetime="2020-04-14T22:40:00+05:30" itemprop="datePublished">Apr 14, 2020</time> 
+                on
+                
+                <span><a href="">Dremio,</a></span>
+                
+                <span><a href="">Odbc</a></span>
+                
+                <span><a href="">,</a></span>
+                
+                <span><a href="">Golang,</a></span>
+                
+                <span><a href="">Postgres,</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <pre><code>Dremio can be accessed via golang or other programming language. Here we are moving ahead by having two docker containers one of dremio and other of the database postgres.
+To access it via code or isql you need to have Dremio odbc Driver and unixODBC driver installed as we are in Linux environment (For windos it is not required).
+	
+And that is it. Let follow the steps below.
+</code></pre>
+
+<h3 id="prerequisites">Prerequisites:</h3>
+<pre><code>Docker installed
+</code></pre>
+
+<h3 id="run-postgres-and-dremio-container">Run postgres and dremio container</h3>
+<pre><code>Postgres:
+docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+Dremio:
+docker run -d -p 9047:9047 -p 31010:31010 -p 45678:45678 dremio/dremio-oss
+</code></pre>
+
+<h3 id="configure-dremio-to-get-the-postgress-data">Configure dremio to get the postgress data</h3>
+<pre><code>* Go to http://127.0.0.1/9047 to access dremio
+* Create account in dremio by providing the details, and do remember username and password.
+* Go to → add source → select postgres → provide the required details
+* To get postgres ip you can go inside the container and do cat /etc/hosts and you can find the ip
+</code></pre>
+
+<div>
+
+<figure>
+<img src="/media/img/dremio-postgres1.png" />
+<figcaption>Login Details</figcaption>
+</figure>
+
+</div>
+
+<pre><code>Once connected follow the steps below.
+</code></pre>
+
+<h4 id="install-dremio-odbc-driver">Install Dremio odbc driver</h4>
+
+<pre><code>$ wget https://download.dremio.com/odbc-driver/1.4.2.1003/dremio-odbc-1.4.2.1003-1.x86_64.rpm
+$ sudo yum localinstall dremio-odbc-1.4.2.1003-1.x86_64.rpm
+</code></pre>
+
+<h4 id="install-go">Install go</h4>
+<pre><code>$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
+$ vi ~/.bash_profile
+	export PATH=$PATH:/usr/local/go/bin
+$ source ~/.bash_profile 
+</code></pre>
+
+<h4 id="setting-up-odbcini-and-odbcinstini-file">Setting up odbc.ini and odbcinst.ini file</h4>
+<pre><code>Copy and Paste the below file to your odbc.ini file and odbcinst.ini respectively. You can find the location of ini file by the following command:
+
+$ odbcinst -j
+
+$ sudo vi /etc/odbc.ini
+		[ODBC Data Sources]
+		DREMIO=Dremio ODBC Driver 64-bit
+
+		[DREMIO]
+		Description=Dremio ODBC Driver (64-bit) DSN
+		Driver=/opt/dremio-odbc/lib64/libdrillodbc_sb64.so
+		ConnectionType=Direct
+		HOST=192.168.1.4
+		PORT=31010
+		DATABASE=mydb
+		ZKQuorum=
+		ZKClusterID=
+		AuthenticationType=Plain
+		DelegationUID=
+		AdvancedProperties=CastAnyToVarchar=true;HandshakeTimeout=5;QueryTimeout=180;TimestampTZDisplayTimezone=utc;NumberOfPrefetchBuffers=5;
+		Catalog=DREMIO
+		Schema=
+		SSL=0
+		DisableHostVerification=0
+		DisableCertificateVerification=0
+		TrustedCerts=/opt/dremio-odbc/lib64/cacerts.pem
+		UseSystemTrustStore=0
+		UseExactTLSProtocolVersion=0
+		Min_TLS=
+		TLSProtocol=
+
+$ sudo vi /etc/odbcinst.ini
+		[Dremio ODBC Driver 64-bit]
+		Description=Dremio ODBC Driver(64-bit)
+		Driver=/opt/dremio-odbc/lib64/libdrillodbc_sb64.so
+		UsageCount=1
+</code></pre>
+
+<h4 id="install-unixodbc-driver">Install unixODBC driver</h4>
+
+<pre><code>$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.7.tar.gz
+$ gunzip unixODBC-2.3.7.tar.gz
+$ tar xvf unixODBC*.tar
+$ cd unixODBC-2.3.7/
+$ ./configure  --prefix=/usr/local/unixODBC
+$ make
+$ sudo make install
+$ export CGO_CFLAGS="-I/usr/local/unixODBC/include"
+$ export CGO_LDFLAGS="-L/usr/local/unixODBC/lib"
+$ go get github.com/alexbrainman/odbc
+$ go run test.go
+		package main
+		import (
+		_ "github.com/alexbrainman/odbc"
+		"database/sql"
+		"log"
+		"fmt"
+		)
+		func main() {
+		    var (
+		        ID   int
+		        NAME string
+			   AGE int
+			   ADDRESS string
+			   SALARY float64
+		    )
+		    db, err := sql.Open("odbc","DSN=Dremio;UID=&lt;dremio login username&gt;;PWD=&lt;dremio password&gt;")
+		    if err != nil {
+		                log.Fatal(err)
+		    }
+		    rows, err := db.Query("SELECT * from test.company")
+		    if err != nil {
+		            log.Fatal(err)
+		    }
+		    if err != nil {
+		        fmt.Println("Unable to Query :( ", err)
+		    }
+		    defer rows.Close()
+		    for rows.Next() {
+		        err := rows.Scan(&amp;ID,&amp;NAME,&amp;AGE,&amp;ADDRESS,&amp;SALARY )
+		        if err != nil {
+		            fmt.Println("Error when parsing :( ", err)
+		        }
+		 
+		        fmt.Println(ID, NAME, AGE, ADDRESS, SALARY)
+		    }
+		    err = rows.Err()
+		    if err != nil {
+		        fmt.Println(err)
+		    }
+			defer db.Close()
+		}
+</code></pre>
+
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="https://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
             <h1 class="post-title" itemprop="name headline">CI/CD pipeline with Jenkins, docker and kubernetes</h1>
             <section class="post-meta">
                 <time datetime="2020-04-14T22:40:00+05:30" itemprop="datePublished">Apr 14, 2020</time> 
