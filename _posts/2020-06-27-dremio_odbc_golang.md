@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Querying Dremio using Golang and ODBC driver"
-date: 2020-04-14 20:10:00 +0300
+date: 2020-06-27 20:10:00 +0300
 tags: Dremio, Odbc , Golang, Postgres, Linux
 category: Tutorial
 author: Poonam Agarwal
@@ -9,7 +9,7 @@ author: Poonam Agarwal
 
 	Dremio can be accessed via golang or other programming language. Here we are moving ahead by having two docker containers one of dremio and other of the database postgres.
 	To access it via code or isql you need to have Dremio odbc Driver and unixODBC driver installed as we are in Linux environment (For windos it is not required).
-		
+
 	And that is it. Let follow the steps below.
 
 ### Prerequisites:
