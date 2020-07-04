@@ -1,7 +1,7 @@
 ---
 layout:    about
 permalink: "/about/"
-author:    jwillmer
+author:    Poonam
 keywords:  about person demo example
 title:     About Poonam Agrawal
 menutitle: About
@@ -31,3 +31,15 @@ Learning comes with pace and in the process we come across with inner self takin
 
 2011-2012
 : Masters Of Engineering. IET DAVV, Indore, India.
+
+
+<dl>
+  <a href="{{ site.github.url }}/_pages/resume.html">Resume</a>
+</dl>
+
+<!-- <div>
+	<a href="{{ site.github.url }}/_pages/resume.html">Resume</a>
+	
+</div>
+-->
+

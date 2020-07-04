@@ -156,129 +156,9 @@
     <article class="post single-post" itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="post-header short-diver">
-            <h1 class="post-title" itemprop="name headline">RSA algorithm (asymmetric algorithm)</h1>
-            <section class="post-meta">
-                <time datetime="2020-04-25T22:40:00+05:30" itemprop="datePublished">Apr 25, 2020</time> 
-                on
-                
-                <span><a href="">Asymmetric</a></span>
-                
-                <span><a href="">algorithm,</a></span>
-                
-                <span><a href="">Public</a></span>
-                
-                <span><a href="">key</a></span>
-                
-                <span><a href="">Cryptography</a></span>
-                
-            </section>
-        </header>
-
-        <section class="post-content short-diver" itemprop="articleBody">
-            <h3 id="what-is-rsa-algorithm">What is RSA algorithm?</h3>
-
-<pre><code>RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
-</code></pre>
-
-<h3 id="example">Example:</h3>
-
-<pre><code>-   EncryptionKey =&gt; (5,14)
-    Suppose a text to be encrypted is letter 'B' -&gt;  2, then  2^5(mod 14)
-    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&gt; (5,14)
-    is encryption key
-
-
-    DecriptionKey: (11, 14),
-    4^11(mod 14) =&gt; 2 == B, where (d,N) that is 4^d(mod N) =&gt; (11, 14) is
-    decription key
-
--   How does it work, what is the algoritm? There is no magic it is just
-    simple mathematics:
-    Take two prime numbers (numbers can be hundreds &amp; hundreds digit long),
-    I choose small number (for better explanation) (2,7) where p = 2, q = 7
-    -   N = p * q =&gt; N = 14
-
-    -   choose φ(N) = (p-1)(q-1)
-
-    -   Now choose a number for encryption e where
-        { 1 &lt; e &lt; φ(N) and coprime with N and φ(N)}
-        1 &lt; e &lt; 6 =  2, 3, 4, 5
-        number which is coprime with 14 and 6 is 5
-        so our lock is (e,N) = (5,14)
-
-    -   Now for decryption we choose d such that {d.e(mod φ(N))}
-        that is -&gt; d.5(mod 6) = 1
-        the options could be -&gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
-        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
-        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
-
-        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
-        So the key is (11, 14)
-</code></pre>
-
-        </section>
-
-        <footer class="post-footer"> 
-            <div itemprop="author" itemscope itemtype="https://schema.org/Person">
-
-    
-
-    
-    
-
-    
-
-</div>
-        </footer>
-
-    </article>
-</main>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="pswp__bg"></div>
-    <div class="pswp__scroll-wrap">
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<main class="content" role="main">
-    <article class="post single-post" itemscope itemtype="https://schema.org/BlogPosting">
-
-        <header class="post-header short-diver">
             <h1 class="post-title" itemprop="name headline">Querying Dremio using Golang and ODBC driver</h1>
             <section class="post-meta">
-                <time datetime="2020-04-14T22:40:00+05:30" itemprop="datePublished">Apr 14, 2020</time> 
+                <time datetime="2020-06-27T22:40:00+05:30" itemprop="datePublished">Jun 27, 2020</time> 
                 on
                 
                 <span><a href="">Dremio,</a></span>
@@ -297,7 +177,7 @@
         <section class="post-content short-diver" itemprop="articleBody">
             <pre><code>Dremio can be accessed via golang or other programming language. Here we are moving ahead by having two docker containers one of dremio and other of the database postgres.
 To access it via code or isql you need to have Dremio odbc Driver and unixODBC driver installed as we are in Linux environment (For windos it is not required).
-	
+
 And that is it. Let follow the steps below.
 </code></pre>
 
@@ -504,7 +384,7 @@ $ go run test.go
         <header class="post-header short-diver">
             <h1 class="post-title" itemprop="name headline">CI/CD pipeline with Jenkins, docker and kubernetes</h1>
             <section class="post-meta">
-                <time datetime="2020-04-14T22:40:00+05:30" itemprop="datePublished">Apr 14, 2020</time> 
+                <time datetime="2020-06-14T22:30:00+05:30" itemprop="datePublished">Jun 14, 2020</time> 
                 on
                 
                 <span><a href="">Jenkins,</a></span>
@@ -689,6 +569,126 @@ Credentials → System → Global Credentials → Add Credentials
 }
 </code></pre>
 
+
+        </section>
+
+        <footer class="post-footer"> 
+            <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+
+    
+
+    
+    
+
+    
+
+</div>
+        </footer>
+
+    </article>
+</main>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="content" role="main">
+    <article class="post single-post" itemscope itemtype="https://schema.org/BlogPosting">
+
+        <header class="post-header short-diver">
+            <h1 class="post-title" itemprop="name headline">RSA algorithm (asymmetric algorithm)</h1>
+            <section class="post-meta">
+                <time datetime="2020-04-25T22:40:00+05:30" itemprop="datePublished">Apr 25, 2020</time> 
+                on
+                
+                <span><a href="">Asymmetric</a></span>
+                
+                <span><a href="">algorithm,</a></span>
+                
+                <span><a href="">Public</a></span>
+                
+                <span><a href="">key</a></span>
+                
+                <span><a href="">Cryptography</a></span>
+                
+            </section>
+        </header>
+
+        <section class="post-content short-diver" itemprop="articleBody">
+            <h3 id="what-is-rsa-algorithm">What is RSA algorithm?</h3>
+
+<pre><code>RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+</code></pre>
+
+<h3 id="example">Example:</h3>
+
+<pre><code>-   EncryptionKey =&gt; (5,14)
+    Suppose a text to be encrypted is letter 'B' -&gt;  2, then  2^5(mod 14)
+    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&gt; (5,14)
+    is encryption key
+
+
+    DecriptionKey: (11, 14),
+    4^11(mod 14) =&gt; 2 == B, where (d,N) that is 4^d(mod N) =&gt; (11, 14) is
+    decription key
+
+-   How does it work, what is the algoritm? There is no magic it is just
+    simple mathematics:
+    Take two prime numbers (numbers can be hundreds &amp; hundreds digit long),
+    I choose small number (for better explanation) (2,7) where p = 2, q = 7
+    -   N = p * q =&gt; N = 14
+
+    -   choose φ(N) = (p-1)(q-1)
+
+    -   Now choose a number for encryption e where
+        { 1 &lt; e &lt; φ(N) and coprime with N and φ(N)}
+        1 &lt; e &lt; 6 =  2, 3, 4, 5
+        number which is coprime with 14 and 6 is 5
+        so our lock is (e,N) = (5,14)
+
+    -   Now for decryption we choose d such that {d.e(mod φ(N))}
+        that is -&gt; d.5(mod 6) = 1
+        the options could be -&gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
+        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
+        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
+
+        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
+        So the key is (11, 14)
+</code></pre>
 
         </section>
 

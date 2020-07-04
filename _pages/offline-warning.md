@@ -1,7 +1,7 @@
 ---
 layout:    page
 permalink: "/offline-warning/"
-author:    jwillmer
+author:    Poonam
 weight:    5
 menutitle: Offline
 title:     Offline Warning

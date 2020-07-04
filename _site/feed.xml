@@ -5,77 +5,15 @@
     <description>This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-      <pubDate>Sat, 27 Jun 2020 20:00:06 +0530</pubDate>
-    <lastBuildDate>Sat, 27 Jun 2020 20:00:06 +0530</lastBuildDate>
+      <pubDate>Sat, 04 Jul 2020 20:15:11 +0530</pubDate>
+    <lastBuildDate>Sat, 04 Jul 2020 20:15:11 +0530</lastBuildDate>
     <generator>Jekyll v3.8.7</generator>
-    
-      <item>
-        <title>RSA algorithm (asymmetric algorithm)</title>
-        <description>&lt;h3 id=&quot;what-is-rsa-algorithm&quot;&gt;What is RSA algorithm?&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;example&quot;&gt;Example:&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;-   EncryptionKey =&amp;gt; (5,14)
-    Suppose a text to be encrypted is letter 'B' -&amp;gt;  2, then  2^5(mod 14)
-    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&amp;gt; (5,14)
-    is encryption key
-
-
-    DecriptionKey: (11, 14),
-    4^11(mod 14) =&amp;gt; 2 == B, where (d,N) that is 4^d(mod N) =&amp;gt; (11, 14) is
-    decription key
-
--   How does it work, what is the algoritm? There is no magic it is just
-    simple mathematics:
-    Take two prime numbers (numbers can be hundreds &amp;amp; hundreds digit long),
-    I choose small number (for better explanation) (2,7) where p = 2, q = 7
-    -   N = p * q =&amp;gt; N = 14
-
-    -   choose φ(N) = (p-1)(q-1)
-
-    -   Now choose a number for encryption e where
-        { 1 &amp;lt; e &amp;lt; φ(N) and coprime with N and φ(N)}
-        1 &amp;lt; e &amp;lt; 6 =  2, 3, 4, 5
-        number which is coprime with 14 and 6 is 5
-        so our lock is (e,N) = (5,14)
-
-    -   Now for decryption we choose d such that {d.e(mod φ(N))}
-        that is -&amp;gt; d.5(mod 6) = 1
-        the options could be -&amp;gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
-        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
-        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
-
-        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
-        So the key is (11, 14)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 25 Apr 2020 22:40:00 +0530</pubDate>
-        <link>/blog/tutorial/RSA_easyway</link>
-        <guid isPermaLink="true">/blog/tutorial/RSA_easyway</guid>
-        
-        <category>Asymmetric</category>
-        
-        <category>algorithm,</category>
-        
-        <category>Public</category>
-        
-        <category>key</category>
-        
-        <category>Cryptography</category>
-        
-        
-        <category>Tutorial</category>
-        
-      </item>
     
       <item>
         <title>Querying Dremio using Golang and ODBC driver</title>
         <description>&lt;pre&gt;&lt;code&gt;Dremio can be accessed via golang or other programming language. Here we are moving ahead by having two docker containers one of dremio and other of the database postgres.
 To access it via code or isql you need to have Dremio odbc Driver and unixODBC driver installed as we are in Linux environment (For windos it is not required).
-	
+
 And that is it. Let follow the steps below.
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -220,7 +158,7 @@ $ go run test.go
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>
-        <pubDate>Tue, 14 Apr 2020 22:40:00 +0530</pubDate>
+        <pubDate>Sat, 27 Jun 2020 22:40:00 +0530</pubDate>
         <link>/blog/tutorial/dremio_odbc_golang</link>
         <guid isPermaLink="true">/blog/tutorial/dremio_odbc_golang</guid>
         
@@ -414,7 +352,7 @@ Credentials → System → Global Credentials → Add Credentials
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>
-        <pubDate>Tue, 14 Apr 2020 22:40:00 +0530</pubDate>
+        <pubDate>Sun, 14 Jun 2020 22:30:00 +0530</pubDate>
         <link>/blog/tutorial/cicd_jenkins_dockr_kubernetes</link>
         <guid isPermaLink="true">/blog/tutorial/cicd_jenkins_dockr_kubernetes</guid>
         
@@ -425,6 +363,68 @@ Credentials → System → Global Credentials → Add Credentials
         <category>,</category>
         
         <category>Kubernetes</category>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>RSA algorithm (asymmetric algorithm)</title>
+        <description>&lt;h3 id=&quot;what-is-rsa-algorithm&quot;&gt;What is RSA algorithm?&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;-   EncryptionKey =&amp;gt; (5,14)
+    Suppose a text to be encrypted is letter 'B' -&amp;gt;  2, then  2^5(mod 14)
+    = 32(mod 14) = 4 (cyphertext). Where (e,N) that is 2^e(mod N) =&amp;gt; (5,14)
+    is encryption key
+
+
+    DecriptionKey: (11, 14),
+    4^11(mod 14) =&amp;gt; 2 == B, where (d,N) that is 4^d(mod N) =&amp;gt; (11, 14) is
+    decription key
+
+-   How does it work, what is the algoritm? There is no magic it is just
+    simple mathematics:
+    Take two prime numbers (numbers can be hundreds &amp;amp; hundreds digit long),
+    I choose small number (for better explanation) (2,7) where p = 2, q = 7
+    -   N = p * q =&amp;gt; N = 14
+
+    -   choose φ(N) = (p-1)(q-1)
+
+    -   Now choose a number for encryption e where
+        { 1 &amp;lt; e &amp;lt; φ(N) and coprime with N and φ(N)}
+        1 &amp;lt; e &amp;lt; 6 =  2, 3, 4, 5
+        number which is coprime with 14 and 6 is 5
+        so our lock is (e,N) = (5,14)
+
+    -   Now for decryption we choose d such that {d.e(mod φ(N))}
+        that is -&amp;gt; d.5(mod 6) = 1
+        the options could be -&amp;gt; 1.5(mod 6), 2.5(mod 6), 3.5(mod 6),
+        4.5(mod 6),5.5(mod 6), 6.5(mod 6), 7.5(mod 6), 8.5(mod 6),
+        9.5(mod 6), 10.5(mod 6), 11.5(mod 6), 12.5(mod 6) and so on ...
+
+        I choose d = 11 that is 11.5(mod 6) which gives me the value 1.
+        So the key is (11, 14)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 25 Apr 2020 22:40:00 +0530</pubDate>
+        <link>/blog/tutorial/RSA_easyway</link>
+        <guid isPermaLink="true">/blog/tutorial/RSA_easyway</guid>
+        
+        <category>Asymmetric</category>
+        
+        <category>algorithm,</category>
+        
+        <category>Public</category>
+        
+        <category>key</category>
+        
+        <category>Cryptography</category>
         
         
         <category>Tutorial</category>
