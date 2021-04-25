@@ -9,7 +9,7 @@ author: Poonam Agarwal
 
 ### What is RSA algorithm?
 
-    RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with private key of sender and decrypted by the shared public key of the sender.
+    RSA(Rivest–Shamir–Adleman) is an algorithm to encrypt and decrypt messages. It is an asymmetric cryptographic algorithm. There is a pair of public, private key and algorithm, the message is encrypted with the shared public key of receiver and decrypted by the private key of the receiver.
 
 ### Example:
 
